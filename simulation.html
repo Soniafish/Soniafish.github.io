@@ -51,7 +51,6 @@
             background-color: #009688;
         }
 */
-
     </style>
 </head>
 
@@ -103,55 +102,66 @@
         </div>
     </div>
     <!--全版面大型看板結尾-->
-
-    <div id="section1" class="container-fluid">
-        <section>
+    <!--  section1  -->
+    <section>
+        <div id="section1" class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img src="https://source.unsplash.com/800x600?people" alt="">
-                        <h3>Lorem ipsum dolor.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae blanditiis temporibus perferendis deleniti impedit aspernatur, ipsam eveniet consequuntur sunt, accusamus iste mollitia. Error nobis, tenetur consequatur, harum delectus excepturi!</p>
+                        <a href=""><i class="fa fa-television" aria-hidden="true"></i></a>
+                        <h3>WHAT IS MOBIRISE?</h3>
+                        <p>Mobirise is an offline app for Window and Mac to easily create small/medium websites, landing pages, online resumes and portfolios, promo sites for apps, events, services and products.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img src="https://source.unsplash.com/800x600?people" alt="">
-                        <h3>Lorem ipsum dolor.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae blanditiis temporibus perferendis deleniti impedit aspernatur, ipsam eveniet consequuntur sunt, accusamus iste mollitia. Error nobis, tenetur consequatur, harum delectus excepturi!</p>
+                        <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <h3>IS IT GOOD FOR ME?</h3>
+                        <p>Mobirise is perfect for non-techies who are not familiar with the intricacies of web development and for designers who prefer to work as visually as possible, without fighting with code. Also great for pro-coders for fast prototyping and small customers' projects.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <img src="https://source.unsplash.com/800x600?people" alt="">
-                        <h3>Lorem ipsum dolor.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae blanditiis temporibus perferendis deleniti impedit aspernatur, ipsam eveniet consequuntur sunt, accusamus iste mollitia. Error nobis, tenetur consequatur, harum delectus excepturi!</p>
+                        <a href=""><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <h3>WHY MOBIRISE?</h3>
+                        <p>Key differences from traditional builders: * Minimalistic, extremely easy-to-use interface * Mobile-friendliness, latest website blocks and techniques "out-the-box" * Free for commercial and non-profit use</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-    <!--  section2  -->
-    <div id="section2" class="container-fluid">
-        <h1>How MOBIRISE WORKS</h1>
-        <div class="row">
-            <div class="col-md-3"><img src="https://source.unsplash.com/400x300?buildings" alt=""></div>
-            <div class="col-md-3"><img src="https://source.unsplash.com/400x300?buildings" alt=""></div>
-            <div class="col-md-3"><img src="https://source.unsplash.com/400x300?buildings" alt=""></div>
-            <div class="col-md-3"><img src="https://source.unsplash.com/400x300?buildings" alt=""></div>
         </div>
-    </div>
+    </section>
+
+    <section id="workStape">
+        <div class="container">
+            <h1>HOW MOBIRISE WORKS</h1>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSs32PIQOS40-B5MMwfFZSHTGJmLC6Kp6iZA_OOhnGtI53mJ95kkw" alt="step 1">
+                </div>
+                <div class="col-md-3">
+                    <img src="http://img.informer.com/screenshots/6287/6287122_1_3.png" alt="step 2">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlnV5XUNQiksSBtFBz3YiEVXfs6f1hEKBud0u5kIiaF_K6b0RV" alt="step 3">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://mobirise.com/assets3/images/fourth-2000x1343-66-2000x1343-88.jpg" alt="step 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="webMake">
         <div class="container">
             <div class="row">
                 <div class="col-md-6"><img src="https://source.unsplash.com/400x300?people" alt=""></div>
                 <div class="col-md-6">
                     <article>
-                        <h2>DROP-DEAD EASY WEBSITE MAKER</h2>
+                        <h1>DROP-DEAD EASY WEBSITE MAKER</h1>
                         <p>Cut down the development time with drag-and-drop website builder. Drop the blocks you like into your page, edit content inline and publish - no technical skills required</p>
                         <p>
-                            <a class="btn btn-info btn-sm" href="#" role="button">FOR WINDOWS</a>
-                            <a class="btn btn-info btn-sm" href="#" role="button">FOR　MAC</a>
+                            <a class="btn btn-info btn-sm" href="#" role="button" id="btnWin">FOR WINDOWS</a>
+                            <a class="btn btn-info btn-sm" href="#" role="button" id="btnMac">FOR　MAC</a>
                         </p>
                     </article>
                 </div>
@@ -193,8 +203,10 @@
             </div>
         </div>
     </div>
+
+    <!--  section2  -->
     <section id="boostUse">
-        <div class="container">
+        <div class="container" id="section2">
             <div class="row">
                 <div class="col-md-3">
                     <div class="thumbnail">
@@ -523,6 +535,7 @@
             </div>
         </div>
     </section>
+
     <section>
         <div class="jumbotron news">
             <h1>NEWS / FOLLOW US</h1>
@@ -583,9 +596,11 @@
                 </div>
             </div>
         </div>
-
     </section>
+
+    <!--footer開始-->
     <footer>Copyright (с) 2016 Mobirise. License: EULA</footer>
+    <!--footer結束-->
 </body>
 
 </html>
