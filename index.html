@@ -1,57 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<!--    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/simStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        /*
-        body {
-            position: relative;
-        }
-        
-        #section1 {
-            padding-top: 50px;
-            height: 500px;
-            color: #fff;
-            background-color: #1E88E5;
-        }
-        
-        #section2 {
-            padding-top: 50px;
-            height: 500px;
-            color: #fff;
-            background-color: #673ab7;
-        }
-        
-        #section3 {
-            padding-top: 50px;
-            height: 500px;
-            color: #fff;
-            background-color: #ff9800;
-        }
-        
-        #section41 {
-            padding-top: 50px;
-            height: 500px;
-            color: #fff;
-            background-color: #00bcd4;
-        }
-        
-        #section42 {
-            padding-top: 50px;
-            height: 500px;
-            color: #fff;
-            background-color: #009688;
-        }
-*/
-    </style>
 </head>
 
 <!--必要設定：data-target:指向要監聽的導覽列-->
@@ -67,7 +25,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">MOBIRISE</a>
+                <a class="navbar-brand" href="#">
+                    <!--未成功<img src="https://mir-s3-cdn-cf.behance.net/user/115/5cc32615399471.57bd5cc2c5e39.png" alt="">-->
+                    MOBIRISE
+                </a>
             </div>
             <div>
                 <div class="collapse navbar-collapse" id="myNavbar">
@@ -75,54 +36,53 @@
                         <!--超連結連結到下面的段落ＩＤ-->
                         <li><a href="#section1">WhAT IS IT</a></li>
                         <li><a href="#section2">FEATURES</a></li>
-                        <li><a href="#section3">FORUMS</a></li>
-
-                        <!--
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#section41">Section 4-1</a></li>
-                                <li><a href="#section42">Section 4-2</a></li>
-                            </ul>
-                        </li>
--->
+                        <li><a href="">FORUMS</a></li>
+                        <li><a class="btn btn-sm" href="#" role="button" id="btnWin">DOWNLOAD</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
     <!--全版面大型看板開始-->
-    <div class="jumbotron">
+    <div class="jumbotron" id="header">
         <div class="container">
-            <h1>MOBIRISE WEBSITE BUILDER</h1>
+            <h1>MOBIRISE</h1>
+            <h1>WEBSITE BUILDER</h1>
             <p>Create awesome mobile-friendly websites. No coding and free.</p>
             <p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">DOWNLOAD FOR WINDOWS</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">DOWNLOAD FOR MAC</a>
+                <a class="btn btn-primary btn-lg" id="btnWin" href="#" role="button"><i class="fa fa-windows fa-2x" aria-hidden="true"></i>DOWNLOAD FOR WINDOWS</a>
+                <a class="btn btn-primary btn-lg" id="btnMac" href="#" role="button"><i class="fa fa-apple fa-2x" aria-hidden="true"></i>DOWNLOAD FOR MAC</a>
             </p>
         </div>
     </div>
     <!--全版面大型看板結尾-->
-    <!--  section1  -->
-    <section>
-        <div id="section1" class="container-fluid">
+    <!--  section1開始  -->
+    <section id="whatIs">
+        <div id="section1" class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <a href=""><i class="fa fa-television" aria-hidden="true"></i></a>
+                        <a href="">
+                            <i class="fa fa-laptop fa-lg" aria-hidden="true"></i>
+                        </a>
                         <h3>WHAT IS MOBIRISE?</h3>
                         <p>Mobirise is an offline app for Window and Mac to easily create small/medium websites, landing pages, online resumes and portfolios, promo sites for apps, events, services and products.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <a href="">
+                            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                        </a>
                         <h3>IS IT GOOD FOR ME?</h3>
                         <p>Mobirise is perfect for non-techies who are not familiar with the intricacies of web development and for designers who prefer to work as visually as possible, without fighting with code. Also great for pro-coders for fast prototyping and small customers' projects.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <a href=""><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <a href="">
+                            <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                        </a>
                         <h3>WHY MOBIRISE?</h3>
                         <p>Key differences from traditional builders: * Minimalistic, extremely easy-to-use interface * Mobile-friendliness, latest website blocks and techniques "out-the-box" * Free for commercial and non-profit use</p>
                     </div>
@@ -154,7 +114,7 @@
     <section id="webMake">
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><img src="https://source.unsplash.com/400x300?people" alt=""></div>
+                <div class="col-md-6"><iframe width="450" height="253" src="https://www.youtube.com/embed/Tq7p44IA-1U" frameborder="0" allowfullscreen></iframe></div>
                 <div class="col-md-6">
                     <article>
                         <h1>DROP-DEAD EASY WEBSITE MAKER</h1>
