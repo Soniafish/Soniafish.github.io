@@ -1,0 +1,197 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Noto Sans TC', sans-serif;
+    color: black;
+}
+
+body {
+    position: relative;
+}
+
+.navbar-inverse {
+    background-image: url(../images/beging.jpg);
+    background-size: cover;
+    /*    可再試試background-color:改為透明*/
+    border-style: none;
+}
+
+#header {
+    background-image: url(../images/beging.jpg);
+    background-size: cover;
+    height: 600px;
+    margin: 0px;
+}
+
+#header>.container {
+    margin-top: 30px;
+    text-align: center;
+    color: floralwhite;
+}
+
+#section1 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #ead1b1;
+}
+
+#section1>.container {
+    width: 80%;
+    text-align: center;
+    padding-bottom: 30px;
+    /*    background-color: burlywood;*/
+}
+
+#section1>.container>.row>h1 {
+    font-size: 300%;
+    font-style: italic;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+#section1>.container>.row>.col-md-4>img {
+    width: 80%;
+    border-radius: 60%;
+    margin-top: 40px;
+}
+
+#section1>.container>.row>.col-md-8 {
+    color: #333;
+}
+
+#section1>.container>.row>.col-md-8>p {
+    font-size: 120%;
+    line-height: 1.5em;
+}
+
+#section2 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /*    background-color: #673ab7;*/
+}
+
+#section2>.container {
+    width: 95%;
+    text-align: center;
+    padding-bottom: 30px;
+    /*    background-color: burlywood;*/
+}
+
+#section2>.container>.row>h1 {
+    font-size: 300%;
+    font-style: italic;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+#section2>.container>.row>.col-md-4 {
+    margin-bottom: 30px;
+}
+
+#section2>.container>.row>.col-md-4>.thumbnail {
+    /*    background-color: #ead1b1;*/
+    color: #333;
+    border-style: none;
+}
+
+.img2 {
+    display: none;
+}
+
+
+/*待處理*/
+
+#section2>.container>.row>.col-md-4>.thumbnail>img {
+    width: 250px;
+    height: 180px;
+    padding: 10px;
+}
+
+#section2>.container>.row>.col-md-4>.thumbnail>img:hover {
+    /*替換img圖片*/
+    content: url(../images/hover.jpg);
+}
+
+#section3 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /*    background-color: #ead1b1;*/
+    background-image: url(../images/grow.jpg);
+    background-size: cover;
+}
+
+#section3>.container {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 30px;
+    /*    background-color: burlywood;*/
+}
+
+#section3>.container>.row>h1 {
+    font-size: 300%;
+    font-style: italic;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+.carousel-inner>.item>.container {
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%
+}
+
+#section4 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#section4>.container {
+    width: 70%;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#section4>.container>.row>h1 {
+    font-size: 300%;
+    font-style: italic;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+#section4>.container>.row>.col-md-4 {
+    padding-top: 40px;
+    /*    padding: 20px 50px 20px 5px;*/
+}
+
+#section4>.container>.row>.col-md-8 {
+    margin-top: 50px;
+    padding: 20px 35px;
+    background-color: #5C8700;
+    line-height: 2em;
+    font-size: 120%;
+    color: white;
+}
+
+#section4>.container>.row>.col-md-4>img {
+    border-radius: 50%;
+    width: 200px;
+}
+
+footer {
+    text-align: center;
+    height: 80px;
+    background-color: dimgray; //#616130
+    color: darkgrey;
+}
+
+footer>.container {
+    width: 70%;
+    text-align: center;
+}
+
+footer>.container>p {
+    padding-top: 20px;
+    font-size: 100%;
+}

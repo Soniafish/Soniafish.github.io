@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/page1.css">
+    <style>
+
+
+    </style>
+</head>
+
+<!--必要設定：data-target:指向要監聽的導覽列-->
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <!--導覽列類別名稱要與data-target中一致-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">sonia</a>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!--超連結連結到下面的段落ＩＤ-->
+                        <li><a href="#section1">About</a></li>
+                        <li><a href="#section2">Skills</a></li>
+                        <li class="dropdown"><a href="#section3" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#section31">Section 3-1</a></li>
+                                <li><a href="#section32">Section 3-2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#section4">Thanks</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--全版面大型看板開始-->
+    <div class="jumbotron" id="header">
+        <div class="container">
+            <h1>收割</h1>
+            <h2>從種下希望開始</h2>
+        </div>
+    </div>
+    <!--全版面大型看板結尾-->
+    <!--section1開始-->
+    <div id="section1" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <h1>About Me</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="../images/headShot.jpg" alt="">
+                </div>
+                <div class="col-md-8">
+                    <h2>林小如</h2>
+                    <p>心理系畢業很久的30好幾熟女</p>
+                    <p>一直從事著人文工作,為弱勢兒童曁家庭服務</p>
+                    <p>基於相信自己做得到</p>
+                    <p>所以</p>
+                    <p>接受前端網頁工程師的挑戰</p>
+                    <p>期待有一天能做出屬於自己風格的網頁</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--section1結束-->
+    <!--section2開始-->
+    <div id="section2" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <h1>Skills</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../images/html_css.jpg" alt="/html_css">
+                        <h2>精熟度：100%</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../images/rwd-web.jpg" alt="rwd-web">
+                        <h2>精熟度：100%</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../images/bootstrap.jpg" alt="bootstrap">
+                        <h2>精熟度：100%</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../images/javascript.jpg" alt="javascript">
+                        <h2>精熟度：100%</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../images/jq.jpg" alt="JQuer">
+                        <h2>精熟度：100%</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="../images/ps.jpg" alt="Photoshop">
+                        <h2>精熟度：100%</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--section2結束-->
+    <!--section3開始-->
+    <div id="section3" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <h1>Works</h1>
+            </div>
+            <!--輪播開始-->
+            <div id="slideshow" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <!--輪播圖片或內容-->
+                    <div class="item active">
+                        <!--固定寬度大型看板開始-->
+                        <div class="container">
+                            <div class="jumbotron">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h1>複刻網頁</h1>
+                                        <p>複刻Mobirise網頁，加上Bootstrap套件，把CSS、RWD更上一層樓，之唉呦我的媽呀總複習！！</p>
+                                        <p><a class="btn btn-primary btn-lg" href="#" role="button">See more</a></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="https://source.unsplash.com/400x300?food" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--固定寬度大型看板結尾-->
+                    </div>
+                    <div class="item">
+                        <!--固定寬度大型看板開始-->
+                        <div class="container">
+                            <div class="jumbotron">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h1>複刻網頁</h1>
+                                        <p>複刻gushit.tw網頁之作者專欄，從切切切中，我學會CSS切板了!!</p>
+                                        <p><a class="btn btn-primary btn-lg" href="#" role="button">See more</a></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="https://source.unsplash.com/400x300?buildings" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--固定寬度大型看板結尾-->
+                    </div>
+                    <div class="item">
+                        <!--固定寬度大型看板開始-->
+                        <div class="container">
+                            <div class="jumbotron">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h1>我的美食地圖</h1>
+                                        <p>為網頁增添樣式，我會normalize、換字、圓型圖、留白...，天阿！我的圖不再硬梆梆了!!</p>
+                                        <p><a class="btn btn-primary btn-lg" href="#" role="button">See more</a></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="https://source.unsplash.com/400x300?people" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--固定寬度大型看板結尾-->
+                    </div>
+                    <div class="item">
+                        <!--固定寬度大型看板開始-->
+                        <div class="container">
+                            <div class="jumbotron">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h1>回到最初</h1>
+                                        <p>我的一個網頁--自傳，OH my god!!怎麼跟現在差這麼多...</p>
+                                        <p><a class="btn btn-primary btn-lg" href="#" role="button">See more</a></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="https://source.unsplash.com/400x300?nature" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--固定寬度大型看板結尾-->
+                    </div>
+                </div>
+                <!--上一頁 下一頁 按鈕-->
+                <div class="control-btn">
+                    <a href="#slideshow" class="left carousel-control" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a href="#slideshow" class="right carousel-control" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+                <!--小圓點換頁-->
+                <ol class="carousel-indicators">
+                    <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+                    <li data-target="#slideshow" data-slide-to="1"></li>
+                    <li data-target="#slideshow" data-slide-to="2"></li>
+                    <li data-target="#slideshow" data-slide-to="3"></li>
+                </ol>
+            </div>
+            <!--輪播結尾-->
+        </div>
+    </div>
+    <!--section4開始-->
+    <div id="section4" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <h1>Thanks</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="../images/teacher.jpg" alt="teather">
+                </div>
+                <div class="col-md-8">
+                    感謝張老師的用力教導，記得第一天的下馬威，真的讓我繃緊神經學習，也因為這樣才有滿滿的收穫，也謝謝張老師放慢腳步配合我們，將豐富的課程內容一步一步的教導，即便已經很忙了，還是不忘幫我們加課加課再加課，讓我覺得這堂課真的是物超所值了!!
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    感謝我的partner，好險你沒有棄我而去，多虧有你，補足了我常常忽略掉的細節，因為有你，讓我在學習的路上不孤單，一起找錯、一起熬夜、互相協助的日子裡，總覺得有你真好!!
+                </div>
+                <div class="col-md-4">
+                    <img src="../images/partner.jpg" alt="partner">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="../images/275.jpg">
+                </div>
+                <div class="col-md-8">
+                    感謝275期的同學們，特別是坐在我前面、後面的同學，你們應該被我問過問題吧!!呵呵，本人臉皮比較後，有問題還是會想辦法問出來，所以不好意思打擾了，也謝謝你們不嫌麻煩的解惑~
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    感謝FB群組的存在，我才發現，原來問題不是只有我遇到，大家的分享與給建議，讓無頭蒼蠅的我多了一個方向，也因為群組，才能這麼方便線上複習，想看幾百遍影片都沒有問題。
+                </div>
+                <div class="col-md-4">
+                    <img src="../images/fb275.jpg" alt="FB">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="../images/headShot.jpg">
+                </div>
+                <div class="col-md-8">
+                    最後要感謝的當然是林小如我自己，相信自己、堅持到底，甚至勇敢面對最後一堂課的挑戰，才有機會走到這裡，記得這樣的感覺，繼續努力下去喔~
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--section4結束-->
+    <!--footer開始-->
+    <footer>
+        <div class="container">
+            <p>初試身手‧歡迎指教<br/> Edit 林小如</p>
+        </div>
+    </footer>
+    <!--footer結束-->
+</body>
+
+</html>
