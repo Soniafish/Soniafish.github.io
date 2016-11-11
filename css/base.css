@@ -1,0 +1,8 @@
+/*思源黑體(網路中文字型),但首次使用時網頁會開得比較慢,因為要下載網路中文字體*/
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+    font-size: 20px;
+    color: black;
+    font-family: "Noto Sans TC";
+}
