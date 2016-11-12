@@ -1,0 +1,110 @@
+.contanier {
+    background-color: #ddd;
+    width: 100%;
+    overflow: auto;
+    margin: 0px;
+}
+
+.content {
+    width: calc(100%*2/3);
+    float: left;
+}
+
+aside {
+    width: calc(100%*1/3);
+    float: left;
+}
+
+.col-2 {
+    width: calc(100%*1/2);
+    float: left;
+}
+
+.thumbnail {
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 20px;
+    float: left;
+    position: relative;
+    width: 80%;
+}
+
+.thumbnail:hover {
+    background-color: gray;
+}
+
+.thumbnail:hover>.arrowhead {
+    border-top-color: gray;
+    border-bottom-color: gray;
+    border-left-color: black;
+    border-right-color: gray;
+}
+
+img {
+    width: 50%;
+    height: 100%;
+    border-radius: 200px;
+}
+
+.thumbnail>h3 {
+    text-align: left;
+    margin: 20px 0px;
+    font-weight: bold;
+    font-size: 220%;
+}
+
+.line {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    width: 60px;
+    height: 2px;
+    background-color: blue;
+    border-radius: 3px;
+}
+
+.author {
+    text-align: right;
+}
+
+.seeMore {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.arrowhead {
+    width: 0;
+    height: 0;
+    border: 10px;
+    border-style: solid;
+    border-top-color: white;
+    border-bottom-color: white;
+    border-left-color: black;
+    border-right-color: white;
+    position: absolute;
+    right: 60px;
+    bottom: 40px;
+}
+
+.col-1 {
+    margin: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.haveHover:hover {
+    background-color: gray;
+}
+
+.col-1>h3 {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.onlytitle {
+    background-color: #ddd;
+    margin-bottom: -50px;
+}
