@@ -135,15 +135,37 @@ body {
     margin-bottom: 30px;
 }
 
+.carousel-inner {
+    /*    background-color: #CCFF99;*/
+    background-color: #bDD690;
+}
+
+.carousel-inner>.item {
+    background-color: #bDD690;
+}
+
 .carousel-inner>.item>.container {
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 95%
+    width: 95%;
+    background-color: #bDD690;
+}
+
+.item>.container>.jumbotron {
+    background-color: #bDD690;
+}
+
+.item>.container>.jumbotron>.row>.col-md-6>p {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .item>.container>.jumbotron>.row>.col-md-6>img {
-    width: 450px;
+    width: 400px;
     height: 300px;
 }
 
@@ -171,6 +193,67 @@ body {
 }
 
 #section4>.container>.row>.col-md-8 {
+    position: relative;
+}
+
+.arrowheadLeft {
+    width: 0;
+    height: 0;
+    border: 15px;
+    border-style: solid;
+    border-top-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+    border-right-color: #5C8700;
+    position: absolute;
+    left: -12px;
+    top: 110px;
+}
+
+.arrowheadRight {
+    width: 0;
+    height: 0;
+    border: 15px;
+    border-style: solid;
+    border-top-color: white;
+    border-bottom-color: white;
+    border-left-color: #5C8700;
+    border-right-color: white;
+    position: absolute;
+    right: -12px;
+    top: 110px;
+}
+
+@media screen and (max-width:767px) {
+    .arrowheadLeft {
+        width: 0;
+        height: 0;
+        border: 15px;
+        border-style: solid;
+        border-top-color: white;
+        border-bottom-color: #5C8700;
+        border-left-color: white;
+        border-right-color: white;
+        position: absolute;
+        left: 45%;
+        top: -29px;
+    }
+    .arrowheadRight {
+        width: 0;
+        height: 0;
+        border: 15px;
+        border-style: solid;
+        border-top-color: white;
+        border-bottom-color: #5C8700;
+        border-left-color: #5C8700;
+        border-right-color: #5C8700;
+        position: absolute;
+        left: 45%;
+        top: 0px;
+    }
+}
+
+#section4>.container>.row>.col-md-8>p {
     margin-top: 50px;
     padding: 20px 35px;
     background-color: #5C8700;
