@@ -1,0 +1,120 @@
+.bg {
+    /*    background-image: url(../images/Iphone6s.jpg);*/
+    /*    background-repeat: no-repeat;*/
+    /*    background-size: cover*/
+    /*    background-color: bisque;*/
+    width: 600px;
+    height: 600px;
+}
+
+.frame {
+    position: relative;
+    top: 23px;
+    left: 250px;
+    border-style: solid;
+    border-top-width: thick;
+    border-left-width: thick;
+    border-bottom-width: medium;
+    border-right-width: medium;
+    /*    border-width: thin;*/
+    border-color: gainsboro;
+    border-radius: 39px;
+    width: 265px;
+    height: 550px;
+    background-color: white;
+}
+
+.dot1 {
+    position: absolute;
+    top: 15px;
+    left: 127px;
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.dot2 {
+    position: absolute;
+    top: 30px;
+    left: 82px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.line {
+    position: absolute;
+    top: 32px;
+    left: 108px;
+    width: 45px;
+    height: 5px;
+    border-radius: 20%;
+    background-color: black;
+}
+
+.screen {
+    position: absolute;
+    top: 65px;
+    left: 10px;
+    border-style: solid;
+    border-width: thin;
+    width: 240px;
+    height: 420px;
+    background-color: gray;
+}
+
+.botton1 {
+    position: absolute;
+    top: 42px;
+    left: -7px;
+    width: 4px;
+    height: 9px;
+    border-radius: 20%;
+    background-color: whitesmoke;
+}
+
+.botton2 {
+    position: absolute;
+    top: 70px;
+    left: -7px;
+    width: 5px;
+    height: 23px;
+    border-radius: 20%;
+    background-color: whitesmoke;
+}
+
+.botton3 {
+    position: absolute;
+    top: 118px;
+    left: -7px;
+    width: 5px;
+    height: 40px;
+    border-radius: 20%;
+    background-color: whitesmoke;
+}
+
+.botton4 {
+    position: absolute;
+    top: 170px;
+    left: -7px;
+    width: 5px;
+    height: 40px;
+    border-radius: 20%;
+    background-color: whitesmoke;
+}
+
+.botton5 {
+    position: absolute;
+    top: 495px;
+    left: 108px;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background-color: white;
+    border-width: medium;
+    /*    box-shadow: -2px -2px 4px gainsboro;*/
+    /*     box-shadow: 2px 2px 5px gainsboro;*/
+    background-color: ghostwhite;
+}
