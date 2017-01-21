@@ -293,7 +293,7 @@ body {
 footer {
     text-align: center;
     height: 80px;
-    background-color: dimgray; //#616130
+    background-color: dimgray; /*#616130*/
     color: darkgrey;
 }
 

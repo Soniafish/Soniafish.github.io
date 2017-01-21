@@ -304,6 +304,24 @@
     <div class="fbIcon">
         <a href="http://www.facebook.com"><img src="../images/FacebookIcon.png" alt="FB"></a>
     </div>
+    
+    <!-- FB 套件SDK -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+         js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=141578039672760";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- FB 相關功能-->
+    <div class="container">
+        <!-- FB 給讚 -->
+        <div class="fb-like" data-href="https://soniafish.github.io/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>       
+        <!-- FB留言 -->
+        <div class="fb-comments" data-href="https://soniafish.github.io/" data-numposts="5"></div>
+    </div>  
+    
     <!--footer開始-->
     <footer>
         <div class="container">
