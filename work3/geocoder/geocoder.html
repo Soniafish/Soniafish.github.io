@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoder</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      button img{
+      	width: 30px;
+      	/*border-radius: 50%;*/
+      	margin: 3px auto 0px auto;
+      }
+      button{
+      	border-radius: 20%;
+      	margin: 5px 10px; 
+      }
+    </style>
+  </head>
+  <body>
+  	<div style="width:25%; float:left;">
+  		<div style="margin:10px 5px;">起點:<input id="startPoint" type="text"></div>
+  		<div style="margin:10px 5px;">終點:<input id="endPoint" type="text"></div>
+  		<div style="width: 80%; margin:5px auto;">
+  			<button  onclick="sendPoint('DRIVING');"><img src="drive.png" alt="開車"></button>
+  			<button onclick="sendPoint('TRANSIT');"><img src="transit.png" alt="大眾運輸"></button>
+  		</div>
+  		
+  		<div style="height: 400px; overflow:auto;">
+  			<div id="result" ></div>
+  		</div>		
+  	</div>
+    <div id="map" style="width:75%; float:left;"></div>
+  <script>
+		var map;
+		var startPoint;
+		var endPoint;
+		var travelMode;
+		var geocoder;
+		var directions;
+		function initMap() {
+			//初始化地圖
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 23, lng: 120.5},//台北車站
+				zoom: 7
+			});
+
+			//建立geocoder物件
+			geocoder=new google.maps.Geocoder();
+
+			//建立DirectionsService物件
+			directions=new google.maps.DirectionsService();
+		}
+
+		function sendPoint(mode) {
+			startPoint=document.getElementById("startPoint").value;
+			endPoint=document.getElementById("endPoint").value;
+			travelMode=mode;
+			drawMap(startPoint, endPoint, travelMode);
+		}
+
+		function drawMap(start, end, travelMode){
+
+			initMap();
+
+				//建立geocoder物件
+			// geocoder=new google.maps.Geocoder();
+			//將地址轉換成經緯度
+			geocoder.geocode({address:start}, function (results, status){
+				var location=results[0].geometry.location;
+
+				//建立標誌
+				// 	new google.maps.Marker({
+				// 	position:location,
+				// 	map:map
+				// });
+				map.setCenter(location);
+			});
+			//清空document.getElementById("result");
+			var path=document.getElementById("result").innerHTML="";
+			//建立DirectionsService物件
+			// directions=new google.maps.DirectionsService();
+			//路徑規劃
+			if (travelMode=='DRIVING') {
+				directions.route({
+					origin:start,//起點
+					destination:end,//終點
+					travelMode: google.maps.TravelMode.DRIVING//必填
+				}, function (result) {/*Google將DirectionsResult物件傳進callback函式*/
+					new google.maps.DirectionsRenderer({
+						directions:result,
+						map:map,
+						panel:document.getElementById("result")
+					});
+				});
+			}else{
+				directions.route({
+					origin:start,//起點
+					destination:end,//終點
+					travelMode: google.maps.TravelMode.TRANSIT//必填
+				}, function (result) {/*Google將DirectionsResult物件傳進callback函式*/
+					new google.maps.DirectionsRenderer({
+						directions:result,
+						map:map,
+						panel:document.getElementById("result")
+					});
+				});
+			}
+			
+			}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+  </body>
+</html>

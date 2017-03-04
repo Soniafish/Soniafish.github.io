@@ -48,6 +48,7 @@ body {
     font-style: italic;
     text-decoration: underline;
     margin-bottom: 30px;
+    text-shadow: 5px 5px 5px gray;
 }
 
 #section1>.container>.row>.col-md-4>img {
@@ -65,17 +66,26 @@ body {
     line-height: 1.5em;
 }
 
+.myStory {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myStory ul li {
+    text-align: left;
+    font-size: 120%;
+}
+
 #section2 {
     padding-top: 50px;
     padding-bottom: 50px;
-    /*    background-color: #673ab7;*/
 }
 
 #section2>.container {
-    width: 95%;
+    width: 75%;
     text-align: center;
     padding-bottom: 30px;
-    /*    background-color: burlywood;*/
 }
 
 #section2>.container>.row>h1 {
@@ -83,34 +93,25 @@ body {
     font-style: italic;
     text-decoration: underline;
     margin-bottom: 30px;
+    text-shadow: 5px 5px 5px gray;
 }
 
-#section2>.container>.row>.col-md-4 {
-    margin-bottom: 30px;
+#section2>.container>.row>ul>li {
+    list-style-type: none;
+    font-size: 150%;
+    text-align: left;
 }
 
-#section2>.container>.row>.col-md-4>.thumbnail {
-    /*    background-color: #ead1b1;*/
-    color: #333;
-    border-style: none;
+#section2>.container>.row>ul>li>span {
+    margin: 15px;
+    font-size: 130%;
+    color: seagreen;
 }
 
-.img2 {
-    display: none;
-}
-
-
-/*待處理*/
-
-#section2>.container>.row>.col-md-4>.thumbnail>img {
-    width: 250px;
-    height: 180px;
-    padding: 10px;
-}
-
-#section2>.container>.row>.col-md-4>.thumbnail>img:hover {
-    /*替換img圖片*/
-    content: url(../images/hover.jpg);
+#section2>.container>.row>ul>li>span>i {
+    margin: 15px;
+    font-size: 120%;
+    color: seagreen;
 }
 
 #section3 {
@@ -133,10 +134,14 @@ body {
     font-style: italic;
     text-decoration: underline;
     margin-bottom: 30px;
+    text-shadow: 5px 5px 5px gray;
+}
+
+#section3>.container>.row>h2 {
+    color: gray;
 }
 
 .carousel-inner {
-    /*    background-color: #CCFF99;*/
     background-color: #bDD690;
 }
 
@@ -154,6 +159,10 @@ body {
 
 .item>.container>.jumbotron {
     background-color: #bDD690;
+}
+
+.item>.container>.jumbotron>.row>.col-md-6>h1 {
+    font-size: 300%;
 }
 
 .item>.container>.jumbotron>.row>.col-md-6>p {
@@ -186,86 +195,52 @@ body {
     font-style: italic;
     text-decoration: underline;
     margin-bottom: 30px;
+    text-shadow: 5px 5px 5px gray;
 }
 
-#section4>.container>.row>.col-md-4 {
-    padding-top: 40px;
-    /*    padding: 20px 50px 20px 5px;*/
+#section4>.container>.row>.col-md-8>img {
+    width: 100%;
 }
 
-#section4>.container>.row>.col-md-8 {
-    position: relative;
+#section5 {
+    /*    background-image: url(../images/felipeSantana.jpg);*/
+    /*    background-size: cover;*/
+    background-color: cadetblue;
 }
 
-.arrowheadLeft {
-    width: 0;
-    height: 0;
-    border: 15px;
+#section5>.container {
+    /*    width: 95%;*/
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#section5>.container>.row>h1 {
+    font-size: 300%;
+    font-style: italic;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    text-shadow: 5px 5px 5px gray;
+}
+
+#section5>.container>.row>.col-md-4 {
+    background-color: aquamarine;
+    border-color: cadetblue;
     border-style: solid;
-    border-top-color: white;
-    border-bottom-color: white;
-    border-left-color: white;
-    border-right-color: #5C8700;
-    position: absolute;
-    left: -12px;
-    top: 110px;
+    border-width: 5px;
+    height: 100px;
+    /*    text-align: center;*/
+    line-height: 100px;
+    font-size: 150%;
 }
 
-.arrowheadRight {
-    width: 0;
-    height: 0;
-    border: 15px;
-    border-style: solid;
-    border-top-color: white;
-    border-bottom-color: white;
-    border-left-color: #5C8700;
-    border-right-color: white;
-    position: absolute;
-    right: -12px;
-    top: 110px;
+#section5>.container>.row>.col-md-4>a>img {
+    width: 70px;
+    padding-right: 15px;
 }
 
-@media screen and (max-width:767px) {
-    .arrowheadLeft {
-        width: 0;
-        height: 0;
-        border: 15px;
-        border-style: solid;
-        border-top-color: white;
-        border-bottom-color: #5C8700;
-        border-left-color: white;
-        border-right-color: white;
-        position: absolute;
-        left: 45%;
-        top: -29px;
-    }
-    .arrowheadRight {
-        width: 0;
-        height: 0;
-        border: 15px;
-        border-style: solid;
-        border-top-color: white;
-        border-bottom-color: #5C8700;
-        border-left-color: #5C8700;
-        border-right-color: #5C8700;
-        position: absolute;
-        left: 45%;
-        top: 0px;
-    }
-}
-
-#section4>.container>.row>.col-md-8>p {
-    margin-top: 50px;
-    padding: 20px 35px;
-    background-color: #5C8700;
-    line-height: 2em;
-    font-size: 120%;
-    color: white;
-}
-
-#section4>.container>.row>.col-md-4>img {
-    border-radius: 50%;
-    width: 200px;
+#section5>.container>.row>.col-md-4>a>i {
+    font-size: 180%;
+    padding-right: 20px;
 }
 
 .fbIcon {
@@ -293,7 +268,8 @@ body {
 footer {
     text-align: center;
     height: 80px;
-    background-color: dimgray; /*#616130*/
+    background-color: dimgray;
+    /*#616130*/
     color: darkgrey;
 }
 

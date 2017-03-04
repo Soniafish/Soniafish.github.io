@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <title>Bootstrap Example</title>
+    <title>Sonia Lin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/page1.css">
     <style>
-
 
     </style>
 </head>
@@ -36,8 +36,9 @@
                         <!--超連結連結到下面的段落ＩＤ-->
                         <li><a href="#section1">About</a></li>
                         <li><a href="#section2">Skills</a></li>
-                        <li><a href="#section3">Works</a></li>
-                        <li><a href="#section4">Thanks</a></li>
+                        <li><a href="#section3">Works-1</a></li>
+                        <li><a href="#section4">Works-2</a></li>
+                        <li><a href="#section5">Works-3</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,8 +47,10 @@
     <!--全版面大型看板開始-->
     <div class="jumbotron" id="header">
         <div class="container">
-            <h1>收割</h1>
-            <h2>從種下希望開始</h2>
+            <h1>林盈如</h1>
+            <h2>Sonia Lin</h2>
+            <br/>
+            <h2>應徵：前端網頁工程師</h2>
         </div>
     </div>
     <!--全版面大型看板結尾-->
@@ -59,16 +62,20 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="../images/headShot.jpg" alt="">
+                    <img src="../images/headShot.jpg" alt="盈如的照片">
                 </div>
                 <div class="col-md-8">
-                    <h2>林小如</h2>
-                    <p>心理系畢業很久的30好幾熟女</p>
-                    <p>一直從事著人文工作,為弱勢兒童曁家庭服務</p>
-                    <p>基於相信自己做得到</p>
-                    <p>所以</p>
-                    <p>接受前端網頁工程師的挑戰</p>
-                    <p>期待有一天能做出屬於自己風格的網頁</p>
+                    <h2>林盈如</h2>
+                    <div class="myStory">
+                        <ul>
+                            <li>學歷：輔仁大學心理復健系畢業</li>
+                            <li>工作經驗：曾任職臨床心理師、社工師</li>
+                            <p>(領有社工師執業執照)</p>
+                        </ul>
+                    </div>
+                    <p>過往的我在人文工作上耕耘,全力為弱勢兒童曁家庭服務</p>
+                    <p>但對於資訊工程的興趣始終未消退,因而轉職</p>
+                    <p>感謝抽空閱讀我的履歷，以下為我在前端網頁工程的能力與作品</p>
                 </div>
             </div>
         </div>
@@ -77,48 +84,20 @@
     <!--section2開始-->
     <div id="section2" class="container-fluid">
         <div class="container">
+            <div class="row"></div>
             <div class="row">
                 <h1>Skills</h1>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="../images/html_css.jpg" alt="/html_css">
-                        <h2>精熟度：100%</h2>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="../images/rwd-web.jpg" alt="rwd-web">
-                        <h2>精熟度：100%</h2>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="../images/bootstrap.jpg" alt="bootstrap">
-                        <h2>精熟度：100%</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="../images/javascript.jpg" alt="javascript">
-                        <h2>精熟度：100%</h2>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="../images/jq.jpg" alt="JQuer">
-                        <h2>精熟度：100%</h2>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="../images/ps.jpg" alt="Photoshop">
-                        <h2>精熟度：100%</h2>
-                    </div>
-                </div>
+                <ul>
+                    <li>
+                        <span><i class="fa fa-file-code-o" aria-hidden="true"></i>使用技術：</span> HTML
+                        <i class="fa fa-html5" aria-hidden="true"></i>、CSS<i class="fa fa-css3" aria-hidden="true"></i>、JavaScript、jQuery、Bootstrap</li>
+                    <li>
+                        <span><i class="fa fa-folder-open-o" aria-hidden="true"></i>作業環境：</span> Sublime、Brackets
+                    </li>
+                    <li>
+                        <span><i class="fa fa-cloud" aria-hidden="true"></i>使用工具：</span> GitHub
+                        <i class="fa fa-github" aria-hidden="true"></i></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -127,7 +106,8 @@
     <div id="section3" class="container-fluid">
         <div class="container">
             <div class="row">
-                <h1>Works</h1>
+                <h1>Works-1</h1>
+                <h2>網頁切板與RWD</h2>
             </div>
             <!--輪播開始-->
             <div id="slideshow" class="carousel slide" data-ride="carousel">
@@ -139,9 +119,9 @@
                             <div class="jumbotron">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h1>複刻網頁</h1>
-                                        <p>複刻Mobirise網頁，加上Bootstrap套件，把CSS、RWD更上一層樓，之唉呦我的媽呀總複習！！</p>
-                                        <p><a class="btn btn-primary btn-lg" href="mobirise.html" role="button">See more</a></p>
+                                        <h1>Mobirise網頁</h1>
+                                        <p>複刻Mobirise網站首頁，運用Bootstrap套件，將CSS、RWD更上一層樓！</p>
+                                        <p><a class="btn btn-primary btn-lg" href="mobirise.html" target="_blank" role="button">See more</a></p>
                                     </div>
                                     <div class="col-md-6">
                                         <img src="../images/mobirise.jpg" alt="my Mobirise page">
@@ -157,12 +137,12 @@
                             <div class="jumbotron">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h1>我的iphone</h1>
-                                        <p>練習使用position的absolute與relative製作一個手刻iphone!!</p>
-                                        <p><a class="btn btn-primary btn-lg" href="iphone.html" role="button">See more</a></p>
+                                        <h1>iphone手機</h1>
+                                        <p>運用css的position功能製作一個手刻iphone，簡單展示手機頁面的履歷效果。</p>
+                                        <p><a class="btn btn-primary btn-lg" href="iphone.html" target="_blank" role="button">See more</a></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <img src="../images/iphone.jpg" alt="my iphone page">
+                                        <img src="../images/iphone2.jpg" alt="my iphone page">
                                     </div>
                                 </div>
                             </div>
@@ -175,9 +155,9 @@
                             <div class="jumbotron">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h1>複刻網頁</h1>
-                                        <p>複刻gushit.tw網頁之作者專欄，從切切切中，我學會CSS切板了!!</p>
-                                        <p><a class="btn btn-primary btn-lg" href="gushi.html" role="button">See more</a></p>
+                                        <h1>gushit網頁</h1>
+                                        <p>複刻gushit網站的作家網頁，運用HTML、CSS與RWD的技巧，處理不同框格大小的欄位排列。</p>
+                                        <p><a class="btn btn-primary btn-lg" href="gushi.html" target="_blank" role="button">See more</a></p>
                                     </div>
                                     <div class="col-md-6">
                                         <img src="../images/gushi.jpg" alt="my gushi page">
@@ -194,8 +174,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h1>我的美食地圖</h1>
-                                        <p>為網頁增添樣式，我會normalize、換字、圓型圖、留白...，天阿！我的圖不再硬梆梆了!!</p>
-                                        <p><a class="btn btn-primary btn-lg" href="../page/foodMap.html" role="button">See more</a></p>
+                                        <p>運用normalize、網路字體...等CSS功能設定，至做一個簡單美食網頁。</p>
+                                        <p><a class="btn btn-primary btn-lg" href="../page/foodMap.html" target="_blank" role="button">See more</a></p>
                                     </div>
                                     <div class="col-md-6">
                                         <img src="../images/foodMap.jpg" alt="my food map page">
@@ -211,12 +191,12 @@
                             <div class="jumbotron">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h1>回到最初</h1>
-                                        <p>我的一個網頁--自傳，OH my god!!怎麼跟現在差這麼多...</p>
-                                        <p><a class="btn btn-primary btn-lg" href="record.html" role="button">See more</a></p>
+                                        <h1>Facebook登入頁</h1>
+                                        <p>運用HTML與CSS功能，複刻FaceBook登入頁頁。</p>
+                                        <p><a class="btn btn-primary btn-lg" href="fbIndex.html" target="_blank" role="button">See more</a></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <img src="../images/recd.jpg" alt="my first record page">
+                                        <img src="../images/fbIndex.jpg" alt="my first record page">
                                     </div>
                                 </div>
                             </div>
@@ -247,81 +227,79 @@
     <div id="section4" class="container-fluid">
         <div class="container">
             <div class="row">
-                <h1>Thanks</h1>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="../images/teacher.jpg" alt="teather">
-                </div>
-                <div class="col-md-8">
-                    <p>感謝張老師的用力教導，記得第一天的下馬威，真的讓我繃緊神經學習，也因為這樣才有滿滿的收穫，也謝謝張老師放慢腳步配合我們，將豐富的課程內容一步一步的教導，即便已經很忙了，還是不忘幫我們加課加課再加課，讓我覺得這堂課真的是物超所值了!!</p>
-                    <div class="arrowheadLeft"></div>
-                </div>
+                <h1>Work-2</h1>
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <p>感謝我的partner，好險你沒有棄我而去，多虧有你，補足了我常常忽略掉的細節，因為有你，讓我在學習的路上不孤單，一起找錯、一起熬夜、互相協助的日子裡，總覺得有你真好!!</p>
-                    <div class="arrowheadRight"></div>
+                    <img src="../images/soniaHealthSpace.jpg" alt="sonia健康空間">
                 </div>
                 <div class="col-md-4">
-                    <img src="../images/partner.jpg" alt="partner">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="../images/275.jpg">
-                </div>
-                <div class="col-md-8">
-                    <p>感謝275期的同學們，特別是坐在我前面、後面的同學，你們應該被我問過問題吧!!呵呵，本人臉皮比較後，有問題還是會想辦法問出來，所以不好意思打擾了，也謝謝你們不嫌麻煩的解惑~</p>
-                    <div class="arrowheadLeft"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <p>感謝FB群組的存在，我才發現，原來問題不是只有我遇到，大家的分享與給建議，讓無頭蒼蠅的我多了一個方向，也因為群組，才能這麼方便線上複習，想看幾百遍影片都沒有問題。</p>
-                    <div class="arrowheadRight"></div>
-                </div>
-                <div class="col-md-4">
-                    <img src="../images/fb275.jpg" alt="FB">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="../images/headShot.jpg">
-                </div>
-                <div class="col-md-8">
-                    <p>最後要感謝的當然是林小如我自己，相信自己、堅持到底，甚至勇敢面對最後一堂課的挑戰，才有機會走到這裡，記得這樣的感覺，繼續努力下去喔~</p>
-                    <div class="arrowheadLeft"></div>
+                    <h2><a href="http://handoutdoc.org/static/tinaWeb/health/health/index.html" target="_blank">Sonia健康空間</a></h2>
+                    <p>運用HTML5、CSS3的陰影、video，讓網頁中嵌入影片，並設有暫停、播放與選台功能，另運用google chart、js的JSON，讓使用可也可以計算自己的BMI、月運動資料，另透過js操作css,使的透過選單切換網頁核心內容，以利使用者直接閱讀，不用重讀網頁。</p>
                 </div>
             </div>
         </div>
     </div>
     <!--section4結束-->
+    <!--section5開始-->
+    <div id="section5" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <h1>Work-3</h1>
+                <h2>js小品</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="../work3/geocoder/geocoder.html" target="_blank">
+                        <!--                        <i class="fa fa-map-marker" aria-hidden="true"></i>-->
+                        <img src="../images/map.png" alt="map">Map</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="../work3/atm.html" target="_blank"><img src="../images/atm.png" alt="atm">ATM</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="../work3/canvas/canvas.html" target="_blank"><img src="../images/postcard.png" alt="postcard">Postcard</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><a href="../work3/todoListe.html" target="_blank"><i class="fa fa-list-ol" aria-hidden="true"></i>TodoList</a></div>
+
+                <div class="col-md-4"><a href="../work3/TV.html" target="_blank"><i class="fa fa-television" aria-hidden="true"></i>TV</a></div>
+                <div class="col-md-4">
+                    <a href="" target="_blank"><i class="fa fa-sticky-note" aria-hidden="true">Note</i></a></div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--section5結束-->
     <div class="emailIcon">
         <a href="#"><img src="../images/emailIcon.png" alt="Email"></a>
     </div>
     <div class="fbIcon">
         <a href="http://www.facebook.com"><img src="../images/FacebookIcon.png" alt="FB"></a>
     </div>
-    
+
     <!-- FB 套件SDK -->
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=141578039672760";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=141578039672760";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <!-- FB 相關功能-->
     <div class="container">
         <!-- FB 給讚 -->
-        <div class="fb-like" data-href="https://soniafish.github.io/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>       
+        <div class="fb-like" data-href="https://soniafish.github.io/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
         <!-- FB留言 -->
         <div class="fb-comments" data-href="https://soniafish.github.io/" data-numposts="5"></div>
-    </div>  
-    
+    </div>
+
     <!--footer開始-->
     <footer>
         <div class="container">

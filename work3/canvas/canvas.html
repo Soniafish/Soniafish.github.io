@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1"> 
+	<title>Canvas</title>
+	<script type="text/javascript">
+		var cvs;
+		var ctx;
+		window.onload=function(){	
+			cvs=document.getElementById("cvs");
+			ctx=cvs.getContext("2d");
+
+			ctx.fillStyle="black";
+			ctx.fillRect(0,0, cvs.width, cvs.height);
+			// 取的標記名稱為"img"的元素,"img"標籤超過一個以上,會以陣列方式回傳所有元素,
+			var images=document.getElementsByTagName("img");
+			//"img"標籤的元素可以陣列方式取得,
+			for (var i = 0; i < images.length; i++) {
+				images[i].onclick=changeImage;
+			}
+
+			var saveButton = document.getElementById("saveImageBtn");  
+            bindButtonEvent(saveButton, "click", saveImageInfo);  
+            var dlButton = document.getElementById("downloadImageBtn");  
+            bindButtonEvent(dlButton, "click", saveAsLocalImage);
+					
+		}
+
+	function addTo(){
+				//清除
+				ctx.fillStyle="black";
+				ctx.fillRect(0,400, cvs.width, 55);
+				//取得鍵入文字
+				var to=prompt("輸入收件人","")
+				console.log(to);
+				//設定畫筆漸層色
+				var gra=ctx.createLinearGradient(30,450,800,550);
+				gra.addColorStop(0, "white");
+				gra.addColorStop(1, "purple");
+				ctx.strokeStyle=gra;
+				//設定畫筆字型與大小
+				ctx.font="30px 標楷體";
+				ctx.font="30px monospace";
+				//開始輸出文字
+				ctx.strokeText("To:"+to, 30, 450);
+			}
+
+	function addText(){
+				//清除
+				ctx.fillStyle="black";
+				ctx.fillRect(0,455, cvs.width, 40);
+				//取得鍵入文字
+				var text=prompt("輸入你想說的話(限30字)","")
+				console.log(text);
+				//設定畫筆漸層色
+				var gra=ctx.createLinearGradient(30,450,800,550);
+				gra.addColorStop(0, "white");
+				gra.addColorStop(1, "purple");
+				ctx.fillStyle=gra;
+				//設定畫筆字型與大小
+				ctx.font="25px 標楷體";
+				//開始輸出文字
+				ctx.fillText(text, 50, 480);
+			}
+	function addFrom(){
+				//清除
+				ctx.fillStyle="black";
+				ctx.fillRect(0,495, cvs.width, 55);
+				//取得鍵入文字
+				var from=prompt("寄件人","")
+				console.log(from);
+				//設定畫筆漸層色
+				var gra=ctx.createLinearGradient(30,450,800,550);
+				gra.addColorStop(0, "white");
+				gra.addColorStop(1, "purple");
+				ctx.strokeStyle=gra;
+				//設定畫筆字型與大小
+				ctx.font="30px 標楷體";
+				ctx.font="30px monospace";
+				//開始輸出文字
+				ctx.strokeText("from: "+from, 500, 520);
+			}
+	function changeImage(eventObject){
+		ctx.fillStyle="black";
+		ctx.fillRect(0,0, cvs.width, cvs.height-150);
+		var name= eventObject.target.id;
+		var image= name+".jpg";
+		var img= new Image();
+		img.src=image;
+		img.onload=function(){
+			ctx.drawImage(this, 0, 0, cvs.width, cvs.height-150);
+		}
+	}
+	
+	function loadFile(input){
+			console.log(input.files[0]);
+			var file= input.files[0];//File Object
+			var img=new Image();
+			img.src=URL.createObjectURL(file);
+			img.onload= function () {// 影像載入完成後觸發load事件
+				ctx.drawImage(this, 0, 0, cvs.width, cvs.height-150);
+			};
+	}
+
+	function createPicker(){//將input的功能與button銜接
+			var fileInput=document.getElementById("f");
+			fileInput.click();
+	}
+	
+	function bindButtonEvent(element, type, handler)  
+            {  
+                   if(element.addEventListener) {  
+                      element.addEventListener(type, handler, false);  
+                   } else {  
+                      element.attachEvent('on'+type, handler);  
+                   }  
+            }  
+
+	function saveImageInfo ()   
+            {  
+                var newImg= cvs.toDataURL("image/png");  
+                var w=window.open('about:blank','image from canvas');  
+                w.document.write("<img src='"+image+"' alt='from canvas'/>");  
+            }  
+  
+    function saveAsLocalImage () {  
+        var myCanvas = document.getElementById("cvs");  
+        // here is the most important part because if you dont replace you will get a DOM 18 exception.  
+        // var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");  
+        var newImg = cvs.toDataURL("image/png").replace("image/png", "image/octet-stream");   
+        window.location.href=newImg; // it will save locally  
+    }  
+	</script>
+	<style type="text/css">
+		.menu{
+			margin: 10px; 
+		}
+		img{
+			width: 100px;
+			height: 50px;
+			margin: 5px; 
+		}
+		body{
+			background: linear-gradient(to bottom, powderblue, aliceblue, powderblue);
+		}
+	</style>
+</head>
+<body>
+	<div class="menu">
+		選取明信片:
+		<img id="101building" src="101building.jpg">
+		<img id="SunMoonLake" src="SunMoonLake.jpg">
+		<img id="YeLiu" src="YeLiu.jpg">
+		<img id="ForbiddenCity" src="ForbiddenCity.jpg">
+		<img id="alishan" src="alishan.jpg">
+		<button onclick="createPicker();">使用自己的照片</button>
+		<input id="f" type="file" onchange="loadFile(this);" style="display:none"/><!--使用display:none將介面藏起來-->
+	</div>
+	<div class="menu">
+		設定留言內容：
+		<button onclick="addTo();">收件者</button>
+		<button onclick="addText();">內容</button>
+		<button onclick="addFrom();">寄件者</button>
+	</div>
+	<div class="menu">
+		<button id="saveImageBtn">儲存我的明信片</button>  
+        <button id="downloadImageBtn">下載我的明信片</button>
+	</div>
+	<canvas id="cvs" width="800" height="550" style="border:1px solid black;"></canvas>
+</body>
+</html>

@@ -189,16 +189,18 @@ nav>div>div>div>ul>li>.btn {
 
 .share-icon {
     display: inline-block;
-    width: 55px;
-    height: 55px;
-    border: 2px solid burlywood;
+    width: 50px;
+    height: 50px;
+    border: 3px solid burlywood;
     border-radius: 50%;
     margin-right: 20px;
-    padding-top: 5px;
+    padding: 5px;
 }
 
 .share-icon>a>i {
     color: black;
+    font-size: 25px;
+    line-height: 35px;
 }
 
 .share-icon:hover {
@@ -374,14 +376,16 @@ nav>div>div>div>ul>li>.btn {
     display: inline-block;
     width: 55px;
     height: 55px;
-    border: 2px solid burlywood;
+    border: 3px solid burlywood;
     border-radius: 50%;
     margin-right: 20px;
-    padding-top: 5px;
+    padding: 5px;
 }
 
-i {
+.social-icon>a>i {
     color: white;
+    font-size: 30px;
+    line-height: 40px;
 }
 
 .social-icon:hover {

@@ -1,3 +1,6 @@
+body{
+    background: linear-gradient(to bottom, red 10%, yellow 50%, green 100%);
+}
 .bg {
     /*    background-image: url(../images/Iphone6s.jpg);*/
     /*    background-repeat: no-repeat;*/
@@ -62,7 +65,9 @@
     border-width: thin;
     width: 240px;
     height: 420px;
-    background-color: gray;
+    /*    background-color: gray;*/
+    background-color: khaki;
+    overflow: auto;
 }
 
 .botton1 {
@@ -114,7 +119,7 @@
     border-radius: 50%;
     background-color: white;
     border-width: medium;
-    /*    box-shadow: -2px -2px 4px gainsboro;*/
-    /*     box-shadow: 2px 2px 5px gainsboro;*/
+    /*    box-shadow: -3px -3px 3px #696969 inset, 3px 3px 3px #A9A9A9 inset;*/
+    box-shadow: -2px -2px 4px gainsboro inset, 2px 2px 5px gainsboro inset;
     background-color: ghostwhite;
 }

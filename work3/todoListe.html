@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Todo List</title>
+	<style type="text/css">
+		#ToDoList{
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+		}
+		#creat{
+			width: 100%;
+			border-style: solid;
+			border-color: black;
+			padding: 10px;
+			background-color: #FFEE99;
+		}
+		#content{
+			width: 100%;
+			border-left: solid black;
+			border-right: solid black; 
+			border-bottom: solid black;
+			padding: 10px;
+			background-color: #FFEE99;
+
+		}
+		#listContent{
+			width: 80%;
+			height: 200px;
+			margin: 5px auto;
+			padding: 5px;
+			border-style: solid;
+			border-color: gray;
+			text-align: left;
+			overflow: scroll;
+			background-color: #FFFFBB;
+		}
+		/*#combine{
+			width: 100%;
+			border-style: solid;
+			border-color: black; 
+			padding: 10px;
+			background-color: #FFEE99;
+		}*/
+	</style>
+	<script type="text/javascript">
+		var list;
+		window.onload=function (){
+			list=window.localStorage.getItem("list");
+			if(list==null){
+				list=[];
+			}else{
+				list=JSON.parse(list);
+			}	
+		} 
+		function addList(){
+
+			var inputList=document.getElementById("inputList").value;//取得input的內容
+			console.log(inputList);
+			
+			if (inputList==""){
+				return;
+			}else{
+				var thing={};//設定代辦事件為物件,包含content、finish兩個屬性
+				thing.content=inputList;
+				thing.finish=false;
+				console.log(thing);
+
+				list.push(thing);//將代辦事件加入清單中
+				window.localStorage.setItem("list", JSON.stringify(list));//存入localStorage
+
+				var listContent=document.getElementById("listContent");//將清單秀在網頁裡
+				listContent.innerHTML="";
+				for (var i = 0; i < list.length; i++) {
+					listContent.innerHTML+=
+					"<div>"+list[i].content+" <button onclick='finishThing("+i+");'>finish</button></div>";
+				}
+			}
+			
+		}
+
+		function finishThing(i) {
+			list[i].finish=true;
+			window.localStorage.setItem("list", JSON.stringify(list));
+			showTodo();
+		}
+
+		function showAll(){
+			var listContent=document.getElementById("listContent");//將清單秀在網頁裡
+			listContent.innerHTML="";
+			for (var i = 0; i < list.length; i++) {
+				if(list[i].finish==true){
+					listContent.innerHTML+=
+				"<div style='text-decoration:line-through'>"+list[i].content+"</div>";
+				}else{
+				listContent.innerHTML+=
+				"<div>"+list[i].content+"</div>";
+				}
+			}
+		}
+
+		function showTodo(){
+			var listContent=document.getElementById("listContent");//將清單秀在網頁裡
+			listContent.innerHTML="";
+			for (var i = 0; i < list.length; i++) {
+				if(list[i].finish==false){
+					listContent.innerHTML+=
+				"<div>"+list[i].content+" <button onclick='finishThing("+i+");'>finish</button></div>";
+				}
+			}
+		}
+
+		function showComplete() {
+			var listContent=document.getElementById("listContent");//將清單秀在網頁裡
+			listContent.innerHTML="";
+			for (var i = 0; i < list.length; i++) {
+				if(list[i].finish==true){
+					listContent.innerHTML+=
+				"<div style='text-decoration:line-through'>"+list[i].content+"</div>";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="ToDoList">
+		<h3>Todo List</h3>
+		<div id="creat">
+			<input id="inputList" type="text">
+
+			<button onclick="addList();">creat</button>
+		</div>
+		<div id="content">
+			<div id="listContent"></div>
+			<button onclick="showAll();">all</button>
+			<button onclick="showTodo();">todo</button>
+			<button onclick="showComplete();">complete</button>
+		</div>
+		<!-- <div id="combine">
+			 <button>匯入</button>
+			 <button>匯入</button>
+		</div> -->
+	</div>
+</body>
+</html>
