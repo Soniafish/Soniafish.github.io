@@ -44,6 +44,8 @@ article h1 {
 
 p {
     color: #e0ac00;
+    text-align: justify;
+    padding: 0px 15px;
 }
 
 header p {
@@ -56,12 +58,17 @@ article p {
     letter-spacing: 5px;
 }
 
+.row {
+    width: 100%;
+    clear: both;
+}
+
 .thumbnail {
     width: 30%;
     float: left;
     padding: 5px;
-    border: 2px dotted #796400;
-    /*border-radius: 5%;*/
+    background-color: #DDDDDD;
+    border-radius: 5px;
     margin: 5px;
 }
 
@@ -70,8 +77,13 @@ article p {
     border-radius: 10px;
 }
 
+.thumbnail h2 {
+    text-align: center;
+}
+
 .thumbnail p {
     color: #5B5B5B;
+    text-align: justify;
 }
 
 .title {
@@ -132,13 +144,12 @@ article a:active {
     background-color: white;
 }
 
-.backIcon {
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-}
-
-.backIcon>a>img {
-    width: 50px;
-    height: 50px;
+@media screen and (max-width:767px) {
+    ul li {
+        display: inline;
+        padding-right: 20px;
+    }
+    .thumbnail {
+        width: 90%;
+    }
 }
