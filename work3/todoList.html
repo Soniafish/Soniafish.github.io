@@ -2,52 +2,98 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Todo List</title>
 	<style type="text/css">
+		* {
+		    box-sizing: border-box;
+		}
+
+		h1,h2,h3,h4,h5,h6,p,body,div {
+		    margin: 0px;
+		    padding: 0px;
+		}
+
+		body{
+			background-color:#F8F8FF;
+		}
+		i{
+			padding-right: 10px;
+		}
 		#ToDoList{
-			width: 300px;
+			font-family: monospace;
+			font-size: 180%;
+			text-shadow: 3px 3px 4px gray;
+			width: 350px;
+			margin-top: 30px;
 			margin-left: auto;
 			margin-right: auto;
+			padding: 5px;
 			text-align: center;
+			background-color: #DDDDDD;
+			border-radius: 10px;
+			color: #FFFFFF;
+			box-shadow: 3px 3px 3px #444444; 
 		}
 		#creat{
-			width: 100%;
-			border-style: solid;
-			border-color: black;
+			width: 90%;
+			border-bottom-style: solid;
+			border-bottom-width: 5px;
+			border-bottom-color: #888888;
+			margin-left: auto;
+			margin-right: auto;
 			padding: 10px;
-			background-color: #FFEE99;
+		}
+		input{
+			border-radius: 3px;
+			height: 30px;
+		}
+		.inputBtn{
+			background-color: 	#B0E0E6;
+			border-color: #87CEFA;
+			color: #008B8B;		
+			border-radius: 3px;
+			box-shadow: 2px 2px 3px #00008B;
+			font-size:15px;
+			width: 75px;			
+			height: 30px;
+		}
+		.inputBtn:hover{
+			background-color: #008B8B;
+			border-color: #008B8B;
+			color: white;
 		}
 		#content{
 			width: 100%;
-			border-left: solid black;
-			border-right: solid black; 
-			border-bottom: solid black;
 			padding: 10px;
-			background-color: #FFEE99;
-
 		}
 		#listContent{
 			width: 80%;
 			height: 200px;
 			margin: 5px auto;
 			padding: 5px;
+			color: gray;
+			font-size: 100%;
+			background-color: #F0F8FF;
 			border-style: solid;
+			border-width: 2px;
 			border-color: gray;
+			border-radius: 5px;
 			text-align: left;
 			overflow: scroll;
-			background-color: #FFFFBB;
 		}
 		/*#combine{
 			width: 100%;
-			border-style: solid;
-			border-color: black; 
+			border-top-style: solid;
+			border-top-color: black; 
 			padding: 10px;
-			background-color: #FFEE99;
 		}*/
 	</style>
 	<script type="text/javascript">
 		var list;
+		var listContent;
 		window.onload=function (){
+			listContent=document.getElementById("listContent");
 			list=window.localStorage.getItem("list");
 			if(list==null){
 				list=[];
@@ -56,7 +102,6 @@
 			}	
 		} 
 		function addList(){
-
 			var inputList=document.getElementById("inputList").value;//取得input的內容
 			console.log(inputList);
 			
@@ -71,12 +116,7 @@
 				list.push(thing);//將代辦事件加入清單中
 				window.localStorage.setItem("list", JSON.stringify(list));//存入localStorage
 
-				var listContent=document.getElementById("listContent");//將清單秀在網頁裡
-				listContent.innerHTML="";
-				for (var i = 0; i < list.length; i++) {
-					listContent.innerHTML+=
-					"<div>"+list[i].content+" <button onclick='finishThing("+i+");'>finish</button></div>";
-				}
+				showAll();//將清單秀在網頁裡
 			}
 			
 		}
@@ -88,8 +128,8 @@
 		}
 
 		function showAll(){
-			var listContent=document.getElementById("listContent");//將清單秀在網頁裡
-			listContent.innerHTML="";
+			//將清單秀在網頁裡
+			listContent.innerHTML="All List:"+"<br/>";
 			for (var i = 0; i < list.length; i++) {
 				if(list[i].finish==true){
 					listContent.innerHTML+=
@@ -102,8 +142,8 @@
 		}
 
 		function showTodo(){
-			var listContent=document.getElementById("listContent");//將清單秀在網頁裡
-			listContent.innerHTML="";
+			//將清單秀在網頁裡
+			listContent.innerHTML="Todo List:"+"<br/>";
 			for (var i = 0; i < list.length; i++) {
 				if(list[i].finish==false){
 					listContent.innerHTML+=
@@ -113,8 +153,8 @@
 		}
 
 		function showComplete() {
-			var listContent=document.getElementById("listContent");//將清單秀在網頁裡
-			listContent.innerHTML="";
+			//將清單秀在網頁裡
+			listContent.innerHTML="Complete List:"+"<br/>";
 			for (var i = 0; i < list.length; i++) {
 				if(list[i].finish==true){
 					listContent.innerHTML+=
@@ -126,18 +166,17 @@
 </head>
 <body>
 	<div id="ToDoList">
-		<h3>Todo List</h3>
-		<div id="creat">
-			<input id="inputList" type="text">
-
-			<button onclick="addList();">creat</button>
-		</div>
-		<div id="content">
-			<div id="listContent"></div>
-			<button onclick="showAll();">all</button>
-			<button onclick="showTodo();">todo</button>
-			<button onclick="showComplete();">complete</button>
-		</div>
+		<h3><i class="fa fa-pencil" aria-hidden="true"></i>Todo List</h3>
+			<div id="creat">
+				<input id="inputList" type="text">
+				<button class="inputBtn" onclick="addList();">Create</button>
+			</div>
+			<div id="content">
+				<div id="listContent"></div>
+				<button class="inputBtn" onclick="showAll();">All</button>
+				<button class="inputBtn" onclick="showTodo();">Todo</button>
+				<button class="inputBtn" onclick="showComplete();">Complete</button>
+			</div>		
 		<!-- <div id="combine">
 			 <button>匯入</button>
 			 <button>匯入</button>
