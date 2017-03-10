@@ -34,6 +34,7 @@ body {
     padding-top: 50px;
     padding-bottom: 50px;
     background-color: #ead1b1;
+    /*    background: linear-gradient(to bottom, #46341E 20%, #846547 55%, #ead1b1 80%, #FFFFFF 100%);*/
 }
 
 #section1>.container {
@@ -58,7 +59,7 @@ body {
 }
 
 #section1>.container>.row>.col-md-8 {
-    color: #333;
+    /*    color: #333;*/
 }
 
 #section1>.container>.row>.col-md-8>p {
@@ -137,16 +138,20 @@ body {
     text-shadow: 5px 5px 5px gray;
 }
 
-#section3>.container>.row>h2 {
+#section3>.container>.row>h2,
+#section4>.container>.row>h2,
+#section5>.container>.row>h2 {
     color: gray;
 }
 
 .carousel-inner {
-    background-color: #bDD690;
+    /*    background-color: #bDD690;*/
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .carousel-inner>.item {
-    background-color: #bDD690;
+    /*    background-color: #bDD690;*/
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .carousel-inner>.item>.container {
@@ -154,11 +159,21 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 95%;
-    background-color: #bDD690;
+    /*    background-color: #bDD690;*/
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .item>.container>.jumbotron {
-    background-color: #bDD690;
+    /*    background-color: #bDD690;*/
+    background-color: rgba(189, 214, 143, 0.3);
+}
+
+.carousel-control {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.carousel-control:hover {
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .item>.container>.jumbotron>.row>.col-md-6>h1 {
@@ -185,7 +200,7 @@ body {
 }
 
 #section4>.container {
-    width: 70%;
+    width: 85%;
     text-align: center;
     padding-bottom: 30px;
 }
@@ -198,14 +213,41 @@ body {
     text-shadow: 5px 5px 5px gray;
 }
 
-#section4>.container>.row>.col-md-8>img {
+#section4>.container>.row>.col-md-6>img {
     width: 100%;
+    margin-top: 55px;
+}
+
+#section4>.container>.row>.col-md-6>h2 {
+    color: #007799;
+}
+
+#section4>.container>.row>.col-md-6>p {
+    color: #666666;
+    font-size: 120%;
+    text-align: left;
+}
+
+#section4>.container>.row>.col-md-6>ul {
+    margin-left: 15px;
+}
+
+#section4>.container>.row>.col-md-6>ul>li {
+    color: #666666;
+    font-size: 120%;
+    text-align: justify;
+    text-align: left;
+    list-style-type: square;
+}
+
+#section4>.container>.row>.col-md-6>a {
+    float: right;
+    margin-right: 10px;
 }
 
 #section5 {
-    /*    background-image: url(../images/felipeSantana.jpg);*/
-    /*    background-size: cover;*/
     background-color: cadetblue;
+    /*    background: linear-gradient(to bottom, #FFFFFF 5%, #ead1b1 20%, #846547 45%, #46341E 80%);*/
 }
 
 #section5>.container {
@@ -243,12 +285,11 @@ body {
     padding-right: 20px;
 }
 
-.fbIcon {
-    position: fixed;
-    right: -2px;
-    bottom: 58px;
-}
 
+/*email*/
+
+
+/*
 .emailIcon {
     position: fixed;
     right: -2px;
@@ -259,17 +300,29 @@ body {
     width: 50px;
     height: 50px;
 }
+*/
 
+
+/*FB*/
+
+
+/*
+.fbIcon {
+    position: fixed;
+    right: -2px;
+    bottom: 58px;
+}
 .fbIcon>a>img {
     width: 50px;
     height: 50px;
 }
+*/
 
 footer {
     text-align: center;
     height: 80px;
     background-color: dimgray;
-    /*#616130*/
+    /*    background: linear-gradient(to right, #444444 0%, #46341E 20%, #46341E 80%,#444444 100%);*/
     color: darkgrey;
 }
 
@@ -281,4 +334,13 @@ footer>.container {
 footer>.container>p {
     padding-top: 20px;
     font-size: 100%;
+}
+
+footer>.container>p>i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+footer>.container>p>a {
+    color: black;
 }
