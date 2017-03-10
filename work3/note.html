@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Note</title>
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        
+        #box {
+            display: none;
+        }
+        
+        h2 {
+            text-align: center;
+            padding-top: 10px 5px 5px 5px;
+            margin: 0px;
+        }
+        
+        textarea {
+            width: 160px;
+            height: 120px;
+            margin: 5px 20px;
+        }
+        
+        .removeBtn {
+            float: right;
+            margin-right: 10px;
+            border-radius: 100%;
+            background-color: aquamarine;
+            font-size: 16px;
+            box-shadow:
+        }
+
+    </style>
+    <script type="text/javascript">
+        //未使用到removeWord();
+        function removeWord() {
+            // 用parentNode來移除p
+            var rP = document.getElementById("target");
+            rP.parentNode.removeChild(rP);
+            // // 用childNodes來移除p
+            // var d1=document.getElementById("box");
+            // d1.removeChild(d1.childNodes[1]);
+        }
+
+        var n = 0;
+
+        function addBox() {
+            //建一個div
+            var boxN = document.createElement("div");
+            document.body.appendChild(boxN);
+            //設定div的id為box+n
+            n = n + 1;
+            boxN.id = "box" + n;
+            //畫出div內所需呈現的元素
+            boxN.innerHTML = "<h2>" + "Note" + n + "</h2>" + "<textarea>" + "請輸入內容" + "</textarea>" + "<button class='removeBtn'; onclick=removeBox(" + n + ");>" + "X" + "</button>";
+            //註冊移動事件
+            // boxN.onclick=pickupBox(n);
+            boxN.addEventListener("click", pickupBox);
+            // boxN.addEventListener("mousedown", moveBox);
+        }
+
+        //eventObj.target.id;
+        function pickupBox (eventObj) {
+            var boxId=eventObj.target.parentElement.id;
+            var box=document.getElementById(boxId);
+            // // 讓box跟著滑鼠移動
+            box.addEventListener("mousemove",moveBox);
+            // //若是點擊第二下,要放下來
+            box.removeEventListener("click", pickupBox);//移除
+            box.addEventListener("click", putdownBox);//新增
+        }
+
+        function moveBox(eventObj) {
+            var boxId=eventObj.target.parentElement.id;
+            box=document.getElementById(boxId);
+            box.style.left=(-80+eventObj.clientX)+"px";
+            box.style.top=(-80+eventObj.clientY)+"px";
+        }
+
+         function putdownBox(eventObj) {
+            var boxId=eventObj.target.parentElement.id;
+            var box=document.getElementById(boxId);
+            box.removeEventListener("mousemove",moveBox);//不要跟著滑鼠動
+            box.removeEventListener("click", putdownBox);
+            box.addEventListener("click", pickupBox);
+        }
+
+        //removeBox
+        function removeBox(n) {
+            var box = document.getElementById("box" + n);
+            box.remove();
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- <div id="box" onclick="">
+        <h2>Note</h2>
+        <textarea>請輸入內容</textarea>
+        <button onclick="removeBox(1);">Remove</button>
+        <p id="target" onclick="removeWord();">Remove Me!!</p>
+    </div> -->
+    <button onclick="addBox();">Add Note</button>
+</body>
+
+</html>
