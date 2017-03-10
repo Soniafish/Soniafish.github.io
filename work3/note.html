@@ -1,18 +1,103 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Note</title>
     <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        body,
         div {
-            width: 200px;
-            height: 200px;
-            background-color: pink;
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        body {
+            font-family: 微軟正黑體;
+            background-image: url(https://mdn.mozillademos.org/files/11307/bubbles.png), linear-gradient(to bottom, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+            background-repeat: no-repeat, no-repeat;
+            background-position: left, top left;
+            background-attachment: fixed;
+        }
+        
+        .addBoxBtn {
+            margin-top: 30px;
+            margin-left: 50px;
+            width: 100px;
+            height: 30px;
+            background-color: cadetblue;
+            color: white;
+            font-size: 100%;
+            font-weight: bolder;
+            border-style: none;
+            border-radius: 5px;
+            box-shadow: 3px 3px 3px cornflowerblue;
+            /*            color: */
+        }
+        
+        .description {
+            width: 300px;
+            height: 300px;
+            background-color: #CCEEFF;
+            position: fixed;
+            top: 80px;
+            left: -280px;
+            box-shadow: 0px 0px 0px;
+            transition: left 2s, top 2s, opacity 1s;
+            opacity: 0.5;
+        }
+        
+        .description:hover {
+            opacity: 1;
+            left: -20px;
+        }
+        
+        .description:hover .rightCol {
+            display: none;
+        }
+        
+        .leftCol {
+            padding-left: 5px;
+            width: 75%;
+            float: left;
+            background-color: #CCEEFF;
+            position: static;
+            box-shadow: 0px 0px 0px;
+        }
+        
+        .rightCol {
+            width: 10%;
+            font-weight: bolder;
+            float: left;
+            position: static;
+            padding-left: 10px;
+            padding-top: 30px;
+            box-shadow: 0px 0px 0px;
+            margin: 0px;
+            background-color: #CCEEFF;
+            opacity: 0.5;
+        }
+        
+        div {
+            width: 280px;
+            height: 280px;
+            background-color: #FFE4E1;
             margin: 20px;
-            border-radius: 10px;
+            /*            border-radius: 10px;*/
             position: absolute;
-            top: 50px;
-            left: 50px;
+            top: 100px;
+            left: 100px;
+            box-shadow: 3px 3px 3px;
         }
         
         #box {
@@ -20,26 +105,30 @@
         }
         
         h2 {
+            font-family: monospace;
+            color: white;
             text-align: center;
-            padding-top: 10px 5px 5px 5px;
+            padding: 10px 5px 5px 5px;
             margin: 0px;
         }
         
         textarea {
-            width: 160px;
-            height: 120px;
-            margin: 5px 20px;
+            background-color: #FFF0F5;
+            width: 250px;
+            height: 200px;
+            margin: 0px 10px 0px 10px;
         }
         
         .removeBtn {
+            color: white;
+            font-weight: bold;
             float: right;
+            border-style: none;
             margin-right: 10px;
-            border-radius: 100%;
-            background-color: aquamarine;
+            background-color: pink;
             font-size: 16px;
             box-shadow:
         }
-
     </style>
     <script type="text/javascript">
         //未使用到removeWord();
@@ -70,27 +159,27 @@
         }
 
         //eventObj.target.id;
-        function pickupBox (eventObj) {
-            var boxId=eventObj.target.parentElement.id;
-            var box=document.getElementById(boxId);
+        function pickupBox(eventObj) {
+            var boxId = eventObj.target.parentElement.id;
+            var box = document.getElementById(boxId);
             // // 讓box跟著滑鼠移動
-            box.addEventListener("mousemove",moveBox);
+            box.addEventListener("mousemove", moveBox);
             // //若是點擊第二下,要放下來
-            box.removeEventListener("click", pickupBox);//移除
-            box.addEventListener("click", putdownBox);//新增
+            box.removeEventListener("click", pickupBox); //移除
+            box.addEventListener("click", putdownBox); //新增
         }
 
         function moveBox(eventObj) {
-            var boxId=eventObj.target.parentElement.id;
-            box=document.getElementById(boxId);
-            box.style.left=(-80+eventObj.clientX)+"px";
-            box.style.top=(-80+eventObj.clientY)+"px";
+            var boxId = eventObj.target.parentElement.id;
+            box = document.getElementById(boxId);
+            box.style.left = (-80 + eventObj.clientX) + "px";
+            box.style.top = (-80 + eventObj.clientY) + "px";
         }
 
-         function putdownBox(eventObj) {
-            var boxId=eventObj.target.parentElement.id;
-            var box=document.getElementById(boxId);
-            box.removeEventListener("mousemove",moveBox);//不要跟著滑鼠動
+        function putdownBox(eventObj) {
+            var boxId = eventObj.target.parentElement.id;
+            var box = document.getElementById(boxId);
+            box.removeEventListener("mousemove", moveBox); //不要跟著滑鼠動
             box.removeEventListener("click", putdownBox);
             box.addEventListener("click", pickupBox);
         }
@@ -100,7 +189,6 @@
             var box = document.getElementById("box" + n);
             box.remove();
         }
-
     </script>
 </head>
 
@@ -111,7 +199,22 @@
         <button onclick="removeBox(1);">Remove</button>
         <p id="target" onclick="removeWord();">Remove Me!!</p>
     </div> -->
-    <button onclick="addBox();">Add Note</button>
+    <button class="addBoxBtn" onclick="addBox();">Add Note</button>
+    <!--    <div class="background">-->
+    <div class="description">
+        <div class="leftCol">
+            <h3>使用說明</h3>
+            <ul>
+                <li>新增便利貼：按"add Note"可產生新的便利貼。</li>
+                <li>便利貼記事：直接於便利貼中輸入記事內容即可。</li>
+                <li>移動便利貼：點擊欲移動的note即可拿起,移動滑鼠至想擺放的位置，再次點擊即可放下便利貼。</li>
+                <li>刪除便利貼：點擊note下方的X即可刪除。</li>
+            </ul>
+        </div>
+        <div class="rightCol">使<br>用<br>說<br>明</div>
+    </div>
+    <!--    </div>-->
+
 </body>
 
 </html>
