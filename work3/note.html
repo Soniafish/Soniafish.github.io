@@ -153,9 +153,9 @@
             //畫出div內所需呈現的元素
             boxN.innerHTML = "<h2>" + "Note" + n + "</h2>" + "<textarea>" + "請輸入內容" + "</textarea>" + "<button class='removeBtn'; onclick=removeBox(" + n + ");>" + "X" + "</button>";
             //註冊移動事件
-            // boxN.onclick=pickupBox(n);
-            boxN.addEventListener("click", pickupBox);
-            // boxN.addEventListener("mousedown", moveBox);
+            // boxN.addEventListener("click", pickupBox);//點擊取得BOX
+            boxN.addEventListener("mousedown", pickupBox);//滑鼠按下取得BOX
+            boxN.addEventListener("mouseup", putdownBox);//滑鼠放開放下BOX
         }
 
         //eventObj.target.id;
@@ -163,25 +163,26 @@
             var boxId = eventObj.target.parentElement.id;
             var box = document.getElementById(boxId);
             // // 讓box跟著滑鼠移動
-            box.addEventListener("mousemove", moveBox);
+            box.addEventListener("mousemove", moveBox);//取得BOX後註冊移動式建
             // //若是點擊第二下,要放下來
-            box.removeEventListener("click", pickupBox); //移除
-            box.addEventListener("click", putdownBox); //新增
+            // box.removeEventListener("click", pickupBox); //移除
+            // box.addEventListener("click", putdownBox); //新增
         }
 
         function moveBox(eventObj) {
             var boxId = eventObj.target.parentElement.id;
             box = document.getElementById(boxId);
-            box.style.left = (-80 + eventObj.clientX) + "px";
-            box.style.top = (-80 + eventObj.clientY) + "px";
+            box.style.left = (-50 + eventObj.clientX) + "px";
+            box.style.top = (-50 + eventObj.clientY) + "px";
         }
 
         function putdownBox(eventObj) {
             var boxId = eventObj.target.parentElement.id;
             var box = document.getElementById(boxId);
             box.removeEventListener("mousemove", moveBox); //不要跟著滑鼠動
-            box.removeEventListener("click", putdownBox);
-            box.addEventListener("click", pickupBox);
+            // //再次註冊點"擊取得Box"的事件
+            // box.removeEventListener("click", putdownBox);//移除
+            // box.addEventListener("click", pickupBox);//新增
         }
 
         //removeBox
@@ -193,28 +194,19 @@
 </head>
 
 <body>
-    <!-- <div id="box" onclick="">
-        <h2>Note</h2>
-        <textarea>請輸入內容</textarea>
-        <button onclick="removeBox(1);">Remove</button>
-        <p id="target" onclick="removeWord();">Remove Me!!</p>
-    </div> -->
     <button class="addBoxBtn" onclick="addBox();">Add Note</button>
-    <!--    <div class="background">-->
     <div class="description">
         <div class="leftCol">
             <h3>使用說明</h3>
             <ul>
                 <li>新增便利貼：按"add Note"可產生新的便利貼。</li>
                 <li>便利貼記事：直接於便利貼中輸入記事內容即可。</li>
-                <li>移動便利貼：點擊欲移動的note即可拿起,移動滑鼠至想擺放的位置，再次點擊即可放下便利貼。</li>
+                <li>移動便利貼：滑鼠按住欲移動的note即可拿起,移動滑鼠至想擺放的位置，放開滑鼠即可放下便利貼。</li>
                 <li>刪除便利貼：點擊note下方的X即可刪除。</li>
             </ul>
         </div>
         <div class="rightCol">使<br>用<br>說<br>明</div>
     </div>
-    <!--    </div>-->
-
 </body>
 
 </html>
