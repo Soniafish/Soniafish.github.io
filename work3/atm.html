@@ -77,8 +77,8 @@
 		var doing;
 		window.onload=function (){
 			account=1000000;
-			showAccount=document.getElementById("showAccount");
-			showNumber=document.getElementById("showNumber");
+			showAccount=document.getElementById("showAccount");//顯示帳戶金額、操作提是與操作結果金額
+			showNumber=document.getElementById("showNumber");//顯示操作金額
 		};
 		
 		function enterNumber(n){
@@ -106,9 +106,13 @@
 				showNumber.innerHTML="";
 				money=Number(money);
 				if (doing=="add") {//判斷為取款
-					account+=money;
-					showAccount.innerHTML="本次存款:"+money+"<br/>"+"帳戶餘額:"+account;
-					doing="";
+					if (money>100000){
+						showAccount.innerHTML="您已超過存款上限(10萬元)";
+					}else{
+						account+=money;
+						showAccount.innerHTML="本次存款:"+money+"<br/>"+"帳戶餘額:"+account;
+						doing="";
+					}
 				}else if(doing=="less"){//判斷為提款
 					if (money>20000){
 						showAccount.innerHTML="您已超過取款上限(2萬元)";
@@ -116,7 +120,7 @@
 						showAccount.innerHTML="帳戶餘額不足";
 					}else{
 						account-=money;
-						showAccount.innerHTML="本次存款:"+money+"<br/>"+"帳戶餘額:"+account;
+						showAccount.innerHTML="本次取款:"+money+"<br/>"+"帳戶餘額:"+account;
 						doing="";
 					}
 					
