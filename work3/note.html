@@ -53,7 +53,7 @@
             top: 80px;
             left: -280px;
             box-shadow: 0px 0px 0px;
-            transition: left 2s, top 2s, opacity 1s;
+            transition: left 1s, top 1s, opacity 1s;
             opacity: 0.5;
         }
         
@@ -163,27 +163,24 @@
         }
 
         //eventObj.target.id;
+        var box;
         function pickupBox(eventObj) {
             var boxId = eventObj.target.parentElement.id;
-            var box = document.getElementById(boxId);
+            box = document.getElementById(boxId);
             // // 讓box跟著滑鼠移動
-            box.addEventListener("mousemove", moveBox);//取得BOX後註冊移動式建
+            document.addEventListener("mousemove", moveBox);//取得BOX後在document註冊移動事件
             // //若是點擊第二下,要放下來
             // box.removeEventListener("click", pickupBox); //移除
             // box.addEventListener("click", putdownBox); //新增
         }
 
-        function moveBox(eventObj) {
-            var boxId = eventObj.target.parentElement.id;
-            box = document.getElementById(boxId);
-            box.style.left = (-50 + eventObj.clientX) + "px";
-            box.style.top = (-50 + eventObj.clientY) + "px";
+        function moveBox(e) {
+            box.style.left = (-50 + e.clientX) + "px";
+            box.style.top = (-50 + e.clientY) + "px";
         }
 
         function putdownBox(eventObj) {
-            var boxId = eventObj.target.parentElement.id;
-            var box = document.getElementById(boxId);
-            box.removeEventListener("mousemove", moveBox); //不要跟著滑鼠動
+            document.removeEventListener("mousemove", moveBox); //移除事件,BOX不再跟著滑鼠動
             // //再次註冊點"擊取得Box"的事件
             // box.removeEventListener("click", putdownBox);//移除
             // box.addEventListener("click", pickupBox);//新增
