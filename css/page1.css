@@ -30,20 +30,31 @@ body {
     color: floralwhite;
 }
 
-#section1 {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    background-color: #ead1b1;
-    /*    background: linear-gradient(to bottom, #46341E 20%, #846547 55%, #ead1b1 80%, #FFFFFF 100%);*/
+#header>.container>p {
+    font-weight: 300;
 }
 
+
+/*
+#section1 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #ead1b1;
+        background: linear-gradient(to bottom, #46341E 20%, #846547 55%, #ead1b1 80%, #FFFFFF 100%);
+}
+*/
+
+
+/*
 #section1>.container {
     width: 80%;
     text-align: center;
-    padding-bottom: 30px;
-    /*    background-color: burlywood;*/
+    padding-bottom: 20px;
 }
+*/
 
+
+/*
 #section1>.container>.row>h1 {
     font-size: 300%;
     font-style: italic;
@@ -51,22 +62,27 @@ body {
     margin-bottom: 30px;
     text-shadow: 5px 5px 5px gray;
 }
+*/
 
+
+/*
 #section1>.container>.row>.col-md-4>img {
     width: 80%;
     border-radius: 60%;
-    margin-top: 40px;
+    margin-top: 30px;
 }
+*/
 
-#section1>.container>.row>.col-md-8 {
-    /*    color: #333;*/
-}
 
+/*
 #section1>.container>.row>.col-md-8>p {
     font-size: 120%;
     line-height: 1.5em;
 }
+*/
 
+
+/*
 .myStory {
     width: 60%;
     margin-left: auto;
@@ -77,6 +93,7 @@ body {
     text-align: left;
     font-size: 120%;
 }
+*/
 
 #section2 {
     padding-top: 50px;
@@ -180,6 +197,15 @@ body {
     font-size: 300%;
 }
 
+.item>.container>.jumbotron>.row>.col-md-6>h1>i {
+    margin-right: 20px;
+}
+
+.item>.container>.jumbotron>.row>.col-md-6>h1>img {
+    width: 15%;
+    margin-right: 20px;
+}
+
 .item>.container>.jumbotron>.row>.col-md-6>p {
     width: 80%;
     margin-left: auto;
@@ -246,8 +272,8 @@ body {
 }
 
 #section5 {
-    background-color: cadetblue;
-    /*    background: linear-gradient(to bottom, #FFFFFF 5%, #ead1b1 20%, #846547 45%, #46341E 80%);*/
+    /*    background-color: cadetblue;*/
+    background: linear-gradient(to bottom, #FFFFFF 5%, #ead1b1 20%, #846547 45%, #46341E 80%);
 }
 
 #section5>.container {
@@ -264,66 +290,48 @@ body {
     text-shadow: 5px 5px 5px gray;
 }
 
-#section5>.container>.row>.col-md-4 {
-    background-color: aquamarine;
-    border-color: cadetblue;
-    border-style: solid;
-    border-width: 5px;
-    height: 100px;
-    /*    text-align: center;*/
-    line-height: 100px;
+#section5>.container>.row>.col-md-6>.rwdWork {
+    position: relative;
+    background-color: #ead1b1;
+    border-radius: 5px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+#section5>.container>.row>.col-md-6>.rwdWork>img {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 80%;
+}
+
+#section5>.container>.row>.col-md-6>.rwdWork>.info {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
     font-size: 150%;
+    padding-top: 100px;
+    background-color: rgba(234, 209, 177, 0.7);
+    opacity: 0;
 }
 
-#section5>.container>.row>.col-md-4>a>img {
-    width: 70px;
-    padding-right: 15px;
+#section5>.container>.row>.col-md-6>.rwdWork>.info:hover {
+    opacity: 1;
 }
-
-#section5>.container>.row>.col-md-4>a>i {
-    font-size: 180%;
-    padding-right: 20px;
-}
-
-
-/*email*/
-
-
-/*
-.emailIcon {
-    position: fixed;
-    right: -2px;
-    bottom: 106px;
-}
-
-.emailIcon>a>img {
-    width: 50px;
-    height: 50px;
-}
-*/
-
-
-/*FB*/
-
-
-/*
-.fbIcon {
-    position: fixed;
-    right: -2px;
-    bottom: 58px;
-}
-.fbIcon>a>img {
-    width: 50px;
-    height: 50px;
-}
-*/
 
 footer {
     text-align: center;
     height: 80px;
-    background-color: dimgray;
+    background-color: #46341E;
     /*    background: linear-gradient(to right, #444444 0%, #46341E 20%, #46341E 80%,#444444 100%);*/
     color: darkgrey;
+    border-top-style: solid;
+    border-top-width: 80%;
+    border-top-color:burlywood;
 }
 
 footer>.container {
@@ -333,14 +341,16 @@ footer>.container {
 
 footer>.container>p {
     padding-top: 20px;
-    font-size: 100%;
+    font-size: 120%;
+    color: lightgray;
 }
 
 footer>.container>p>i {
     margin-left: 5px;
     margin-right: 5px;
+    color: lightgray;
 }
 
 footer>.container>p>a {
-    color: black;
+    color: lightgray;
 }
