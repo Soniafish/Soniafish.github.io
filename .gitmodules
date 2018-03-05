@@ -1,0 +1,3 @@
+[submodule "atm/ATM"]
+	path = atm/ATM
+	url = https://github.com/Soniafish/ATM.git
