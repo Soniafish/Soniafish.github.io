@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>if - ATM</title>
+	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+			background-color: #0000C6;
+			/*width: 100%;
+			height: 100%;*/
+		}
+		.container{
+			width: 80%;
+			/*height: 100%;*/
+			/*background-color: #0000C6;*/
+			padding-top:10px; 
+			margin: 0px auto; 
+		}
+		.atmScreen{
+			width: 60%;
+			height: 200px;
+			margin: 30px auto 10px auto;
+			border-radius: 5px;
+			background-color: #003D79;
+			padding: 15px;
+		}
+		.logo{
+			width: 50%;
+			background-color: #F0F0F0;
+			font-size:30px;
+			text-align: center;
+			font-family: monospace;
+			color: #003D79;
+			margin: 5px auto; 
+
+		}
+		.screen{
+			width: 80%;
+			height: 120px;
+			background-color: #00FFFF;
+			border-style: solid;
+			border-width: 5px;
+			border-radius: 5px;
+			font-family: monospace;
+			color: #7B7B7B;
+			font-size: 20px;
+			text-align: center;
+			margin: 20px auto;
+		}
+		.atmBtn{
+			width: 63%;
+			/*height: 100px;*/
+			margin: 10px auto 30px auto;
+			border-radius: 5px;
+			background-color: #003D79;
+			padding: 5px;
+		}
+		table{
+			margin: 10px auto;
+		}
+		button{
+			width: 55px;
+			font-size: 18px;
+			font-weight: bold;
+			font-family: monospace;
+			margin: 5px; 
+			box-shadow: 3px 3px 5px gray;
+			border-radius: 3px;
+		}
+	</style>
+	<script type="text/javascript">
+		var account;
+		var showAccount;
+		var showNumber;
+		var doing;
+		window.onload=function (){
+			account=1000000;
+			showAccount=document.getElementById("showAccount");//顯示帳戶金額、操作提是與操作結果金額
+			showNumber=document.getElementById("showNumber");//顯示操作金額
+		};
+		
+		function enterNumber(n){
+			showAccount.innerHTML="";
+			showNumber.innerHTML+=n;
+		}
+
+		function work(event){
+			if(event=="saveMoney"){//按存款鈕
+				showAccount.innerHTML="請輸入存款金額"+"<br/>"+
+									"輸入金額後請按確定鍵";
+				showNumber.innerHTML="";
+				doing="add";
+			}else if(event=="getMoney"){//按取款鈕
+				showAccount.innerHTML="請輸入取款金額"+"<br/>"+
+									"輸入金額後請按確定鍵";
+				showNumber.innerHTML="";
+				doing="less";
+			}else if(event=="getTotal"){//按查詢鈕
+				showAccount.innerHTML="帳戶餘額:"+account;
+				showNumber.innerHTML="";
+				doing="";
+			}else if(event=="enter"){//按確定鈕
+				var money=showNumber.innerHTML;
+				showNumber.innerHTML="";
+				money=Number(money);
+				if (doing=="add") {//判斷為取款
+					if (money>100000){
+						showAccount.innerHTML="您已超過存款上限(10萬元)";
+					}else{
+						account+=money;
+						showAccount.innerHTML="本次存款:"+money+"<br/>"+"帳戶餘額:"+account;
+						doing="";
+					}
+				}else if(doing=="less"){//判斷為提款
+					if (money>20000){
+						showAccount.innerHTML="您已超過取款上限(2萬元)";
+					}else if(account<money){
+						showAccount.innerHTML="帳戶餘額不足";
+					}else{
+						account-=money;
+						showAccount.innerHTML="本次取款:"+money+"<br/>"+"帳戶餘額:"+account;
+						doing="";
+					}
+					
+				}else{
+					showAccount.innerHTML="請按鈕選擇交易項目"+"<br/>"+"(存款/提款/查詢(帳戶))";
+				}
+			}else if(event=="cancel"){//按取消鈕
+				showNumber.innerHTML="";
+				showAccount.innerHTML="";
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="atmScreen">
+			<div class="logo">- ATM- </div>
+			<div class="screen" >
+				<p id="showAccount">帳戶餘額:1,000,000 <br/>
+									請按鈕選擇交易項目 <br/>
+									(存款/提款/查詢(帳戶))</p>
+				<p id="showNumber"></p>
+			</div>
+		</div>
+		<div class="atmBtn">
+			<table>
+				<tr>
+					<td><button onclick="enterNumber('1');">1</button></td>
+					<td><button onclick="enterNumber('2');">2</button></td>
+					<td><button onclick="enterNumber('3');">3</button></td>
+					<td><button onclick="work('saveMoney');">存款</button></td>
+				</tr>
+				<tr>
+					<td><button onclick="enterNumber('4');">4</button></td>
+					<td><button onclick="enterNumber('5');">5</button></td>
+					<td><button onclick="enterNumber('6');">6</button></td>
+					<td><button onclick="work('getMoney');">取款</button></td>
+				</tr>
+				<tr>
+					<td><button onclick="enterNumber('7');">7</button></td>
+					<td><button onclick="enterNumber('8');">8</button></td>
+					<td><button onclick="enterNumber('9');">9</button></td>
+					<td><button onclick="work('cancel');">取消</button></td>
+				</tr>
+				<tr>
+					<td><button onclick="enterNumber('0')">0</button></td>
+					<td><button onclick="enterNumber('00')">00</button></td>
+					<td><button onclick="work('getTotal');">查詢</button></td>
+					<td><button onclick="work('enter');">確定</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
