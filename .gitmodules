@@ -1,0 +1,21 @@
+[submodule "Resume"]
+	path = Resume
+	url = https://github.com/Soniafish/Resume.git
+[submodule "ATM"]
+	path = ATM
+	url = https://github.com/Soniafish/ATM.git
+[submodule "NOTE"]
+	path = NOTE
+	url = https://github.com/Soniafish/NOTE.git
+[submodule "TODOLIST"]
+	path = TODOLIST
+	url = https://github.com/Soniafish/TODOLIST.git
+[submodule "TV"]
+	path = TV
+	url = https://github.com/Soniafish/TV.git
+[submodule "GEOCODER"]
+	path = GEOCODER
+	url = https://github.com/Soniafish/GEOCODER.git
+[submodule "POSTCARD"]
+	path = POSTCARD
+	url = https://github.com/Soniafish/POSTCARD.git
