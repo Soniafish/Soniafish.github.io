@@ -21,4 +21,4 @@
 	url = https://github.com/Soniafish/POSTCARD.git
 [submodule "DANMU"]
 	path = DANMU
-	url = git://github.com/Soniafish/DANMU.git
+	url = https://github.com/Soniafish/DANMU.git
