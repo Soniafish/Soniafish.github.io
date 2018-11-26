@@ -19,3 +19,6 @@
 [submodule "POSTCARD"]
 	path = POSTCARD
 	url = https://github.com/Soniafish/POSTCARD.git
+[submodule "DANMU"]
+	path = DANMU
+	url = git://github.com/Soniafish/DANMU.git
