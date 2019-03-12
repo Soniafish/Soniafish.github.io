@@ -25,3 +25,6 @@
 [submodule "BAG"]
 	path = BAG
 	url = https://github.com/Soniafish/BAG.git
+[submodule "COVERME"]
+	path = COVERME
+	url = https://github.com/Soniafish/coverme.git
