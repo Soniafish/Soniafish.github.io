@@ -22,3 +22,6 @@
 [submodule "DANMU"]
 	path = DANMU
 	url = https://github.com/Soniafish/DANMU.git
+[submodule "BAG"]
+	path = BAG
+	url = https://github.com/Soniafish/BAG.git
