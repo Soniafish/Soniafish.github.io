@@ -28,3 +28,6 @@
 [submodule "COVERME"]
 	path = COVERME
 	url = https://github.com/Soniafish/coverme.git
+[submodule "ALBUM"]
+	path = ALBUM
+	url = https://github.com/Soniafish/album.git
