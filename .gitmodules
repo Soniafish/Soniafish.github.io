@@ -31,3 +31,6 @@
 [submodule "ALBUM"]
 	path = ALBUM
 	url = https://github.com/Soniafish/album.git
+[submodule "COMMUNITY"]
+	path = COMMUNITY
+	url = https://github.com/Soniafish/lure_community.git
