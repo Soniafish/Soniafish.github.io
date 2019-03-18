@@ -34,3 +34,6 @@
 [submodule "COMMUNITY"]
 	path = COMMUNITY
 	url = https://github.com/Soniafish/lure_community.git
+[submodule "STYLE"]
+	path = STYLE
+	url = https://github.com/Soniafish/lative_style.git
