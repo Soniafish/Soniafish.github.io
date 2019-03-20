@@ -1,340 +1,250 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html class="no-js" lang="">
 <head>
-    <title>Sonia Lin</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/page1.css">
-    <style>
-    </style>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108090232-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-108090232-2');
-    </script>
-    <!--end Global site tag (gtag.js) - Google Analytics -->
-
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Sonia</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="images/flag.png">
+    <link rel="stylesheet" href="styles/vendor/jquery.bootstrap-touchspin.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
-<!--必要設定：data-target:指向要監聽的導覽列-->
+<body>
+    <div class="wrap">
+        <a href="#" class="btn_menu">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </a>
+        <div class="offcanvas">
+            <a href="#portfolio" class="offcanvas_item">
+                <span>Portfolio</span>
+                <span>作品集</span>
+            </a>
+            <a href="#skills" class="offcanvas_item"> 
+                <span>Skills</span> 
+                <span>技能</span>
+            </a>
+            <a href="#project" class="offcanvas_item">
+                <span>Project</span> 
+                <span>專案</span>
+            </a>
+        </div>
+        <aside>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+            <img src="images/headShot.jpg" alt="my headShot">
 
-    <!--導覽列類別名稱要與data-target中一致-->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">sonia</a>
-            </div>
-            <div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <!--超連結連結到下面的段落ＩＤ-->
-                        <li><a href="#section1">About</a></li>
-                        <li><a href="#section2">Skills</a></li>
-                        <li><a href="#section3">Works-1</a></li>
-                        <li><a href="#section4">Works-2</a></li>
-                        <li><a href="#section5">Works-3</a></li>
-                    </ul>
+            <p>
+                嗨！
+                <br>
+                我是Sonia Lin
+                <br>
+                一名網頁前端工程師
+                <br>
+                從事電子商務網站的開發與維護
+                <br>
+                工作態度認真負責
+                <br>
+                樂於吸收新知、接受挑戰
+                <br>
+                如果你喜歡我的作品
+                <br>
+                歡迎與我聯絡~
+            </p>
+        </aside>
+        <div class="mainContent">
+
+            <h1 class="is-touch is-center">Sonia Lin</h1>
+            <p class="is-touch is-center">Front-end Web Engineer</p>
+
+            <img src="images/headShot.jpg" alt="my headShot" class="headShot is-touch">
+
+            <h2 class="headline" id="portfolio">My Portfolio</h2>
+            <div class="portfolio_wrap">
+                <div class="works">
+                    <a href="https://soniafish.github.io/BAG/moreImg.html" target="_blank">
+                        <img src="images/bag.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-shopping-bag"></i>Bag</h3>
+                    <p class="is-touch">仿網站,使用HTML5的canvas功能，讓使用者可以將圖檔上色，製作屬於自己的包包。</p>
+                </div>
+                
+                <div class="works">
+                    <a href="https://soniafish.github.io/COVERME/coverme.html" target="_blank">
+                        <img src="images/coverme.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-sync-alt"></i>CoverMe</h3>
+                    <p class="is-touch">仿spinzam網站, 使用HTML5的transform功能, 結合js的mousedown、mousemove、mouseup事件, 做出360度的視覺效果。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/ALBUM/album.html" target="_blank">
+                        <img src="images/album.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-images"></i>Album</h3>
+                    <p class="is-touch">利用css的flex的排版功能，搭配javascript的Math.random方法, 做出大小圖的組合相簿輪播。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/COMMUNITY/community2.html" target="_blank">
+                        <img src="images/community.jpg" alt="">
+                    </a>
+                    <h3>Lure Community</h3>
+                    <p class="is-touch">依據jason格式的物件資料繪出html畫面, 並計算目前點擊位置, 產出對應的子選單, 點擊前後箭頭時, 亦可重繪出相對應的子選單資料。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/STYLE/productlist.html" target="_blank">
+                        <img src="images/style.jpg" alt="">
+                    </a>
+                    <h3>Lative Style</h3>
+                    <p class="is-touch">仿做lative的style頁。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/DANMU/danmu.html" target="_blank">
+                        <img src="images/danmu.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-comments"></i>Danmu</h3>
+                    <p class="is-touch">模擬目前流行的影片彈幕功能, 以JQ撰寫彈幕功能, 並透過使用HTML5的iframe功能嵌入youtube影片, 讓使用者可以隨時輸入彈幕或清除畫面上的彈幕觀。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/TODOLIST/todoList.html" target="_blank">
+                        <img src="images/todoList.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-list-ol"></i>TodoList</h3>
+                    <p class="is-touch">仿TODOLIS,使用HTML5的localStorage功能，讓使用者可記錄自己的工作清單。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/NOTE/note.html" target="_blank">
+                        <img src="images/note.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-sticky-note"></i></i>Note</h3>
+                    <p class="is-touch">仿電子便利貼功能，運用creatElement產生便利貼，並註冊mouse事件來移動便利貼位置。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/GEOCODER/geocoder.html" target="_blank">
+                        <img src="images/map.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-map-marker-alt"></i>Map</h3>
+                    <p class="is-touch">仿做google map，使用google的geocoder服務，讓使用者透過選擇交通方式，取得交通路徑。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/ATM/atm.html" target="_blank">
+                        <img src="images/atm.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-hand-holding-usd"></i>ATM</h3>
+                    <p class="is-touch">註冊click事件於按鈕上，透過函式、if條件運算，將按鍵資料進行運算並回傳結果於螢幕上。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/TV/TV.html" target="_blank">
+                        <img src="images/tv.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-tv"></i>TV</h3>
+                    <p class="is-touch">運用CSS3的transformat功能，並嵌入video，製作出電視效果，使用者可透過按鈕切換頻道。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/POSTCARD/canvas.html" target="_blank">
+                        <img src="images/postcard.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-image"></i>Postcard</h3>
+                    <p class="is-touch">使用HTML5的canvas功能製做明信片，使用者可將照片搭配文字做成自己的明信片。</p>
                 </div>
             </div>
-        </div>
-    </nav>
-    <!--section1開始-->
-    <div id="section1">
-        <!--全版面大型看板開始-->
-        <div class="jumbotron" id="header">
-            <div class="container">
-                <h1>Sonia Lin</h1>
-                <br/>
-                <h2>應徵：前端網頁工程師</h2>
-                <br/>
-                <p>過往的我在人文工作上耕耘,全力為弱勢兒童曁家庭服務</p>
-                <p>但對於資訊工程的興趣始終未消退,因而轉職</p>
-                <p>感謝抽空閱讀我的履歷，以下為我在前端網頁工程的能力與作品</p>
-            </div>
-        </div>
-        <!--全版面大型看板結尾-->
-    </div>
-    <!--section1結束-->
-    <!--section2開始-->
-    <div id="section2" class="container-fluid">
-        <div class="container">
-            <div class="row"></div>
-            <div class="row">
-                <h1>Skills</h1>
-                <ul>
-                    <li>
-                        <span><i class="fa fa-file-code-o" aria-hidden="true"></i>使用技術：</span> HTML
-                        <i class="fa fa-html5" aria-hidden="true"></i>、CSS<i class="fa fa-css3" aria-hidden="true"></i>、JavaScript、jQuery、Bootstrap</li>
-                    <li>
-                        <span><i class="fa fa-folder-open-o" aria-hidden="true"></i>作業環境：</span> Sublime、Brackets
-                    </li>
-                    <li>
-                        <span><i class="fa fa-cloud" aria-hidden="true"></i>使用工具：</span> GitHub
-                        <i class="fa fa-github" aria-hidden="true"></i></li>
+            
+
+            <h2 class="headline" id="skills">My Skills</h2>
+            
+            <div>
+                <h3 class="skills_item">
+                    <i class="fas fa-file-code"></i>使用技術:
+                </h3>
+                <ul class="skills_cnt">
+                    <li>使用HTML5、CSS3、SASS、JAvascript、JQuery語法撰寫網頁.</li>
+                    <li>使用過Bootstrap、Bulma框架撰寫網頁.</li>
+                    <li>目前正在學習react語法, 持續加強精進自己的程式語言廣度與深度.</li>
+                </ul>
+
+                <h3 class="skills_item">
+                    <i class="fas fa-cloud-upload-alt"></i>使用工具
+                </h3>
+                <ul class="skills_cnt">
+                    <li>使用git、Visual Studio作為團隊版控的管理工具.</li>
+                    <li>使用gulp作為敏捷開發的工具.</li>
                 </ul>
             </div>
-        </div>
-    </div>
-    <!--section2結束-->
-    <!--section3開始-->
-    <div id="section3" class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <h1>Works-1</h1>
-                <h2>js小品</h2>
-            </div>
-            <!--輪播開始-->
-            <div id="slideshow" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                    <!--輪播圖片或內容-->
-                    <div class="item active">
-                        <!--固定寬度大型看板開始-->
-                        <div class="container">
-                            <div class="jumbotron">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1><i class="fa fa-sticky-note" aria-hidden="true"></i>Note</h1>
-                                        <p>仿電子便利貼功能，運用creatElement產生便利貼，並註冊mouse事件來移動便利貼位置。</p>
-                                        <p><a class="btn btn-primary btn-lg" href="work3/note.html" target="_blank" role="button">See more</a></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="images/note.jpg" alt="便利貼">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--固定寬度大型看板結尾-->
-                    </div>
-                    <div class="item">
-                        <!--固定寬度大型看板開始-->
-                        <div class="container">
-                            <div class="jumbotron">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1><img src="images/atm.png" alt="atm">ATM</h1>
-                                        <p>註冊click事件於按鈕上，透過函式、if條件運算，將按鍵資料進行運算並回傳結果於螢幕上。</p>
-                                        <p><a class="btn btn-primary btn-lg" href="work3/atm.html" target="_blank" role="button">See more</a></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="images/atm.jpg" alt="atm">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--固定寬度大型看板結尾-->
-                    </div>
-                    <div class="item">
-                        <!--固定寬度大型看板開始-->
-                        <div class="container">
-                            <div class="jumbotron">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1><img src="images/postcard.png" alt="postcard">Postcard</h1>
-                                        <p>使用HTML5的canvas功能製做明信片，使用者可將照片搭配文字做成自己的明信片。</p>
-                                        <p><a class="btn btn-primary btn-lg" href="work3/canvas/canvas.html" target="_blank" role="button">See more</a></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="images/postcard.jpg" alt="postcard">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--固定寬度大型看板結尾-->
-                    </div>
-                    <div class="item">
-                        <!--固定寬度大型看板開始-->
-                        <div class="container">
-                            <div class="jumbotron">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1><i class="fa fa-list-ol" aria-hidden="true"></i>TodoList</h1>
-                                        <p>仿TODOLIS,使用HTML5的localStorage功能，讓使用者可記錄自己的工作清單。</p>
-                                        <p><a class="btn btn-primary btn-lg" href="work3/todoList.html" target="_blank" role="button">See more</a></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="images/todoList.jpg" alt="my food map page">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--固定寬度大型看板結尾-->
-                    </div>
-                    <div class="item">
-                        <!--固定寬度大型看板開始-->
-                        <div class="container">
-                            <div class="jumbotron">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1><img src="images/map.png" alt="map">Map</h1>
-                                        <p>仿做google map，使用google的geocoder服務，讓使用者透過選擇交通方式，取得交通路徑。</p>
-                                        <p><a class="btn btn-primary btn-lg" href="http://handoutdoc.org/static/tinaWeb/geocoder/geocoder.html" target="_blank" role="button">See more</a></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="images/map.jpg" alt="map">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--固定寬度大型看板結尾-->
-                    </div>
-                    <div class="item">
-                        <!--固定寬度大型看板開始-->
-                        <div class="container">
-                            <div class="jumbotron">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h1><i class="fa fa-television" aria-hidden="true"></i>TV</h1>
-                                        <p>運用CSS3的transformat功能，並嵌入video，製作出電視效果，使用者可透過按鈕切換頻道。</p>
-                                        <p><a class="btn btn-primary btn-lg" href="work3/TV.html" target="_blank" role="button">See more</a></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="images/tv.jpg" alt="tv">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--固定寬度大型看板結尾-->
-                    </div>
-                </div>
-                <!--上一頁 下一頁 按鈕-->
-                <div class="control-btn">
-                    <a href="#slideshow" class="left carousel-control" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a href="#slideshow" class="right carousel-control" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                </div>
-                <!--小圓點換頁-->
-                <ol class="carousel-indicators">
-                    <li data-target="#slideshow" data-slide-to="0" class="active"></li>
-                    <li data-target="#slideshow" data-slide-to="1"></li>
-                    <li data-target="#slideshow" data-slide-to="2"></li>
-                    <li data-target="#slideshow" data-slide-to="3"></li>
-                    <li data-target="#slideshow" data-slide-to="4"></li>
-                    <li data-target="#slideshow" data-slide-to="5"></li>
-                </ol>
-            </div>
-            <!--輪播結尾-->
-        </div>
-    </div>
-    <!--section4開始-->
-    <div id="section4" class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <h1>Work-2</h1>
-                <h2>個人網站</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="images/soniaHealthSpace.jpg" alt="sonia健康空間">
-                </div>
-                <div class="col-md-6">
-                    <h2>Sonia健康空間</h2>
-                    <ul>
-                        <li>運用HTML5的video嵌入功能，加上CSS3的transform效果，並設有暫停、播放與選台功能，使用者可以透過遙控電視般與影片一起運動。</li>
-                        <li>加入FB的社交插件，使用者可透過按讚向好友分享網頁，也可留言與網站管理員進行互動。</li>
-                        <li>結合google chart與HTML5的localStorage的功能，搭配JSON物件記載資料，使用者可以透過網頁紀錄自己的月健走資料。</li>
-                        <li>透過jQ語法輕鬆切換選擇器，使用者可快速切換網頁主題閱讀，不用重新或另外載入網頁。</li>
-                    </ul>
-                    <a class="btn btn-primary btn-md" href="http://handoutdoc.org/static/tinaWeb/health/health/index.html" target="_blank" role="button">See more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--section4結束-->
-    <!--section5開始-->
-    <div id="section5" class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <h1>Work-3</h1>
-                <h2>網頁切板與RWD</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="rwdWork">
-                        <img src="images/mobirise.jpg" alt="my Mobirise page">
-                        <h3>複刻Mobirise網頁</h3>
-                        <div class="info">
-                            <p><a class="btn btn-primary btn-md" href="page/mobirise.html" target="_blank" role="button">See more</a></p>
-                            <p>運用Bootstrap框架</p>
-                            <p>將CSS、RWD更上一層樓</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="rwdWork">
-                        <img src="images/gushi.jpg" alt="my gushi page">
-                        <h3>複刻gushit網頁</h3>
-                        <div class="info">
-                            <p><a class="btn btn-primary btn-md" href="page/gushi.html" target="_blank" role="button">See more</a></p>
-                            <p>運用HTML、CSS與RWD的技巧</p>
-                            <p>處理不同框格大小的欄位排列</p>
-                        </div>
 
-                    </div>
+            <h2 class="headline" id="project">My Project</h2>
+            <p style="margin-bottom: 20px;">參與過的電子商務網站有：</p>
+            <div class="portfolio_wrap">
+                <div class="works">
+                    <a href="https://www.maisonpromax.com/">
+                        <img src="images/promax.jpg" alt="">
+                    </a>
+                    <p>PROMAX</p>
                 </div>
+                <div class="works">
+                    <a href="https://celvoke.com.tw/">
+                        <img src="images/celvoke.jpg" alt="">
+                    </a>
+                    <p>CELVOKE</p>
+                </div>
+                <div class="works">
+                    <a href="https://www.jpmed.com.tw/">
+                        <img src="images/jpm.jpg" alt="">
+                    </a>
+                    <p>日藥本舖</p>
+                </div>
+                <div class="works">
+                    <a href="https://www.d-maisie.com/">
+                        <img src="images/dmaisie.jpg" alt="">
+                    </a>
+                    <p>D.MAISIE</p>
+                </div>
+                <div class="works">
+                    <a href="https://www.3gun.com.tw/m/">
+                        <img src="images/3gun.jpg" alt="">
+                    </a>
+                    <p>3槍 手機版</p>
+                </div>
+                <div class="works">
+                    <a href="https://www.usagi-online.com.tw/m/">
+                        <img src="images/usagi.jpg" alt="">
+                    </a>
+                    <p>usagi-online手機版</p>
+                </div>
+                <div class="works">
+                    <a href="https://www.lurehsu.com/zh-TW/community">
+                        <img src="images/community.jpg" alt="">
+                    </a>
+                    <p>LURE HSU的community</p>
+                </div>
+
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="rwdWork">
-                        <img src="images/iphone1.jpg" alt="my iphone page">
-                        <h3>手機履歷</h3>
-                        <div class="info">
-                            <p><a class="btn btn-primary btn-md" href="page/iphone.html" target="_blank" role="button">See more</a></p>
-                            <p>運用position功能手刻iphone</p>
-                            <p>透過手機頁面展示履歷</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="rwdWork">
-                        <img src="images/foodMap.jpg" alt="my food map page">
-                        <h3>我的美食地圖</h3>
-                        <div class="info">
-                            <p><a class="btn btn-primary btn-md" href="page/foodMap.html" target="_blank" role="button">See more</a></p>
-                            <p>運用normalize、網路字體、</p>
-                            <p>快速前往網頁關鍵字...等功能設定</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="images/fbIndex.jpg" alt="my first record page">
-                    <h3>Facebook登入頁</h3>
-                    <div class="info">
-                        <p><a class="btn btn-primary btn-lg" href="page/fbIndex.html" target="_blank" role="button">See more</a></p>
-                        <p>運用HTML與CSS功能，複刻FaceBook登入頁。</p>
-                    </div>
-                </div>
-            </div>
--->
+
         </div>
     </div>
-    <!--section5結束-->
-    <!--footer開始-->
-    <footer>
-        <div class="container">
-            <p>聯絡方式：<i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:linke235@gmail.com">linke235@gmail.com</a><br/> Edit sonia</p>
-        </div>
-    </footer>
-    <!--footer結束-->
+    
+    <script src="scripts/vendor/jquery-1.11.2.min.js"></script>
+    <script src="scripts/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- <script src="scripts/vendor/bootstrap.min.js"></script> -->
+    <!-- <script src="scripts/vendor/jquery.bootstrap-touchspin.js"></script> -->
+    <script src="scripts/vendor/slick.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        $(function () {
+           
+
+        });
+    </script>
 </body>
 
 </html>
