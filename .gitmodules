@@ -37,3 +37,6 @@
 [submodule "STYLE"]
 	path = STYLE
 	url = https://github.com/Soniafish/lative_style.git
+[submodule "weather"]
+	path = weather
+	url = git://github.com/Soniafish/weather.git
