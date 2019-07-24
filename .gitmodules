@@ -40,3 +40,6 @@
 [submodule "weather"]
 	path = weather
 	url = git://github.com/Soniafish/weather.git
+[submodule "WEATHER2/weather"]
+	path = WEATHER2/weather
+	url = https://github.com/Soniafish/weather.git
