@@ -1,0 +1,94 @@
+body{
+    font-size: 16px;
+    letter-spacing: 2px;
+    vertical-align: middle;
+}
+header{
+    padding: 20px;
+    /* background: #6c9a98; Old browsers */
+    /* background: -moz-linear-gradient(-45deg, #6c9a98 0%, #b2ded1 17%, #ded173 53%, #6c9a98 80%, #6c9a98 80%, #ded173 100%); FF3.6-15 */
+    /* background: -webkit-linear-gradient(-45deg, #6c9a98 0%,#b2ded1 17%,#ded173 53%,#6c9a98 80%,#6c9a98 80%,#ded173 100%); Chrome10-25,Safari5.1-6 */
+    /* background: linear-gradient(135deg, #6c9a98 0%,#b2ded1 17%,#ded173 53%,#6c9a98 80%,#6c9a98 80%,#ded173 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+    background: #6c9a97; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #6c9a97 0%, #b2ded1 18%, #ded173 41%, #ded173 63%, #b2ded1 99%, #b2ded1 99%, #6c9a98 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #6c9a97 0%,#b2ded1 18%,#ded173 41%,#ded173 63%,#b2ded1 99%,#b2ded1 99%,#6c9a98 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #6c9a97 0%,#b2ded1 18%,#ded173 41%,#ded173 63%,#b2ded1 99%,#b2ded1 99%,#6c9a98 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.txt_red{
+    color: red;
+}
+.txt_small{
+    font-size: 14px;
+}
+header{
+    display: flex;
+    align-items: center;
+}
+header .logo_img{
+    width: 200px;
+}
+header .logo_img img{
+    width: 100%;
+}
+header .form_name{
+    width:calc(100% - 200px);
+}
+header h1, header p{
+    color: #009e9b;
+    text-align: center;
+}
+.subTitle{
+    background: #6c9a97;
+    color: #fff;
+    padding: 10px 5px;
+}
+.tb_thLeft{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.tb_thLeft th{
+    background: #b2ded1;
+    color: #6c9a98;
+    border: 2px solid #fff;
+    border-right: none;
+    padding: 5px 10px;
+    width: 20%;
+    min-height: 40px;
+    vertical-align: middle;
+}
+.tb_thLeft td{
+    border-bottom: 1px solid #ddd;
+    width: 30%;
+    padding: 5px 10px;
+    min-height: 40px;
+    vertical-align: middle;
+}
+.tb_thLeft td select, .tb_thLeft td input{
+    width: calc(100% - 20px);
+    height: 35px;
+}
+.tb_thLeft td.td_col3{
+    width: 80%;
+}
+.tb_hasBorder{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.tb_hasBorder tr{
+    border: 1px solid #333;
+}
+.tb_hasBorder th{
+    width: 65px;
+}
+.tb_hasBorder th, .tb_hasBorder td{
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+.tb_hasBorder td input{
+    border: 1px solid #ddd;
+    margin: 5px;
+}
+.tb_hasBorder th input[type="radio"]{
+    margin-left: 10px;
+}
