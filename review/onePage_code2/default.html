@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/bootstrap.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script type="text/javascript" src="script/jquery.js"></script>
+    <script type="text/javascript" src="script/bootstrap.js"></script>
+</head>
+<body>
+    <header class="">
+        <div class="container form_name">
+            <h1>異動申請表</h1>
+            <p>Transaction application form</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="img/img-hd-logo.jpg" alt="fubon" class="logo">
+                <table class="tb_thLeft">
+                    <tr>
+                        <th>
+                            <span class="txt_red">*</span>申請表單類別
+                        </th>
+                        <td>
+                            <select name="" id="">
+                                <option value="">請選擇</option>
+                                <option value="">項目一</option>
+                                <option value="">項目二</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>申請日期</th>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <th><span class="txt_red">*</span>交接日期</th>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <th>法令規範資格 <br> 取得截止日期</th>
+                        <td><input type="date"></td>
+                    </tr>
+                    <tr>
+                        <th>附件(緊急事件)</th>
+                        <td>
+                            <button class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus"></span>新增附件
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subTitle">異動資訊</h3>
+                <table class="tb_thLeft">
+                    <tr>
+                        <th>異動前主管 <br> 原編/姓名</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>申請單位名稱</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th><span class="txt_red">*</span>異動後主管 <br> 原編/姓名</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>異動後主管 <br> 單位名稱</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th><span class="txt_red">*</span>異動原因</th>
+                        <td colspan="3" class="td_col3">
+                            <select name="" id="">
+                                <option value="">請選擇</option>
+                                <option value="">原因一</option>
+                                <option value="">原因二</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="subTitle">單位法令遵循主管</h3>
+        <h4>資格/訓練課程 <span class="txt_red">(擇一選擇填寫)</span> </h4>
+        <table class="tb_hasBorder">
+            <tr>
+                <th>1 <input type="radio" name="rule"></th>
+                <td>
+                    <!-- 曾任金融機構法令遵循人員或主管，合計滿五年。 -->
+                    <p style="font-weight: bold; margin-bottom: 0;">曾任金融機構法令遵循人員或主管，合計滿五年。</p>
+                    <div class="txt_small">
+                        （備註：出任日<input type="text"> / <input type="text"> (年/月)）
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>2 <input type="radio" name="rule"></th>
+                <td>
+                    <!-- 已完成訓練並取得證書  -->
+                    <p style="font-weight: bold; margin-bottom: 0;">已完成訓練並取得證書</p>
+                    <div class="txt_small">
+                        證書字號：<input type="text">
+                    </div> 
+                </td>
+            </tr>
+            <tr>
+                <th>3 <input type="radio" name="rule"></th>
+                <td>
+                    <!-- 已報名。 -->
+                    <p style="font-weight: bold; margin-bottom: 0;">已報名。</p>
+                    <div class="txt_small">
+                        已報名<input type="text">單位<input type="number">年<input type="number">期<input type="number">月份訓練課程。<br>
+                        (上課日期：<input type="date"> ~ <input type="date">)
+                    </div>
+                    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button>
+                </td>
+            </tr>
+            <tr>
+                <th>4 <input type="radio" name="rule"></th>
+                <td>
+                    <!-- 其他<br> -->
+                    <p style="font-weight: bold; margin-bottom: 0;">其他</p>
+                    <input type="text" style="width: 100%;">
+                </td>
+            </tr>
+        </table>
+        <!-- <table class="tb_hasBorder tb_thLeft2">
+            <tr>
+                <th rowspan="4">
+                    資格/訓練課程 <span class="txt_red">(擇一選擇填寫)</span>
+                </th>
+                <td>1 <input type="radio" name="rule"></td>
+                <td>
+                    曾任金融機構法令遵循人員或主管，合計滿五年。
+                    <div class="txt_small">
+                        （備註：出任日<input type="text"> / <input type="text"> (年/月)）
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>2 <input type="radio" name="rule"></td>
+                <td>
+                    已完成訓練並取得證書
+                    <div class="txt_small">
+                        證書字號：<input type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>3 <input type="radio" name="rule"></td>
+                <td>
+                    已報名。
+                    <div class="txt_small">
+                        已報名<input type="text">單位<input type="number">年<input type="number">期<input type="number">月份訓練課程。<br>
+                        (上課日期：<input type="date"> ~ <input type="date">)
+                    </div>
+                    <button class="btn btn-success">新增附件</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4 <input type="radio" name="rule"></td>
+                <td>
+                    其他<br>
+                    <input type="text">
+                </td>
+            </tr>
+        </table> -->
+    </div>
+    
+    <div class="container">
+        <h3 class="subTitle">填寫說明</h3>
+        <p class="txt_red">【單位法令遵循主管異動】</p>
+        <ul style="padding-left: 10px; line-height: 1.8em;">
+            <li>1.單位申請表由新調/新任單位提出申請，並經單位主管核定。</li>
+            <li>2.單位法令遵循主管資格：
+                <ul style="padding-left: 20px;">
+                    <li>一、職級為科主管級以上。</li>
+                    <li>二、熟稔該單位業務及相關法令，並預備協助推動該單位法令遵循業務之能力者。</li>
+                    <li>三、應於就任前或就任後半年內具備下列資格條件之一：
+                        <ul style="padding-left: 20px;">
+                            <li>(一)曾任金融機構法令遵循人員或主管，合計滿五年者。</li>
+                            <li>(二)參加主管機關認定機構所舉辦三十小時以上課程，並經考試及格取得結業證書。</li>
+                            <li>(三)依本公司自行擬定之具體訓練計畫，參加富邦金控或公司自行舉辦三十小時以上相關訓練課程及測驗，足證已具備熟知單位所需定之相關能力。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>3.單位法令遵循主管異動時，應於交接後三日內提出申請，逾期申請請洽法令遵循部辦理。</li>
+        </ul>
+    </div>
+</body>
+</html>

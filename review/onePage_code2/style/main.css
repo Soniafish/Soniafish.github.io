@@ -1,0 +1,116 @@
+body{
+    font-size: 16px;
+    letter-spacing: 2px;
+    vertical-align: middle;
+}
+header{
+    display: flex;
+    align-items: center;
+}
+.txt_red{
+    color: red;
+}
+.txt_small{
+    font-size: 14px;
+}
+header .form_name{
+    padding: 10px 50px;
+    background: #48567b; 
+    color: #fff;
+}
+.logo{
+    margin: 15px 0;
+    height: 70px;
+}
+.subTitle{
+    background: #91565c;
+    color: #fff;
+    padding: 10px;
+}
+.btn .glyphicon-plus{
+    font-size: 20px;
+    font-weight: bold; 
+    color: lightgreen;
+    margin-right: 5px;
+}
+.tb_thLeft{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.tb_thLeft th{
+    background: #747b95;
+    color: #fff;
+    border: 2px solid #fff;
+    border-right: none;
+    padding: 5px 10px;
+    width: 20%;
+    min-height: 40px;
+    vertical-align: middle;
+}
+.tb_thLeft td{
+    border-bottom: 1px solid #ddd;
+    width: 30%;
+    padding: 5px 10px;
+    min-height: 40px;
+    vertical-align: middle;
+}
+.tb_thLeft td select, .tb_thLeft td input{
+    width: calc(100% - 20px);
+    height: 35px;
+    border: none;
+}
+.tb_thLeft td select{
+    padding-right: 20px;
+    position: relative;  
+    background: transparent;  
+}
+.tb_thLeft td select:after{
+    position: absolute;
+
+}
+.tb_thLeft td.td_col3{
+    width: 80%;
+}
+.tb_hasBorder{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.tb_hasBorder tr{
+    /* border: 1px solid #333; */
+    /* border-bottom: 1px solid #ddd; */
+}
+.tb_hasBorder th{
+    width: 65px;
+    padding: 5px 10px;
+    /* vertical-align: middle; */
+}
+.tb_hasBorder td{
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+.tb_hasBorder td input{
+    /* border: 1px solid #ddd; */
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 5px;
+}
+.tb_hasBorder th input[type="radio"]{
+    margin-left: 10px;
+}
+
+
+.tb_hasBorder.tb_thLeft2 th{
+    background: #747b95;
+    color: #fff;
+    border: 2px solid #fff;
+    border-right: none;
+    padding: 5px 10px;
+    min-height: 40px;
+    vertical-align: middle;
+}
+.tb_hasBorder.tb_thLeft2 td{
+    border-bottom: 1px solid #ddd;
+    padding: 5px 10px;
+    min-height: 40px;
+    vertical-align: middle;
+}
