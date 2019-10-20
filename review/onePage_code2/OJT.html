@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/bootstrap.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script type="text/javascript" src="script/jquery.js"></script>
+    <script type="text/javascript" src="script/bootstrap.js"></script>
+</head>
+<body>
+    <header class="">
+        <div class="container form_name">
+            <h1>法遵宣導 OJT</h1>
+            <p>Propaganda OJT</p>
+        </div>
+    </header>
+
+    <!-- sample1 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <br>
+                <img src="img/img-hd-logo.jpg" alt="fubon" class="logo">
+                <br>
+                <br>
+                <table class="tb_thLeft2">
+                    <th>表單編號</th>
+                    <td>
+                        <p class="txt_red">系統自動產生</p>
+                    </td>
+                    <tr>
+                        <th>宣導回覆截止日</th>
+                        <td><input type="date"></td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subTitle">宣導法令</h3>
+                <table class="tb_thLeft2">
+                    <tr>
+                        <th>法令宣導主旨</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>法令宣導內容</th>
+                        <td>
+                            <textarea name="" id="" cols="30" rows="10" style="height: 52px;"></textarea>
+                            <button class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus"></span>新增附件
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- sample2 -->
+    <!-- <div class="container">
+        <img src="img/img-hd-logo.jpg" alt="fubon" class="logo">
+        <br>
+        <br>
+        <table class="tb_thLeft2">
+            <tr>
+                <th>表單編號</th>
+                <td>
+                    <p class="txt_red">系統自動產生</p>
+                </td>
+            </tr>
+            <tr>
+                <th>法令宣導主旨</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>法令宣導內容</th>
+                <td>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>新增附件
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th>宣導回覆截止日</th>
+                <td><input type="date"></td>
+            </tr>
+        </table>
+    </div> -->
+
+    <!-- sample end-->
+
+    <div class="container">
+        <h3 class="subTitle">宣導單位</h3>
+        <label>
+            <input type="checkbox"> 顯示
+        </label>
+        <table class="tb_thTop">
+            <tr>
+                <th>序號</th>
+                <th>單位名稱</th>
+                <th>
+                    單位法令遵循主管<br>
+                    帳號/姓名
+                </th>
+                <th>更換單位</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>行政服務總處</td>
+                <td>/</td>
+                <td><button class="btn btn-info">...</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>資訊服務總處</td>
+                <td>/</td>
+                <td><button class="btn btn-info">...</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>會計部</td>
+                <td>simon.liang/simon.liang</td>
+                <td><button class="btn btn-info">...</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>人資營運部</td>
+                <td>april.tsai/april.tsai</td>
+                <td><button class="btn btn-info">...</button></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>行政組</td>
+                <td>/</td>
+                <td><button class="btn btn-info">...</button></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary btn-lg" style="font-size: 16px; margin-left: 40px;">新增單位</button>
+    </div>
+
+    <div class="container">
+        <h3 class="subTitle">單位宣導執行狀況回覆</h3>
+        <div>
+            <label class="txt_red" style="margin-right: 10px;"> <input type="checkbox" style="margin-right: 5px;">承辦人填寫</label>
+            <button class="btn btn-info">...</button>
+            <span>doris.yw.liu/doris.yw.liu</span>
+        </div>
+        <br>
+        <table class="tb_thLeft2">
+            <tr>
+                <th style="width: 20%;">單位宣導日</th>
+                <td style="width: 80%;"><input type="date"></td>
+            </tr>
+            <tr>
+                <th style="width: 20%;">單位宣導講師</th>
+                <td style="width: 80%;">
+                    <span>doris.yw.liu/doris.yw.liu</span><button class="btn btn-info" style="margin-left: 10px;">...</button>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%;">參與人數</th>
+                <td style="width: 80%;">
+                    應到<input type="number" min="0">人，實到<input type="number" min="0">人
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%;">上傳檔案</th>
+                <td style="width: 80%;"><button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="container">
+        <h3 class="subTitle">填寫/上傳說明</h3>
+        <p class="txt_red">各單位進行法遵宣導後，應於截止日前，檢附應附文件上傳系統，檢附文件如下：</p>
+        <ul class="txt_red" style="padding-left: 10px; line-height: 1.8em; ">
+            <li>1.經單位主管核可「OJT在職訓練課程日誌」表單。</li>
+            <li>2.單位法宣導照片。</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h3 class="subTitle">簽核意見</h3>
+        <textarea name="" id="" cols="30" rows="10" style="border: 1px solid #ddd; width:100%; resize: none; height: 150px; margin-bottom: 20px;"></textarea>
+    </div>
+
+</body>
+</html>

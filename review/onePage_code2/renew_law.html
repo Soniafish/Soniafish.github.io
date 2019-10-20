@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/bootstrap.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script type="text/javascript" src="script/jquery.js"></script>
+    <script type="text/javascript" src="script/bootstrap.js"></script>
+</head>
+<body>
+    <header class="">
+        <div class="container form_name">
+            <h1>法令更新申請表</h1>
+            <p>renew legal order</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="img/img-hd-logo.jpg" alt="fubon" class="logo">
+                <table class="tb_thLeft2">
+                    <tr>
+                        <th>表單編號</th>
+                        <td>
+                            <span class="txt_red">系統自動產生</span>
+                            <label><input type="radio">複製表單(增加涉及單位)</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>附件</th>
+                        <td>
+                            <!-- <table>
+                                <tr>
+                                    <td style="font-size: 12px; border: none;">
+                                        <img src="" alt="">
+                                        <span>(舉例)因應措施狀況回覆表.doc </span>
+                                        <span style="color: #bbb;">-33.00KB</span>
+                                    </td>
+                                    <td style="border: none;">
+                                        <a href="#"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 12px; border: none;">
+                                        <img src="" alt="">
+                                        <span>(舉例)法令更新因應措施計劃表.doc </span>
+                                        <span style="color: #bbb;">-72.50KB</span>
+                                    </td>
+                                    <td style="border: none;">
+                                        <a href="#"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 12px; border: none;">
+                                        <img src="" alt="">
+                                        <span>(舉例)展期申請表.pdf </span>
+                                        <span style="color: #bbb;">-19.65KB</span>
+                                    </td>
+                                    <td style="border: none;">
+                                        <a href="#"></a>
+                                    </td>
+                                </tr>
+                            </table> -->
+                            <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h3 class="subTitle">法令更新</h3>
+                <table class="tb_thLeft2">
+                    <tr>
+                        <th>法令名稱</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>文號</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            因應措施計畫 <br>
+                            填覆日期
+                        </th>
+                        <td>
+                            <input type="date">
+                            <label><input type="checkbox">需要逾期通知</label>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="subTitle">法令條文內容</h3>
+        <div>
+            <label style="margin-right: 10px;"> <input type="checkbox" style="margin-right: 5px;">轉承辦人填寫</label>
+            <button class="btn btn-info">...</button>
+            <span>doris.yw.liu/doris.yw.liu</span>
+        </div>
+        <br>
+        <table class="tb_thLeft2">
+            <tr>
+                <th style="width: 20%;">法令條文</th>
+                <td style="width: 80%;" colspan="2"><input type="text"></td>
+            </tr>
+            <tr>
+                <th style="width: 20%;">條文內容</th>
+                <td style="width: 80%;" colspan="2">
+                    <textarea name="" id="" cols="30" rows="10" style="border: 1px solid #ddd; resize: none; height: 100px;"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%;">涉及單位</th>
+                <td style="width: 80%;" colspan="2">
+                    <table class="tb_inner">
+                        <tr>
+                            <th>序</th>
+                            <th>單位名稱</th>
+                            <th>
+                                單位法令遵循主管<br>
+                                帳號/姓名
+                            </th>
+                            <th>更換單位</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>董事會稽核室</td>
+                            <td>/</td>
+                            <td><button class="btn btn-info">...</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>行政組</td>
+                            <td>/</td>
+                            <td><button class="btn btn-info">...</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>電腦組</td>
+                            <td>/</td>
+                            <td><button class="btn btn-info">...</button></td>
+                        </tr>
+                    </table>
+                    <div style="margin: 10px 0 5px; text-align: center;">
+                        <button class="btn btn-primary">新增單位</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 20%;">因應措施計畫</th>
+                <td style="width: 40%;">
+                    <div class="tb_check_wrap">
+                        <label><input type="checkbox">1.制/修訂內部控制制度製作處理程序</label><br>
+                        <span>名稱：</span><input type="text">
+                    </div>
+                    <div class="tb_check_wrap">
+                        <label><input type="checkbox">2.修正內部作業規範</label><br>
+                        <span>名稱：</span><input type="text">
+                    </div>
+                    <div class="tb_check_wrap">
+                        <label><input type="checkbox">3.修正法令遵循檢核表法/手冊</label> <br>
+                        <span>名稱：</span><input type="text">
+                    </div>
+                    <div class="tb_check_wrap">
+                        <label><input type="checkbox">4.其他</label><br>
+                        <span>名稱：</span><input type="text">
+                    </div>
+                    <div class="tb_check_wrap">
+                        <label><input type="checkbox">5.無前四項修正，獲悉遵行辦理。</label>
+                    </div>
+                </td>
+                <td style="width: 40%; border-left: 1px solid #ddd; vertical-align:top;">
+                    <p>完成期限：</p>
+                    <input type="date">
+                    <p class="txt_red">*註：計畫1~3時，為必填。</p>
+                    <br>
+                    <br>
+                    <p>附件：</p>
+                    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button>
+                </td>
+            </tr>
+        </table>
+        <div style="margin: 10px 0 5px; text-align: center;">
+            <button class="btn btn-primary">新增法令條文/內容</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="subTitle">執行狀況回覆</h3>
+        <div>
+            <label style="margin-right: 10px;"> <input type="checkbox" style="margin-right: 5px;">轉承辦人填寫</label>
+            <button class="btn btn-info">...</button>
+            <span>doris.yw.liu/doris.yw.liu</span>
+        </div>
+        <br>
+        <table class="tb_hasBorder" style="width:100%;">
+            <tr>
+                <th>1.</th>
+                <td>
+                    <p>制/修訂內部控制制度製作處理程序</p>
+                    <div class="check_wrap">
+                        <span>名稱：</span>
+                        <input type="text"> 
+                        <span style=" margin-left: 10px;">簽核完成日：</span>
+                        <input type="date">
+                    </div>
+                    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>
+                    <p>修正法令遵循檢核表法/手冊</p>
+                    <div class="check_wrap">
+                        <span>名稱：</span>
+                        <input type="text">
+                        <span style=" margin-left: 10px;">簽核完成日：</span>
+                        <input type="date">
+                    </div>
+                    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>
+                    <p>制定/修正內部作業規範</p>
+                    <div class="check_wrap">
+                        <span>名稱：</span><input type="text">
+                        <span style=" margin-left: 10px;">簽核完成日：</span>
+                        <input type="date">
+                    </div>
+                    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>
+                    <p>其他修正或採行措施</p>
+                    <div class="check_wrap">
+                        <span>名稱：</span>
+                        <input type="text">
+                        <span style=" margin-left: 10px;">簽核完成日：</span>
+                        <input type="date">
+                    </div>
+                    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>新增附件</button>
+                </td>
+            </tr>
+        </table>
+        <p class="txt_red">【說明】說明簽核完成日指核決主管簽核日。</p>
+    </div>
+
+    <div class="container">
+        <h3 class="subTitle">簽核意見</h3>
+        <textarea name="" id="" cols="30" rows="10" style="border: 1px solid #ddd; width:100%; resize: none; height: 150px; margin-bottom: 20px;"></textarea>
+    </div>
+
+</body>
+</html>
