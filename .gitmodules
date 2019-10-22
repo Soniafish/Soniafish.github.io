@@ -40,6 +40,6 @@
 [submodule "WEATHER2/weather"]
 	path = WEATHER2/weather
 	url = https://github.com/Soniafish/weather.git
-[submodule "rack"]
+[submodule "reactDemo"]
 	path = reactDemo
 	url = https://github.com/Soniafish/reactDemo.git
