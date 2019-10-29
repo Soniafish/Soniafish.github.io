@@ -228,6 +228,15 @@ table {
 .fa-comments:before {
   content: "\f086"; }
 
+.fa-cloud:before {
+  content: "\f0c2"; }
+
+.fa-list-ul:before {
+  content: "\f0ca"; }
+
+.fa-film:before {
+  content: "\f008"; }
+
 /*------------------------------------*\
   #Generic
 \*------------------------------------*/

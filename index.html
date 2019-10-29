@@ -14,7 +14,7 @@
 
 <body>
     <div class="wrap">
-        <a href="#" class="btn_menu">
+        <a href="javascript:void(0)" class="btn_menu">
             <i class="fas fa-bars"></i>
             <i class="fas fa-times"></i>
         </a>
@@ -63,12 +63,37 @@
 
             <h2 class="headline" id="portfolio">My Portfolio</h2>
             <div class="portfolio_wrap">
+                
+                <div class="works">
+                    <a href="https://soniafish.github.io/ReactDemo/demo2.html" target="_blank">
+                        <img src="images/reactDemo1.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-film"></i>React Demo1</h3>
+                    <p class="is-touch">使用react語法仿作電影片單列表，運用props的設定來繪製多個電影片單組件(Component)，並透過捲軸事件，偵測捲軸置底時，使用setState方法來更新更多筆的片單組件。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/ReactDemo/demo3.html" target="_blank">
+                        <img src="images/reactDemo2.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-list-ul"></i>React Demo2</h3>
+                    <p class="is-touch">使用react語法仿作人生清單，運用props來更新component內容，透過setState方法與註冊setInterval事件，讓人生清單動態的逐條呈現。</p>
+                </div>
+
+                <div class="works">
+                    <a href="https://soniafish.github.io/WEATHER2/weather/weather.html" target="_blank">
+                        <img src="images/weather.jpg" alt="">
+                    </a>
+                    <h3><i class="fas fa-cloud"></i>Weather</h3>
+                    <p class="is-touch">串接中央氣象局的API，透過Ajax方法取得全台氣象資料，讓使用者可透過點選縣市取得明日的氣象預報。</p>
+                </div>
+
                 <div class="works">
                     <a href="https://soniafish.github.io/BAG/moreImg.html" target="_blank">
                         <img src="images/bag.jpg" alt="">
                     </a>
                     <h3><i class="fas fa-shopping-bag"></i>Bag</h3>
-                    <p class="is-touch">仿網站,使用HTML5的canvas功能，讓使用者可以將圖檔上色，製作屬於自己的包包。</p>
+                    <p class="is-touch">仿電商網站,使用HTML5的canvas功能，讓使用者可以將圖檔上色，製作屬於自己的包包。</p>
                 </div>
                 
                 <div class="works">
@@ -76,7 +101,7 @@
                         <img src="images/coverme.jpg" alt="">
                     </a>
                     <h3><i class="fas fa-sync-alt"></i>CoverMe</h3>
-                    <p class="is-touch">仿spinzam網站, 使用HTML5的transform功能, 結合js的mousedown、mousemove、mouseup事件, 做出360度的視覺效果。</p>
+                    <p class="is-touch">仿spinzam網站, 使用HTML5的transform功能, 結合js的mousedown、mousemove、mouseup事件, 做出商品360度旋轉的視覺效果。</p>
                 </div>
 
                 <div class="works">
@@ -100,7 +125,7 @@
                         <img src="images/style.jpg" alt="">
                     </a>
                     <h3>Lative Style</h3>
-                    <p class="is-touch">仿做lative的style頁。</p>
+                    <p class="is-touch">仿lative網站的style頁面。</p>
                 </div>
 
                 <div class="works">
@@ -127,13 +152,13 @@
                     <p class="is-touch">仿電子便利貼功能，運用creatElement產生便利貼，並註冊mouse事件來移動便利貼位置。</p>
                 </div>
 
-                <!-- <div class="works">
+                <div class="works">
                     <a href="https://soniafish.github.io/GEOCODER/geocoder.html" target="_blank">
                         <img src="images/map.jpg" alt="">
                     </a>
                     <h3><i class="fas fa-map-marker-alt"></i>Map</h3>
                     <p class="is-touch">仿做google map，使用google的geocoder服務，讓使用者透過選擇交通方式，取得交通路徑。</p>
-                </div> -->
+                </div>
 
                 <div class="works">
                     <a href="https://soniafish.github.io/ATM/atm.html" target="_blank">
@@ -143,13 +168,13 @@
                     <p class="is-touch">註冊click事件於按鈕上，透過函式、if條件運算，將按鍵資料進行運算並回傳結果於螢幕上。</p>
                 </div>
 
-                <!-- <div class="works">
+                <div class="works">
                     <a href="https://soniafish.github.io/TV/TV.html" target="_blank">
                         <img src="images/tv.jpg" alt="">
                     </a>
                     <h3><i class="fas fa-tv"></i>TV</h3>
                     <p class="is-touch">運用CSS3的transformat功能，並嵌入video，製作出電視效果，使用者可透過按鈕切換頻道。</p>
-                </div> -->
+                </div>
 
                 <div class="works">
                     <a href="https://soniafish.github.io/POSTCARD/canvas.html" target="_blank">
@@ -168,9 +193,9 @@
                     <i class="fas fa-file-code"></i>使用技術:
                 </h3>
                 <ul class="skills_cnt">
-                    <li>使用HTML5、CSS3、SASS、JAvascript、JQuery語法撰寫網頁.</li>
+                    <li>使用HTML5、CSS3、SASS、Javascript、jQuery語法撰寫網頁.</li>
                     <li>使用過Bootstrap、Bulma框架撰寫網頁.</li>
-                    <!-- <li>目前正在學習react語法, 持續加強精進自己的程式語言廣度與深度.</li> -->
+                    <li>目前正在學習react語法, 持續加強精進自己的程式語言廣度與深度.</li>
                 </ul>
 
                 <h3 class="skills_item">
@@ -202,6 +227,18 @@
                         <img src="images/jpm.jpg" alt="">
                     </a>
                     <p>日藥本舖</p>
+                </div>
+                <div class="works">
+                    <a href="https://www.stylemooncat.com.tw">
+                        <img src="images/mooncat.jpg" alt="">
+                    </a>
+                    <p>MOONCAT</p>
+                </div>
+                <div class="works">
+                    <a href="https://www.gotobuy.com.tw">
+                        <img src="images/tim.jpg" alt="">
+                    </a>
+                    <p>天母嚴選</p>
                 </div>
                 <div class="works">
                     <a href="https://www.d-maisie.com/">
