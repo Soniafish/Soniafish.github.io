@@ -252,7 +252,8 @@ body {
   position: relative;
   height: 100%;
   font-size: 14px;
-  line-height: 1.2em; }
+  line-height: 1.2em;
+  text-align: justify; }
 
 h1 {
   font-size: 2em;
@@ -350,7 +351,8 @@ a {
 a.offcanvas_item {
   display: block;
   color: #fff;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  margin-bottom: 20px; }
   a.offcanvas_item span:last-child {
     display: none; }
   a.offcanvas_item:hover span:first-child {
@@ -507,7 +509,9 @@ aside {
   padding-left: 30px;
   margin-bottom: 20px; }
   .skills_cnt li {
-    padding: 10px 0; }
+    padding: 10px 0;
+    text-align: justify;
+    line-height: 20px; }
 
 @media (max-width: 1023px) {
   .wrap {
@@ -540,7 +544,8 @@ aside {
     padding: 10px;
     background: #eee;
     border-radius: 10px;
-    margin-right: 5px; }
+    margin-right: 5px;
+    margin-bottom: 20px; }
     .works:nth-child(2n) {
       margin-left: 5px;
       margin-right: 0; }
@@ -557,6 +562,7 @@ aside {
       height: auto;
       transform: translateY(0);
       display: block;
+      line-height: 22px;
       background: transparent;
       opacity: 1;
       color: #000; } }
