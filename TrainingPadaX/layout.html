@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Layout</title>
+	<style type="text/css">
+		body {
+			margin: 0px;
+			padding: 0px;
+			font-size: 20px;
+			box-sizing: border-box;
+		}
+		p{
+			margin: 0;
+			padding: 0;
+		}
+		a {
+			text-decoration: none;
+		}
+	
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px 15px;
+		}
+	
+		.nav_wrap>a {
+			display: none;
+		}
+	
+		nav a {
+			color: #000;
+			display: inline-block;
+			margin-right: 10px;
+		}
+	
+		.banner {
+			background-color: powderblue;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 300px;
+			font-size: 40px;
+		}
+		.figcaption_wrap{
+			width: 1200px;
+			margin: 20px auto;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		figcaption{
+			position: relative;
+			display: block;
+			width: calc((100% - 30px) / 4);
+			padding: 0;
+			margin: 0 10px 10px 0;
+		}
+		figcaption:nth-child(4n){
+			margin-right: 0;
+		}
+		figcaption img{
+			display: block;
+			width: 100%;
+		}
+		figcaption figure{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			display: block;
+			background-color: paleturquoise;
+			opacity: .6;
+			text-align: center;
+			width: 100%;
+			line-height: 50px;
+			padding: 0;
+			margin: 0;
+		}
+		@media screen and (max-width: 1200px) {
+			.figcaption_wrap{
+				width: 90%;
+			}
+			figcaption{
+				width: calc((100% - 10px) / 2);
+			}
+			figcaption:nth-child(2n){
+				margin-right: 0;
+			}
+		}
+	
+		@media screen and (max-width: 600px) {
+			.banner{
+				font-size: 24px;
+			}
+			.nav_wrap>a {
+				position: relative;
+				display: block;
+				width: 15px;
+				height: 15px;
+				border-bottom: 1px solid #000;
+			}
+			.nav_wrap>a:before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				content: "";
+				width: 15px;
+				height: 1px;
+				background-color: #000;
+	
+			}
+			.nav_wrap>a:after {
+				position: absolute;
+				top: 7px;
+				left: 0;
+				display: block;
+				content: "";
+				width: 15px;
+				height: 1px;
+				background-color: #000;
+	
+			}
+			nav {
+				display: none;
+			}
+			figcaption{
+				width: 100%;
+				margin-right: 0;
+			}
+
+		}
+	</style>
+	<script type="text/javascript">
+		
+		function toggleMenu() {
+			var navMenu = document.getElementsByClassName("nav");
+
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<p>My Website</p>
+		<div class="nav_wrap">
+			<a href="#" id="navBar" onclick="toggleMenu()"></a>
+			<nav id="nav">
+				<a href="#">Item1</a>
+				<a href="#">Item2</a>
+				<a href="#">Item3</a>
+				<a href="#">Item4</a>
+			</nav>
+		</div>
+	</header>
+	<div class="banner">Welcome to My Home</div>
+	<div class="figcaption_wrap">
+		<figcaption>
+			<img src="https://picsum.photos/id/659/600/400" alt="Alexander Dimitrov">
+			<figure>Alexander Dimitrov</figure>
+		</figcaption>
+		
+		<figcaption>
+			<img src="https://picsum.photos/id/1025/600/400" alt="Matthew Wiebe">
+			<figure>Matthew Wiebe</figure>
+		</figcaption>
+
+		<figcaption>
+			<img src="https://picsum.photos/id/1084/600/400" alt="Jay Ruzesky">
+			<figure>Jay Ruzesky</figure>
+		</figcaption>
+
+		<figcaption>
+			<img src="https://picsum.photos/id/577/600/400" alt="Thomas Lefebvre">
+			<figure>Thomas Lefebvre</figure>
+		</figcaption>
+
+		<figcaption>
+			<img src="https://picsum.photos/id/200/600/400" alt="Elias Carlsson">
+			<figure>Elias Carlsson</figure>
+		</figcaption>
+
+		<figcaption>
+			<img src="https://picsum.photos/id/433/600/400" alt="Thomas Lefebvre">
+			<figure>Thomas Lefebvre</figure>
+		</figcaption>
+
+		<figcaption>
+			<img src="https://picsum.photos/id/582/600/400" alt="Levi Saunders">
+			<figure>Levi Saunders</figure>
+		</figcaption>
+
+		<figcaption>
+			<img src="https://picsum.photos/id/593/600/400" alt="Paula Borowska">
+			<figure>Paula Borowska</figure>
+		</figcaption>
+	
+	</div>
+</body>
