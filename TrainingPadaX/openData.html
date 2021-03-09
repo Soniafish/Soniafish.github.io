@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Layout</title>
+	<title>open data</title>
 	<style type="text/css">
 		body {
 			margin: 0px;
@@ -48,7 +48,7 @@
 		}
 		.figcaption_wrap{
 			width: 1200px;
-			margin: 20px auto;
+			margin: 40px auto;
 			display: flex;
 			flex-wrap: wrap;
 		}
@@ -65,18 +65,26 @@
 		figcaption img{
 			display: block;
 			width: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 		figcaption figure{
-			/* position: absolute; */
-			/* left: 0; */
-			/* bottom: 0; */
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			box-sizing: border-box;
 			display: block;
 			background-color: paleturquoise;
-			/* opacity: .9; */
+			opacity: .9;
 			text-align: center;
 			width: 100%;
+			height: 50px;
 			line-height: 50px;
-			padding: 0;
+			overflow: hidden;
+			white-space: nowrap; 
+			text-overflow:ellipsis;
+			padding: 0 10px;
 			margin: 0;
 		}
 		button{
@@ -146,6 +154,7 @@
 	</script>
 </head>
 <body>
+
 	<header>
 		<p>My Website</p>
 		<div class="nav_wrap">
@@ -158,49 +167,10 @@
 			</nav>
 		</div>
 	</header>
+
 	<div class="banner">Welcome to Taipei</div>
-	<div class="figcaption_wrap" id="figcaption_wrap">
-		<!-- <figcaption>
-			<img src="https://picsum.photos/id/659/600/400" alt="Alexander Dimitrov">
-			<figure>Alexander Dimitrov</figure>
-		</figcaption>
-		
-		<figcaption>
-			<img src="https://picsum.photos/id/1025/600/400" alt="Matthew Wiebe">
-			<figure>Matthew Wiebe</figure>
-		</figcaption>
 
-		<figcaption>
-			<img src="https://picsum.photos/id/1084/600/400" alt="Jay Ruzesky">
-			<figure>Jay Ruzesky</figure>
-		</figcaption>
-
-		<figcaption>
-			<img src="https://picsum.photos/id/577/600/400" alt="Thomas Lefebvre">
-			<figure>Thomas Lefebvre</figure>
-		</figcaption>
-
-		<figcaption>
-			<img src="https://picsum.photos/id/200/600/400" alt="Elias Carlsson">
-			<figure>Elias Carlsson</figure>
-		</figcaption>
-
-		<figcaption>
-			<img src="https://picsum.photos/id/433/600/400" alt="Thomas Lefebvre">
-			<figure>Thomas Lefebvre</figure>
-		</figcaption>
-
-		<figcaption>
-			<img src="https://picsum.photos/id/582/600/400" alt="Levi Saunders">
-			<figure>Levi Saunders</figure>
-		</figcaption>
-
-		<figcaption>
-			<img src="https://picsum.photos/id/593/600/400" alt="Paula Borowska">
-			<figure>Paula Borowska</figure>
-		</figcaption> -->
-	
-	</div>
+	<div class="figcaption_wrap" id="figcaption_wrap"></div>
 
 	<button onclick="drawHtml()" id="btn">Load More</button>
 
@@ -209,7 +179,6 @@
 		// src = "https://data.taipei/api/v1/dataset/36847f3f-deff-4183-a5bb-800737591de5?scope=resourceAquire"
 		var data = [];
 		var count = 0;
-		// var maxCount = 0;
 		var mainCnt=document.getElementById("figcaption_wrap")
 		function getData (){
 			var req = new XMLHttpRequest();
@@ -224,6 +193,7 @@
 			};
 			req.send();
 		}
+
 		getData();
 
 		function drawHtml(){
@@ -247,7 +217,8 @@
 					// console.log(stitle + ", " + fistImg);
 					var figcaption = document.createElement('figcaption');
 					var newImg = document.createElement('img');
-					newImg.src = fistImg;
+					newImg.src = "empty.png";
+					newImg.style.backgroundImage = "url("+fistImg+")";
 					newImg.alt = stitle;
 					var figure = document.createElement('figure');
 					var txtTitle = document.createTextNode(stitle);
