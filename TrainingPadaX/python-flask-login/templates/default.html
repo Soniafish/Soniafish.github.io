@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body, h1, h2, h3, p, div{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: #fff; background-color: #003060; text-align: center; padding: 20px 0;">歡迎光臨・請輸入帳號密碼</h2>
+
+    <h2 style="text-align: center; margin: 30px auto;">登入系統</h2>
+    <form action="/signin" method="POST">
+        <div style="text-align: center; font-size: 16px; margin-bottom: 20px;">
+            <span style="display: inline-block; margin-right: 10px;">帳號</span>
+            <input type="text" placeholder="請輸入帳號" name="account" style="width: 200px; line-height: 30px;"></label>
+        </div>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <span style="display: inline-block; margin-right: 10px;">密碼</span>
+            <input type="password" placeholder="請輸入密碼" name="pword" style="width: 200px; line-height: 30px;"></label>
+        </div>
+        <button style="display: block; margin: 30px auto; width: 100px; line-height: 30px; font-size: 16px;">登入</button>
+    </form>
+</body>
+</html>
