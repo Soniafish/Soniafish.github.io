@@ -10,6 +10,7 @@ Query OK, 1 row affected (0.04 sec)
 
 
 - 使用 SELECT 指令取得所有在 user 資料表中的使用者資料。
+
 SELECT * FROM user;
 ```
 mysql> SELECT * FROM user;
@@ -29,6 +30,7 @@ mysql> SELECT * FROM user;
 
 
 - 使用 SELECT 指令取得 user 資料表中總共有幾筆資料。
+
 SELECT COUNT(id) FROM user;
 ```
 mysql> SELECT COUNT(id) FROM user;
@@ -42,6 +44,7 @@ mysql> SELECT COUNT(id) FROM user;
 
 
 - 使用 SELECT 指令取得所有在 user 資料表中的使用者資料，並按照 time 欄位，由近到遠排序。
+
 SELECT * FROM user ORDER BY time DESC;
 ```
 mysql> SELECT * FROM user ORDER BY time DESC;
@@ -61,6 +64,7 @@ mysql> SELECT * FROM user ORDER BY time DESC;
 
 
 - 使用 SELECT 指令取得 user 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，由近到遠排序。
+
 SELECT * FROM user ORDER BY time DESC LIMIT 1,3;
 ```
 mysql> SELECT * FROM user ORDER BY time DESC LIMIT 1,3;
@@ -76,6 +80,7 @@ mysql> SELECT * FROM user ORDER BY time DESC LIMIT 1,3;
 
 
 - 使用 SELECT 指令取得欄位 username 是 ply 的使用者資料。
+
 SELECT * FROM user WHERE username='ply';
 ```
 mysql> SELECT * FROM user WHERE username='ply';
@@ -128,6 +133,11 @@ mysql> SELECT * FROM user;
 
 - 使用 DELETE 指令刪除所有在 user 資料表中的資料。
 
+DROP TABLE user;
+```
+mysql> DROP TABLE user;
+Query OK, 0 rows affected (0.01 sec)
+```
 
 
 ### 結合資料表 SQL JOIN 的操作 (Optional)
@@ -159,8 +169,8 @@ mysql> SELECT user.name, message.user_id, message.content, message.time
 
 
 - 使用 SELECT 搭配 JOIN 的語法，取得 user 資料表中欄位 username 是 ply 的所有留言，資料中須包含留言會員的姓名。
-  SELECT user.name, user.username, message.content, message.time
-  
+
+SELECT user.name, user.username, message.content, message.time  
 FROM user
 LEFT JOIN message ON user.id= message.user_id
 WHERE user.username='ply';
