@@ -1,12 +1,12 @@
 ### 基本的SQL指令
 - 使用 INSERT 指令新增一筆資料到 user 資料表中，這筆資料的 username 和password 欄位必須是 ply。接著繼續新增至少 4 筆隨意的資料。
 
-INSERT INTO user (name, username, password) VALUES ('Bonnie','ply', 'ply');
-```
-mysql> INSERT INTO user (name, username, password) VALUES ('Bonnie','ply', 'ply'
-);
-Query OK, 1 row affected (0.04 sec)
-```
+    INSERT INTO user (name, username, password) VALUES ('Bonnie','ply', 'ply');
+    ```
+    mysql> INSERT INTO user (name, username, password) VALUES ('Bonnie','ply', 'ply'
+    );
+    Query OK, 1 row affected (0.04 sec)
+    ```
 
 
 - 使用 SELECT 指令取得所有在 user 資料表中的使用者資料。
