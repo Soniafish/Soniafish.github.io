@@ -133,10 +133,10 @@ mysql> SELECT * FROM user;
 
 - 使用 DELETE 指令刪除所有在 user 資料表中的資料。
 
-DROP TABLE user;
+DELETE FROM user;
 ```
-mysql> DROP TABLE user;
-Query OK, 0 rows affected (0.01 sec)
+mysql> DELETE FROM user;
+Query OK, 7 rows affected (0.00 sec)
 ```
 
 
