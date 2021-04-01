@@ -24,7 +24,7 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 @app.route("/")
 def index():
     if 'userid' in session:
-        return redirect("/member")
+        return redirect("/member?name="+session['username'])
     else:
         return render_template("default.html")
 
@@ -41,23 +41,21 @@ def handel_signin():
         # 建立Cursor物件
         cursor=cnnt.cursor()
 
-        # 取得所有資料
-        cursor.execute("SELECT * FROM user")
-        db_user=cursor.fetchall()
-
-        # 確認登入是否正確
-        for row in db_user:
-            if row[2]==userid and row[3]==userpw:
-                # erro_message=""
-                session['userid'] = userid
-                session['username'] = row[1]
-                return redirect("/member?name="+row[1]) 
-
+        # 篩選資料表的資料
+        result=cursor.execute("SELECT name FROM user where username='"+userid+"' and password='"+userpw+"'")
+        print(result)
+        if result:   # 登入成功：即帳號/密碼皆存在資料表
+            select_data=cursor.fetchone()   #取得使用者名字
+            session['userid'] = userid
+            session['username'] = select_data[0]
+            return redirect("/member?name="+select_data[0]) 
+        
+        # 登入失敗：即帳號或密碼不存在資料表
         return redirect("/error?message=帳號或密碼輸入錯誤")
 
     else:
         if 'userid' in session:
-            return redirect("/member")
+            return redirect("/member?name="+session['username'])
         else:
             return redirect("/")
 
@@ -74,15 +72,14 @@ def handel_signup():
         # 建立Cursor物件
         cursor=cnnt.cursor()
 
-        # 取得所有資料
-        cursor.execute("SELECT * FROM user")
-        db_user=cursor.fetchall()
-        # print(db_user)
-        for row in db_user:
-            if row[2]==userid:  # 註冊失敗
-                return redirect("/error?message=帳號已經被註冊")
+        # 篩選資料表的資料
+        result=cursor.execute("SELECT * FROM user where username='"+userid+"'")
+        print(result)
+        if result: # 註冊失敗:即資料表已有該使用者帳號
+            return redirect("/error?message=帳號已經被註冊")
+        
 
-        # 註冊成功
+        # 註冊成功：即資料表無該使用者帳號
         cursor.execute("INSERT INTO user(name, username, password)VALUES('" + username + "','" + userid + "', '" + userpw + "')")
         cnnt.commit()
 
@@ -90,14 +87,14 @@ def handel_signup():
 
     else:
         if 'userid' in session:
-            return redirect("/member")
+            return redirect("/member?name="+session['username'])
         else:
             return redirect("/")
     
 @app.route("/member")
 def check_member():
     if 'userid' in session:
-        name = request.args.get("name", None)
+        name = request.args.get("name", session['username'])
         return render_template("member.html", name=name)
     else:
         return redirect("/")
@@ -119,9 +116,6 @@ def db_connect():
         # 建立Connection物件
         connect = pymysql.connect(**db_settings)
         print("connect db_settings")
-
-        # 建立Cursor物件
-        # db_cursor=connect.cursor()
 
         return connect
 
