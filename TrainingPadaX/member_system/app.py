@@ -17,6 +17,25 @@ db_settings = {
     "db": "website",        #資料庫名稱
 }
 
+def db_connect():
+    try:
+        # 建立Connection物件
+        connect = pymysql.connect(**db_settings)
+        print("connect db_settings")
+
+        return connect
+
+    except Exception as ex:
+        print(ex)
+        return "資料庫連線失敗"
+
+# 連線DB
+cnnt=db_connect()
+
+# 建立Cursor物件
+cursor=cnnt.cursor()
+
+
 app=Flask(__name__)
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
@@ -34,12 +53,6 @@ def handel_signin():
     if request.method == 'POST':
         userid=request.form["userid"]
         userpw=request.form["userpw"]
-        
-        # 連線DB
-        cnnt=db_connect()
-        
-        # 建立Cursor物件
-        cursor=cnnt.cursor()
 
         # 篩選資料表的資料
         result=cursor.execute("SELECT name FROM user where username='"+userid+"' and password='"+userpw+"'")
@@ -65,12 +78,6 @@ def handel_signup():
         username=request.form["username"]
         userid=request.form["userid"]
         userpw=request.form["userpw"]
-        
-        # 連線DB
-        cnnt=db_connect()
-        
-        # 建立Cursor物件
-        cursor=cnnt.cursor()
 
         # 篩選資料表的資料
         result=cursor.execute("SELECT * FROM user where username='"+userid+"'")
@@ -78,7 +85,7 @@ def handel_signup():
         if result: # 註冊失敗:即資料表已有該使用者帳號
             return redirect("/error?message=帳號已經被註冊")
         
-
+        
         # 註冊成功：即資料表無該使用者帳號
         cursor.execute("INSERT INTO user(name, username, password)VALUES('" + username + "','" + userid + "', '" + userpw + "')")
         cnnt.commit()
@@ -110,18 +117,7 @@ def signout():
     session.pop('userid', None)
     return redirect("/")
 
-#連線DB
-def db_connect():
-    try:
-        # 建立Connection物件
-        connect = pymysql.connect(**db_settings)
-        print("connect db_settings")
 
-        return connect
-
-    except Exception as ex:
-        print(ex)
-        return "資料庫連線失敗"
 
 
 app.run(port=3000)
