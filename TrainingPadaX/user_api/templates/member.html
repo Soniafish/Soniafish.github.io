@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>member</title>
+    <style>
+        body, h1, h2, h3, p, div{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: #fff; background-color: #003060; text-align: center; padding: 20px 0;">歡迎光臨・這是會員頁</h2>
+    <p style="text-align: center; font-size: 20px;" id="wellcomTxt"><span>{{name}}，歡迎登入系統</span></p>
+    <form action="/signout">
+        <button style="display: block; margin: 30px auto; width: 100px; line-height: 30px; font-size: 16px;">登出系統</button>
+    </form>
+
+    <br>
+    <br>
+    
+    <p style="text-align: center; font-size: 20px; font-weight: bold;">查詢會員姓名</p>
+    <div style="text-align: center; font-size: 16px; margin-bottom: 70px;">
+        <input type="text" placeholder="請輸入會員姓名" name="username" id="username" style="width: 200px; line-height: 30px;"></label>
+        <button style="margin: 20px auto 10px auto; width: 60px; line-height: 30px; font-size: 16px;" onclick="searchName()">查詢</button>
+        <p style="text-align: center; font-size: 18px;" id="result"></p>
+    </div>
+    
+    
+    <p style="text-align: center; font-size: 20px; font-weight: bold;">更新我的姓名</p>
+    <div style="text-align: center; font-size: 16px; margin-bottom: 50px;">
+        <input type="text" placeholder="請輸入新的姓名" name="updatusername" id="updatusername" style="width: 200px; line-height: 30px;"></label>
+        <button style="margin: 20px auto 10px auto; width: 60px; line-height: 30px; font-size: 16px;" onclick="updatName()">更新</button>
+        <p style="text-align: center; font-size: 18px; margin-bottom: 20px;" id="status"></p>
+    </div>
+    
+    
+
+    <script>
+        function searchName() {
+            var username=document.getElementById("username").value;
+            // console.log("input:"+username);
+
+            if(username==""){
+                alert("請輸入欲查詢的會員帳號");
+            }else{
+                var src = "http://127.0.0.1:3000/api/users?username=" + username;
+                var req = new XMLHttpRequest();
+                req.open("get", src);
+                req.onload = function () {
+                    // console.log(this.responseText);
+                    data = JSON.parse(this.responseText);
+
+                    var txt = "";
+                    if (data.data == null) {
+                        txt = "此帳號不存在";
+                    } else {
+                        txt = data.data.name + "(" + data.data.username + ")";
+                    }
+
+                    if (document.getElementById("result").childNodes.length > 0) {
+                        document.getElementById("result").childNodes[0].remove();
+                    }
+                    var span = document.createElement("span");
+                    var txtNode = document.createTextNode(txt);
+                    span.appendChild(txtNode);
+                    document.getElementById("result").appendChild(span);
+
+                };
+                req.send();
+            }
+            
+
+        }
+
+        function updatName() {
+            var updateUsername=document.getElementById("updatusername").value;
+            // console.log("input:" + updateUsername);
+
+            if(updateUsername==""){
+                alert("請輸入欲更新的姓名");
+            }else{
+                var src = "http://127.0.0.1:3000/api/user";
+                var params = JSON.stringify({"name": updateUsername});
+                var req = new XMLHttpRequest();
+                req.open("post", src);
+                req.setRequestHeader('Content-Type', 'application/json');
+                req.onload = function () {
+                    // console.log(this.responseText);
+                    data = JSON.parse(this.responseText);
+
+                    var txt = "";
+                    if (data.ok == "true") {
+                        txt = "更新成功";
+                    } else if(data.error == "true"){
+                        txt = "更新失敗";
+                    }
+
+                    if (document.getElementById("status").childNodes.length>0) {
+                        document.getElementById("status").childNodes[0].remove();
+                    }
+                    var span = document.createElement("span");
+                    var txtNode = document.createTextNode(txt);
+                    span.appendChild(txtNode);
+                    document.getElementById("status").appendChild(span);
+
+                    
+                    document.getElementById("wellcomTxt").childNodes[0].remove();
+                    var span2 = document.createElement("span");
+                    var txtNode2 = document.createTextNode(updateUsername+"，歡迎登入系統");
+                    span2.appendChild(txtNode2);
+                    document.getElementById("wellcomTxt").appendChild(span2);
+                    
+
+                };
+                req.send(params);
+            }
+        
+        }
+
+    </script>
+</body>
+</html>
