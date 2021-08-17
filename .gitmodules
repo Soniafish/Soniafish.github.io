@@ -13,9 +13,6 @@
 [submodule "TV"]
 	path = TV
 	url = https://github.com/Soniafish/TV.git
-[submodule "GEOCODER"]
-	path = GEOCODER
-	url = https://github.com/Soniafish/GEOCODER.git
 [submodule "POSTCARD"]
 	path = POSTCARD
 	url = https://github.com/Soniafish/POSTCARD.git
