@@ -1,6 +1,3 @@
-[submodule "Resume"]
-	path = Resume
-	url = https://github.com/Soniafish/Resume.git
 [submodule "ATM"]
 	path = ATM
 	url = https://github.com/Soniafish/ATM.git
