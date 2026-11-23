@@ -100,6 +100,19 @@
   .choices button { font-size: 1.8rem; font-weight: 700; min-height: 84px; }
   .choices button.right { background: var(--good); color: #fff; border-color: var(--good); }
   .choices button.wrong { background: var(--bad); color: #fff; border-color: var(--bad); }
+  /* 看顏色說顏色：平常白底配顏色外框，按下去才填滿該顏色；答對答錯用 ✓ ✗ 標示 */
+  .choices button.swatch { background: var(--card); border: 4px solid var(--sw); color: var(--ink); position: relative; }
+  .choices button.swatch:active, .choices button.swatch.picked { background: var(--sw); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+  .choices button.swatch.light:active, .choices button.swatch.light.picked { color: #2b2620; text-shadow: none; }
+  .choices button.swatch.right, .choices button.swatch.wrong { border-color: var(--sw); outline: 6px solid var(--good); outline-offset: 3px; }
+  .choices button.swatch:not(.picked).right { background: var(--card); color: var(--ink); }
+  .choices button.swatch.wrong { outline-color: var(--bad); background: var(--sw); }
+  .choices button.swatch.right::after, .choices button.swatch.wrong::after {
+    position: absolute; top: 6px; right: 10px; font-size: 1.4rem; width: 1.6em; height: 1.6em; line-height: 1.6em;
+    border-radius: 50%; background: #fff; text-shadow: none;
+  }
+  .choices button.swatch.right::after { content: '✓'; color: var(--good); }
+  .choices button.swatch.wrong::after { content: '✗'; color: var(--bad); }
 
   /* 顏色 */
   .stroop-word { font-size: 4.5rem; font-weight: 900; text-align: center; margin: 8px 0 16px; }
@@ -804,11 +817,16 @@
       const ch = el.querySelector('.choices');
       let answered = false;
       colors.forEach(c => {
-        const b = h(`<button style="border-color:${c.v}; border-width:4px">${c.name}色</button>`);
+        // 白底顏色外框，按下去才填滿該顏色；黃色底配深色字才看得清楚
+        const b = h(`<button class="swatch${c.name === '黃' ? ' light' : ''}" style="--sw:${c.v}">${c.name}色</button>`);
         b.onclick = async () => {
           if (answered) return; answered = true;
+          b.classList.add('picked');
           if (c === ink) { score++; b.classList.add('right'); sfx.good(); ui.feedback(pick(encouragements), 'good'); }
-          else { b.classList.add('wrong'); sfx.bad(); ui.feedback(`字的顏色是「${ink.name}色」喔`, 'bad'); }
+          else {
+            b.classList.add('wrong'); sfx.bad(); ui.feedback(`字的顏色是「${ink.name}色」喔`, 'bad');
+            ch.children[colors.indexOf(ink)].classList.add('right');
+          }
           i++; await wait(c === ink ? 900 : 1700); next();
         };
         ch.appendChild(b);
