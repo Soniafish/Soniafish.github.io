@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>銀髮腦力樂園</title>
+<style>
+  :root {
+    --bg: #fbf7f0;
+    --card: #ffffff;
+    --ink: #2b2620;
+    --muted: #6b6258;
+    --line: #e6ddd0;
+    --accent: #c0582b;
+    --accent-ink: #ffffff;
+    --good: #2f7d4f;
+    --bad: #b3362b;
+    --soft: #f3ebe0;
+    --c-red: #d32f2f;
+    --c-blue: #1e5bb8;
+    --c-green: #2e7d32;
+    --c-yellow: #c99700;
+    --pa0: #ffd9e3; --pa1: #ffe8c7; --pa2: #fff4b8; --pa3: #d8f3dc; --pa4: #d4ecff; --pa5: #e6dcff; --pa6: #ffe0d1; --pa7: #d6f5ef;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1d1a17; --card: #2a2622; --ink: #f5efe6; --muted: #bdb3a6;
+      --line: #443d35; --accent: #e9824f; --accent-ink: #1d1a17;
+      --good: #6fcf97; --bad: #ff8a80; --soft: #35302a;
+      --c-red: #ff6b6b; --c-blue: #6ea8ff; --c-green: #6fcf7a; --c-yellow: #ffd54f;
+      --pa0: #5a3440; --pa1: #5a4630; --pa2: #55502a; --pa3: #2f4a36; --pa4: #2c4257; --pa5: #3f3557; --pa6: #573a2e; --pa7: #2b4a45;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1d1a17; --card: #2a2622; --ink: #f5efe6; --muted: #bdb3a6;
+    --line: #443d35; --accent: #e9824f; --accent-ink: #1d1a17;
+    --good: #6fcf97; --bad: #ff8a80; --soft: #35302a;
+    --c-red: #ff6b6b; --c-blue: #6ea8ff; --c-green: #6fcf7a; --c-yellow: #ffd54f;
+      --pa0: #5a3440; --pa1: #5a4630; --pa2: #55502a; --pa3: #2f4a36; --pa4: #2c4257; --pa5: #3f3557; --pa6: #573a2e; --pa7: #2b4a45;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 20px; }
+  html.big { font-size: 24px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 16px 16px 48px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  h1 { font-size: 1.8rem; margin: 0; }
+  h2 { font-size: 1.4rem; margin: 0 0 8px; }
+  p { margin: 0 0 12px; }
+  .muted { color: var(--muted); }
+  button {
+    font: inherit; cursor: pointer; border-radius: 14px; border: 2px solid var(--line);
+    background: var(--card); color: var(--ink); padding: 12px 20px; min-height: 56px;
+  }
+  button:focus-visible { outline: 4px solid var(--accent); outline-offset: 2px; }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+  button:disabled { opacity: .5; cursor: default; }
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+  .toolbar button { min-height: 48px; padding: 8px 14px; font-size: .9rem; }
+  .grid-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .game-card {
+    text-align: left; padding: 20px; min-height: 150px; display: flex; flex-direction: column; gap: 6px;
+    border-width: 3px;
+  }
+  .game-card:hover { border-color: var(--accent); }
+  .game-card .icon { font-size: 2.4rem; line-height: 1; }
+  .game-card .title { font-size: 1.25rem; font-weight: 700; }
+  .game-card .desc { color: var(--muted); font-size: .9rem; }
+  .game-card .best { font-size: .85rem; color: var(--accent); font-weight: 600; }
+  .panel { background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 20px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .stat { font-size: 1.1rem; font-weight: 700; }
+  .feedback { min-height: 2.2em; font-size: 1.3rem; font-weight: 700; text-align: center; margin: 8px 0 0; }
+  .panel.game { padding-top: 14px; }
+  .panel.game .topbar { margin-bottom: 0; }
+  .panel.game .feedback { margin: 4px 0 8px; }
+  .keyhint { font-size: .8rem; color: var(--muted); text-align: center; margin-top: 10px; }
+  .feedback.good { color: var(--good); }
+  .feedback.bad { color: var(--bad); }
+  .center { text-align: center; }
+  .hidden { display: none !important; }
+
+  /* 翻牌 */
+  .cards { display: grid; gap: 12px; margin: 0 auto; max-width: 620px; }
+  .mcard {
+    aspect-ratio: 1; font-size: 2.6rem; padding: 0; border-width: 3px;
+    background: var(--soft); display: flex; align-items: center; justify-content: center;
+  }
+  .mcard.open { background: var(--card); border-color: var(--accent); }
+  .mcard.done { background: var(--card); border-color: var(--good); opacity: .65; }
+
+  /* 計算 */
+  .question { font-size: 3rem; font-weight: 800; text-align: center; margin: 16px 0; letter-spacing: .05em; }
+  .question.story { font-size: 1.6rem; font-weight: 700; line-height: 1.7; letter-spacing: 0; max-width: 640px; margin: 8px auto 20px; text-align: left; }
+  .choices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 520px; margin: 0 auto; }
+  .choices button { font-size: 1.8rem; font-weight: 700; min-height: 84px; }
+  .choices button.right { background: var(--good); color: #fff; border-color: var(--good); }
+  .choices button.wrong { background: var(--bad); color: #fff; border-color: var(--bad); }
+
+  /* 顏色 */
+  .stroop-word { font-size: 4.5rem; font-weight: 900; text-align: center; margin: 8px 0 16px; }
+
+  /* 數字記憶 */
+  .seq-show { font-size: 4rem; font-weight: 800; text-align: center; min-height: 1.4em; letter-spacing: .2em; }
+  .digits-play { display: flex; gap: 20px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+  .digits-play .side { flex: 1 1 240px; max-width: 360px; display: flex; flex-direction: column; gap: 12px; }
+  .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; flex: 0 1 330px; }
+  .keypad button { font-size: 1.7rem; font-weight: 700; min-height: clamp(52px, 8.5vh, 72px); padding: 4px; }
+  .entry { font-size: 3.4rem; font-weight: 800; text-align: center; min-height: 1.4em; line-height: 1.4; letter-spacing: .15em; border-bottom: 3px solid var(--line); white-space: nowrap; }
+  .entry.wrong { color: var(--bad); text-decoration: line-through; text-decoration-thickness: 3px; font-size: 2.6rem; }
+  .answer-big { text-align: center; }
+  .answer-big .label { font-size: 1rem; color: var(--muted); }
+  .answer-big .num { font-size: 3.4rem; font-weight: 800; color: var(--good); letter-spacing: .15em; line-height: 1.3; }
+  .digits-play .ok { font-size: 1.3rem; min-height: 72px; }
+
+  /* 位置記憶 */
+  .spot-grid { display: grid; gap: 10px; max-width: min(420px, calc(100dvh - 370px)); min-width: 220px; margin: 0 auto; }
+  .spot { aspect-ratio: 1; padding: 0; background: var(--soft); border-width: 3px; }
+  .spot.lit { background: var(--accent); border-color: var(--accent); }
+  .spot.right { background: var(--good); border-color: var(--good); }
+  .spot.wrong { background: var(--bad); border-color: var(--bad); }
+
+  /* 玩家 */
+  #who { font-weight: 700; border-color: var(--accent); }
+  /* 圓形粉彩底的頭像 */
+  .badge {
+    display: inline-flex; align-items: center; justify-content: center; vertical-align: middle;
+    width: 1.7em; height: 1.7em; flex-shrink: 0; border-radius: 50%; line-height: 1;
+    box-shadow: inset 0 -0.12em 0 rgba(0,0,0,.07), 0 0.06em 0.18em rgba(0,0,0,.08);
+  }
+  #who .badge { font-size: 1.05rem; margin-right: 4px; }
+  .stat .badge { font-size: 1rem; }
+  @keyframes wiggle { 0%,100% { transform: rotate(0) } 25% { transform: rotate(-8deg) scale(1.06) } 75% { transform: rotate(8deg) scale(1.06) } }
+  .player-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; margin-top: 16px; }
+  .player-card { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 20px 12px; border-width: 3px; border-radius: 22px; }
+  .player-card:hover { border-color: var(--accent); }
+  .player-card:hover .badge { animation: wiggle .5s ease-in-out; }
+  .player-card .badge { font-size: 3.2rem; }
+  .player-card .av { font-size: 3.2rem; line-height: 1.1; }
+  .player-card .nm { font-size: 1.3rem; font-weight: 700; word-break: break-all; }
+  .player-card .sub { font-size: .8rem; }
+  .player-card.add { border-style: dashed; color: var(--muted); }
+  .field { display: flex; flex-direction: column; gap: 6px; max-width: 420px; margin: 16px auto 0; }
+  .field input { font: inherit; font-size: 1.4rem; padding: 12px 14px; border: 3px solid var(--line); border-radius: 14px; background: var(--bg); color: var(--ink); }
+  .field input:focus { outline: none; border-color: var(--accent); }
+  .avatar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 640px; }
+  @media (max-width: 640px) { .avatar-grid { grid-template-columns: repeat(4, 1fr); } .avatar-opt .badge { font-size: 2.2rem; } }
+  .avatar-opt { padding: 8px 4px; min-height: 96px; border: none; border-radius: 16px; background: transparent; display: flex; align-items: center; justify-content: center; }
+  .avatar-opt .badge { font-size: 2.6rem; transition: transform .15s; }
+  .avatar-opt:hover .badge { transform: scale(1.1); }
+  .avatar-opt[aria-pressed="true"] .badge { outline: 4px solid var(--accent); outline-offset: 3px; }
+  .avatar-opt[aria-pressed="true"] .badge { animation: wiggle .5s ease-in-out; }
+  .panel > p:has(+ .avatar-grid), .avatar-grid { margin-left: auto; margin-right: auto; max-width: 640px; }
+  .result-big { font-size: 3rem; font-weight: 800; color: var(--accent); }
+  .history { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .9rem; }
+  .history td, .history th { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: left; }
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  footer { margin-top: 32px; font-size: .85rem; color: var(--muted); text-align: center; }
+  @media (max-width: 520px) {
+    html { font-size: 18px; }
+    .question { font-size: 2.4rem; }
+    .stroop-word { font-size: 3.4rem; }
+    .mcard { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🌿 銀髮腦力樂園</h1>
+    <div class="toolbar">
+      <button id="who" class="hidden"></button>
+      <button id="btnFont" aria-pressed="false">字體放大</button>
+      <button id="btnSound" aria-pressed="true">🔊 音效：開</button>
+      <button id="btnVoice" aria-pressed="false">🗣 語音提示：關</button>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <footer>每天玩 10–15 分鐘就很好。慢慢來，沒有時間壓力，答錯也沒關係。</footer>
+</div>
+
+<script>
+(() => {
+  const app = document.getElementById('app');
+  const STORE_KEY = 'silverBrain.v1';
+
+  // ---------- 儲存 ----------
+  function loadStore() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; }
+  }
+  function saveStore(s) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {}
+  }
+  const store = Object.assign({ players: [], current: null, prefs: { sound: true, voice: false, big: false } }, loadStore());
+  // 舊版只有一個人的紀錄：轉成一位叫「我」的玩家
+  if (store.history || store.best || store.level) {
+    if (store.history?.length || Object.keys(store.best || {}).length || Object.keys(store.level || {}).length) {
+      store.players.push(newPlayer('我', '🙂', { best: store.best || {}, level: store.level || {}, history: store.history || [] }));
+      store.current = store.players[0].id;
+    }
+    delete store.history; delete store.best; delete store.level;
+    saveStore(store);
+  }
+  function newPlayer(name, avatar, data = {}) {
+    return { id: 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name, avatar, best: {}, level: {}, history: [], ...data };
+  }
+  // 目前在玩的人
+  const me = () => store.players.find(p => p.id === store.current);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // ---------- 設定 ----------
+  const btnFont = document.getElementById('btnFont');
+  const btnSound = document.getElementById('btnSound');
+  const btnVoice = document.getElementById('btnVoice');
+  function applyPrefs() {
+    document.documentElement.classList.toggle('big', store.prefs.big);
+    btnFont.textContent = store.prefs.big ? '字體還原' : '字體放大';
+    btnFont.setAttribute('aria-pressed', store.prefs.big);
+    btnSound.textContent = store.prefs.sound ? '🔊 音效：開' : '🔇 音效：關';
+    btnSound.setAttribute('aria-pressed', store.prefs.sound);
+    btnVoice.textContent = store.prefs.voice ? '🗣 語音提示：開' : '🗣 語音提示：關';
+    btnVoice.setAttribute('aria-pressed', store.prefs.voice);
+  }
+  btnFont.onclick = () => { store.prefs.big = !store.prefs.big; saveStore(store); applyPrefs(); };
+  btnSound.onclick = () => { store.prefs.sound = !store.prefs.sound; saveStore(store); applyPrefs(); };
+  btnVoice.onclick = () => { store.prefs.voice = !store.prefs.voice; saveStore(store); applyPrefs(); if (store.prefs.voice) say('語音提示已開啟'); };
+  applyPrefs();
+
+  // ---------- 音效 / 語音 ----------
+  let actx;
+  function tone(freqs, dur = 0.12) {
+    if (!store.prefs.sound) return;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      let t = actx.currentTime;
+      freqs.forEach(f => {
+        const o = actx.createOscillator(), g = actx.createGain();
+        o.type = 'sine'; o.frequency.value = f;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.25, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        o.connect(g).connect(actx.destination);
+        o.start(t); o.stop(t + dur + 0.02);
+        t += dur;
+      });
+    } catch {}
+  }
+  const sfx = {
+    good: () => tone([660, 880]),
+    bad: () => tone([300, 220], 0.15),
+    flip: () => tone([520], 0.06),
+    win: () => tone([523, 659, 784, 1047], 0.14),
+  };
+  function say(text) {
+    if (!store.prefs.voice || !('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-TW'; u.rate = 0.85;
+    speechSynthesis.speak(u);
+  }
+
+  // ---------- 工具 ----------
+  const rand = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a;
+  const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rand(0, i); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const h = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
+  let session = 0; // 切換畫面時讓舊的非同步流程停止
+
+  // 鍵盤：目前畫面的處理函式（數字鍵、Enter、退格）
+  let onKey = null;
+  document.addEventListener('keydown', e => {
+    if (onKey && !e.metaKey && !e.ctrlKey && !e.altKey && onKey(e.key)) e.preventDefault();
+  });
+  // 數字 1–4 對應選項按鈕
+  const choiceKeys = container => key => {
+    const n = +key;
+    const btns = container.querySelectorAll('button');
+    if (n >= 1 && n <= btns.length) { btns[n - 1].click(); return true; }
+    return false;
+  };
+
+  // 萬一程式出錯，顯示可以回首頁的訊息，不讓畫面停住
+  window.addEventListener('error', () => {
+    session++; onKey = null;
+    const el = h(`<div class="panel center"><h2>哎呀，出了一點小狀況</h2>
+      <p class="muted">請按下面的按鈕回到首頁，再重新開始。</p>
+      <div class="actions"><button class="primary">回首頁</button></div></div>`);
+    el.querySelector('button').onclick = home;
+    app.replaceChildren(el);
+  });
+  const encouragements = ['太棒了！', '答對了！', '好厲害！', '真聰明！', '很好喔！'];
+  const comfort = ['沒關係，再試試看', '差一點點！', '慢慢來就好'];
+  const pick = a => a[rand(0, a.length - 1)];
+
+  function getLevel(id) { return me().level[id] || 1; }
+  function setLevel(id, lv) { me().level[id] = Math.max(1, Math.min(5, lv)); saveStore(store); }
+
+  // ---------- 遊戲定義 ----------
+  const GAMES = [
+    { id: 'match', icon: '🃏', title: '翻牌配對', desc: '記住圖案位置，找出相同的兩張牌。訓練短期記憶。', run: gameMatch },
+    { id: 'math', icon: '🧮', title: '算數', desc: '加減乘除的算式，穿插買菜的小故事題。訓練計算力。', run: gameMath },
+    { id: 'color', icon: '🎨', title: '看顏色說顏色', desc: '不看字的意思，只選字的「顏色」。訓練專注力。', run: gameColor },
+    { id: 'digits', icon: '🔢', title: '數字記一記', desc: '看一串數字，記住後照順序輸入。訓練工作記憶。', run: gameDigits },
+    { id: 'spots', icon: '💡', title: '亮燈在哪裡', desc: '記住哪幾格亮過燈，再把它們點出來。訓練空間記憶。', run: gameSpots },
+  ];
+
+  // ---------- 首頁 ----------
+  function home() {
+    session++; onKey = null;
+    if (!me()) return showPlayers();
+    renderWho();
+    const today = new Date().toLocaleDateString('zh-TW');
+    const todayCount = me().history.filter(r => r.date === today).length;
+    const el = h(`<div>
+      <div class="panel" style="margin-bottom:20px">
+        <h2>${esc(me().name)}，${greeting()}！今天想動動哪裡的腦筋呢？</h2>
+        <p class="muted">今天已完成 <b>${todayCount}</b> 回合。每個遊戲會依您的表現自動調整難度。</p>
+      </div>
+      <div class="grid-menu"></div>
+      <div class="actions"><button id="btnHist">📒 我的紀錄</button></div>
+    </div>`);
+    const grid = el.querySelector('.grid-menu');
+    GAMES.forEach(g => {
+      const best = me().best[g.id];
+      const b = h(`<button class="game-card">
+        <span class="icon">${g.icon}</span>
+        <span class="title">${g.title}</span>
+        <span class="desc">${g.desc}</span>
+        <span class="best">第 ${getLevel(g.id)} 級${best != null ? ` ・最佳 ${best} 分` : ''}</span>
+      </button>`);
+      b.onclick = () => startGame(g);
+      grid.appendChild(b);
+    });
+    el.querySelector('#btnHist').onclick = showHistory;
+    app.replaceChildren(el);
+  }
+  function greeting() {
+    const hr = new Date().getHours();
+    return hr < 11 ? '早安' : hr < 14 ? '午安' : hr < 18 ? '午後好' : '晚安';
+  }
+
+  function shell(g, extra = '') {
+    const el = h(`<div class="panel game">
+      <div class="topbar">
+        <button class="back">← 回首頁</button>
+        <div class="stat">${g.icon} ${g.title}・第 ${getLevel(g.id)} 級</div>
+        <div class="stat score">${extra}</div>
+      </div>
+      <div class="feedback" aria-live="polite"></div>
+      <div class="body"></div>
+    </div>`);
+    el.querySelector('.back').onclick = home;
+    app.replaceChildren(el);
+    window.scrollTo(0, 0);
+    return {
+      el, body: el.querySelector('.body'),
+      setScore: t => el.querySelector('.score').textContent = t,
+      feedback: (t, cls = '') => { const f = el.querySelector('.feedback'); f.textContent = t; f.className = 'feedback ' + cls; },
+    };
+  }
+
+  function startGame(g) { session++; onKey = null; g.run(g, session); }
+
+  function finish(g, score, total, levelUp) {
+    const lv = getLevel(g.id);
+    const ratio = total ? score / total : 0;
+    let msg;
+    if (levelUp === undefined) levelUp = ratio >= 0.8 ? 1 : ratio < 0.4 ? -1 : 0;
+    if (levelUp > 0 && lv < 5) msg = '表現很好，下次升到第 ' + (lv + 1) + ' 級！';
+    else if (levelUp < 0 && lv > 1) msg = '下次換輕鬆一點的第 ' + (lv - 1) + ' 級，慢慢來。';
+    else msg = '保持這個節奏就很棒。';
+    setLevel(g.id, lv + levelUp);
+    const pts = Math.round(ratio * 100);
+    const p = me();
+    if (p.best[g.id] == null || pts > p.best[g.id]) p.best[g.id] = pts;
+    p.history.unshift({ date: new Date().toLocaleDateString('zh-TW'), time: new Date().toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' }), game: g.title, score: pts, level: lv });
+    p.history = p.history.slice(0, 1000);
+    saveStore(store);
+    onKey = null;
+    sfx.win();
+    say(`完成了！得到 ${pts} 分。${msg}`);
+    const el = h(`<div class="panel center">
+      <h2>🎉 完成了！</h2>
+      <div class="result-big">${pts} 分</div>
+      <p>${g.title}・答對 ${score} / ${total}</p>
+      <p class="muted">${msg}</p>
+      <div class="actions">
+        <button class="primary again">再玩一次</button>
+        <button class="home">回首頁</button>
+      </div>
+    </div>`);
+    el.querySelector('.again').onclick = () => startGame(g);
+    el.querySelector('.home').onclick = home;
+    app.replaceChildren(el);
+    el.querySelector('.again').focus();
+  }
+
+  function showHistory() {
+    session++; onKey = null;
+    const p = me();
+    const rows = p.history.slice(0, 30).map(r => `<tr><td>${r.date} ${r.time}</td><td>${r.game}</td><td>第 ${r.level} 級</td><td><b>${r.score}</b></td></tr>`).join('');
+    const el = h(`<div class="panel">
+      <div class="topbar"><button class="back">← 回首頁</button><div class="stat">📒 ${badge(p.avatar)} ${esc(p.name)} 的紀錄</div><div></div></div>
+      ${rows ? `<table class="history"><thead><tr><th>時間</th><th>遊戲</th><th>難度</th><th>分數</th></tr></thead><tbody>${rows}</tbody></table>` : '<p class="muted center">還沒有紀錄，去玩一個遊戲吧！</p>'}
+      <div class="actions">
+        <button class="rename">✏️ 改名字</button>
+        <button class="reset">清除我的紀錄</button>
+        <button class="remove">刪除這位玩家</button>
+      </div>
+    </div>`);
+    el.querySelector('.back').onclick = home;
+    el.querySelector('.rename').onclick = () => editPlayer(p);
+    el.querySelector('.reset').onclick = () => {
+      if (confirm(`確定要清除「${p.name}」的所有紀錄和難度嗎？`)) { p.best = {}; p.level = {}; p.history = []; saveStore(store); home(); }
+    };
+    el.querySelector('.remove').onclick = () => {
+      if (confirm(`確定要刪除玩家「${p.name}」嗎？這位玩家的紀錄也會一起刪除，無法復原。`)) {
+        store.players = store.players.filter(x => x !== p); store.current = null; saveStore(store); showPlayers();
+      }
+    };
+    app.replaceChildren(el);
+  }
+
+  // ---------- 玩家 ----------
+  // 十二生肖
+  const ZODIAC = [['🐭', '鼠'], ['🐮', '牛'], ['🐯', '虎'], ['🐰', '兔'], ['🐲', '龍'], ['🐍', '蛇'],
+                  ['🐴', '馬'], ['🐑', '羊'], ['🐵', '猴'], ['🐔', '雞'], ['🐶', '狗'], ['🐷', '豬']];
+  const AVATARS = ZODIAC.map(z => z[0]);
+  // Q 版生肖頭像（SVG，各平台看起來都一樣）
+  const INK = '#4a3628';
+  const eyes = (y = 56, dx = 10) => `<circle cx="${50 - dx}" cy="${y}" r="4.6" fill="${INK}"/><circle cx="${50 + dx}" cy="${y}" r="4.6" fill="${INK}"/><circle cx="${51.6 - dx}" cy="${y - 1.6}" r="1.5" fill="#fff"/><circle cx="${51.6 + dx}" cy="${y - 1.6}" r="1.5" fill="#fff"/>`;
+  const blush = (y = 65, dx = 20) => `<ellipse cx="${50 - dx}" cy="${y}" rx="6" ry="3.6" fill="#ff8fa3" opacity=".55"/><ellipse cx="${50 + dx}" cy="${y}" rx="6" ry="3.6" fill="#ff8fa3" opacity=".55"/>`;
+  const smile = (y = 67, w = 5) => `<path d="M${50 - w} ${y} q${w} ${w} ${w * 2} 0" stroke="${INK}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  const ol = `stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"`;
+  const ZSVG = {
+    // 鼠：大圓耳、粉紅鼻、鬍鬚
+    '🐭': `<circle cx="24" cy="32" r="16" fill="#c9c3d6" ${ol}/><circle cx="24" cy="32" r="9" fill="#ffc8d4"/><circle cx="76" cy="32" r="16" fill="#c9c3d6" ${ol}/><circle cx="76" cy="32" r="9" fill="#ffc8d4"/>
+      <ellipse cx="50" cy="60" rx="31" ry="27" fill="#ddd8e6" ${ol}/>${eyes(55)}${blush(64)}<circle cx="50" cy="63" r="3.4" fill="#ff7f9a"/>
+      <path d="M22 62 h-12 M22 67 l-11 3 M78 62 h12 M78 67 l11 3" stroke="${INK}" stroke-width="1.8" stroke-linecap="round"/>${smile(68, 4)}`,
+    // 牛：彎角、大鼻頭
+    '🐮': `<path d="M27 36 q-14 -6 -12 -22 q8 12 20 14z" fill="#fbe7b8" ${ol}/><path d="M73 36 q14 -6 12 -22 q-8 12 -20 14z" fill="#fbe7b8" ${ol}/>
+      <ellipse cx="17" cy="47" rx="10" ry="6" fill="#fff" ${ol}/><ellipse cx="83" cy="47" rx="10" ry="6" fill="#fff" ${ol}/>
+      <ellipse cx="50" cy="57" rx="30" ry="30" fill="#fff" ${ol}/><path d="M30 34 q8 -6 16 0 q-2 12 -14 10z" fill="#6b4a36"/>
+      ${eyes(52)}<ellipse cx="50" cy="73" rx="21" ry="12" fill="#ffc6b8" ${ol}/><ellipse cx="43" cy="73" rx="2.6" ry="3.4" fill="${INK}"/><ellipse cx="57" cy="73" rx="2.6" ry="3.4" fill="${INK}"/>${blush(62, 23)}`,
+    // 虎：額頭「王」字、條紋
+    '🐯': `<circle cx="25" cy="30" r="12" fill="#f7a541" ${ol}/><circle cx="25" cy="30" r="6" fill="#5a3a1e"/><circle cx="75" cy="30" r="12" fill="#f7a541" ${ol}/><circle cx="75" cy="30" r="6" fill="#5a3a1e"/>
+      <ellipse cx="50" cy="57" rx="33" ry="30" fill="#f9b04f" ${ol}/>
+      <path d="M42 33 h16 M43 39 h14 M42 45 h16 M50 33 v12" stroke="#5a3a1e" stroke-width="3" stroke-linecap="round"/>
+      <path d="M18 52 h9 M18 60 h8 M82 52 h-9 M82 60 h-8" stroke="#5a3a1e" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="50" cy="70" rx="15" ry="11" fill="#fff6e8"/>${eyes(55)}<path d="M46 65 h8 l-4 4z" fill="${INK}"/>${smile(72, 4)}${blush(66, 22)}`,
+    // 兔：長耳朵
+    '🐰': `<ellipse cx="37" cy="24" rx="9" ry="22" fill="#fff" ${ol}/><ellipse cx="37" cy="25" rx="4.5" ry="15" fill="#ffc8d4"/><ellipse cx="63" cy="24" rx="9" ry="22" fill="#fff" ${ol}/><ellipse cx="63" cy="25" rx="4.5" ry="15" fill="#ffc8d4"/>
+      <ellipse cx="50" cy="63" rx="30" ry="26" fill="#fff" ${ol}/>${eyes(60)}${blush(69)}<ellipse cx="50" cy="67" rx="3.2" ry="2.4" fill="#ff7f9a"/><path d="M50 69 v3 M45 73 q5 3 5 -1 q0 4 5 1" stroke="${INK}" stroke-width="2" fill="none" stroke-linecap="round"/>`,
+    // 龍：鹿角、鬍鬚、鬃毛
+    '🐲': `<path d="M33 30 l-6 -18 M29 20 l-8 -2 M67 30 l6 -18 M71 20 l8 -2" stroke="#e8b33a" stroke-width="5" stroke-linecap="round"/>
+      <path d="M20 46 l-9 -6 l3 10 l-8 2 l10 6z M80 46 l9 -6 l-3 10 l8 2 l-10 6z" fill="#ff8a5c" ${ol}/>
+      <ellipse cx="50" cy="57" rx="31" ry="29" fill="#86d39e" ${ol}/><ellipse cx="50" cy="72" rx="19" ry="12" fill="#c9f0d4" ${ol}/>
+      ${eyes(51)}<circle cx="44" cy="70" r="2.2" fill="${INK}"/><circle cx="56" cy="70" r="2.2" fill="${INK}"/>
+      <path d="M32 74 q-12 2 -14 12 M68 74 q12 2 14 12" stroke="${INK}" stroke-width="2" fill="none" stroke-linecap="round"/>${blush(61, 22)}`,
+    // 蛇：盤起來的身體、分岔舌頭
+    '🐍': `<ellipse cx="50" cy="82" rx="36" ry="12" fill="#9fd66c" ${ol}/><ellipse cx="50" cy="70" rx="27" ry="10" fill="#b2e07f" ${ol}/>
+      <path d="M38 70 q12 -4 24 0" stroke="#7fbf4f" stroke-width="2.5" fill="none"/><path d="M26 82 q24 -6 48 0" stroke="#7fbf4f" stroke-width="2.5" fill="none"/>
+      <circle cx="50" cy="42" r="23" fill="#b2e07f" ${ol}/>${eyes(40, 9)}${blush(48, 15)}<path d="M50 56 v8 l-3 4 M50 64 l3 4" stroke="#ff5a6e" stroke-width="2.4" fill="none" stroke-linecap="round"/>${smile(51, 4)}`,
+    // 馬：長臉、鬃毛、尖耳
+    '🐴': `<path d="M30 30 l-2 -18 l12 12z M70 30 l2 -18 l-12 12z" fill="#c98c55" ${ol}/>
+      <ellipse cx="50" cy="55" rx="25" ry="33" fill="#d79a62" ${ol}/>
+      <path d="M38 24 q6 -12 12 -2 q6 -10 12 2 q-6 8 -12 6 q-6 2 -12 -6z" fill="#6b3f22" ${ol}/>
+      <ellipse cx="50" cy="75" rx="18" ry="12" fill="#f3d2ad" ${ol}/><ellipse cx="44" cy="75" rx="2.4" ry="3.2" fill="${INK}"/><ellipse cx="56" cy="75" rx="2.4" ry="3.2" fill="${INK}"/>${eyes(50, 11)}${blush(60, 19)}`,
+    // 羊：捲捲羊毛、小角
+    '🐑': `<g fill="#fffaf0" ${ol}><circle cx="30" cy="34" r="12"/><circle cx="50" cy="26" r="13"/><circle cx="70" cy="34" r="12"/><circle cx="22" cy="54" r="11"/><circle cx="78" cy="54" r="11"/><circle cx="28" cy="74" r="11"/><circle cx="72" cy="74" r="11"/><circle cx="50" cy="82" r="11"/></g>
+      <path d="M27 44 q-12 2 -10 14 q6 -4 12 -4" fill="#e9c98f" ${ol}/><path d="M73 44 q12 2 10 14 q-6 -4 -12 -4" fill="#e9c98f" ${ol}/>
+      <ellipse cx="50" cy="58" rx="22" ry="24" fill="#f6dcc2" ${ol}/>${eyes(55, 9)}${blush(64, 15)}<path d="M47 64 h6 l-3 3z" fill="${INK}"/>${smile(70, 4)}`,
+    // 猴：大耳朵、愛心臉
+    '🐵': `<circle cx="17" cy="54" r="11" fill="#a8714a" ${ol}/><circle cx="17" cy="54" r="6" fill="#f5d3b3"/><circle cx="83" cy="54" r="11" fill="#a8714a" ${ol}/><circle cx="83" cy="54" r="6" fill="#f5d3b3"/>
+      <circle cx="50" cy="55" r="32" fill="#a8714a" ${ol}/>
+      <path d="M50 44 q-6 -10 -16 -6 q-10 6 -6 20 q-4 8 0 16 q8 12 22 12 q14 0 22 -12 q4 -8 0 -16 q4 -14 -6 -20 q-10 -4 -16 6z" fill="#f5d3b3"/>
+      ${eyes(55, 9)}<circle cx="47" cy="66" r="1.6" fill="${INK}"/><circle cx="53" cy="66" r="1.6" fill="${INK}"/>${smile(72, 6)}${blush(66, 17)}`,
+    // 雞：紅雞冠、嘴巴、肉垂
+    '🐔': `<g fill="#ff5a5a" ${ol}><circle cx="40" cy="22" r="8"/><circle cx="50" cy="17" r="9"/><circle cx="60" cy="22" r="8"/></g>
+      <ellipse cx="50" cy="56" rx="29" ry="31" fill="#fff8e6" ${ol}/>${eyes(50, 11)}
+      <path d="M42 60 l8 -5 l8 5 l-8 6z" fill="#ffb238" ${ol}/><path d="M47 66 q3 12 6 0" fill="#ff5a5a" ${ol}/>${blush(60, 19)}`,
+    // 狗：垂耳、黑鼻子
+    '🐶': `<ellipse cx="50" cy="56" rx="30" ry="29" fill="#f0c48a" ${ol}/>
+      <path d="M24 34 q-16 4 -12 30 q10 2 16 -10z" fill="#9c6438" ${ol}/><path d="M76 34 q16 4 12 30 q-10 2 -16 -10z" fill="#9c6438" ${ol}/>
+      <ellipse cx="50" cy="70" rx="17" ry="12" fill="#fff6e8"/><circle cx="62" cy="47" r="7" fill="#d9a066" opacity=".7"/>
+      ${eyes(52)}<ellipse cx="50" cy="65" rx="5.5" ry="4" fill="${INK}"/><path d="M50 69 v3 M44 73 q6 4 6 -1 q0 5 6 1" stroke="${INK}" stroke-width="2" fill="none" stroke-linecap="round"/>${blush(63, 22)}`,
+    // 豬：三角耳、大鼻子
+    '🐷': `<path d="M26 40 l-4 -20 l18 10z M74 40 l4 -20 l-18 10z" fill="#ff9fb3" ${ol}/>
+      <ellipse cx="50" cy="57" rx="32" ry="29" fill="#ffc2cf" ${ol}/>${eyes(50, 12)}
+      <ellipse cx="50" cy="67" rx="13" ry="9" fill="#ff9fb3" ${ol}/><ellipse cx="45.5" cy="67" rx="2.4" ry="3.4" fill="${INK}"/><ellipse cx="54.5" cy="67" rx="2.4" ry="3.4" fill="${INK}"/>${blush(62, 23)}`,
+  };
+  // 每個圖案配一個固定的粉彩底色；舊的 emoji 頭像照樣顯示
+  const badge = a => {
+    const i = AVATARS.includes(a) ? AVATARS.indexOf(a) : [...a].reduce((s, c) => s + c.codePointAt(0), 0);
+    const inner = ZSVG[a] ? `<svg viewBox="0 0 100 100" width="88%" height="88%" aria-hidden="true">${ZSVG[a]}</svg>` : a;
+    return `<span class="badge" style="background:var(--pa${i % 8})">${inner}</span>`;
+  };
+  const who = document.getElementById('who');
+  function renderWho() {
+    const p = me();
+    who.classList.toggle('hidden', !p);
+    if (p) who.innerHTML = `${badge(p.avatar)}${esc(p.name)}・換人`;
+  }
+  who.onclick = showPlayers;
+
+  function showPlayers() {
+    session++; onKey = null;
+    store.current = null; saveStore(store); renderWho();
+    const el = h(`<div class="panel">
+      <h2 class="center">誰要來玩呢？</h2>
+      <p class="muted center">請點自己的名字。每個人的成績和難度會分開記。</p>
+      <div class="player-grid"></div>
+    </div>`);
+    const grid = el.querySelector('.player-grid');
+    store.players.forEach(p => {
+      const today = new Date().toLocaleDateString('zh-TW');
+      const n = p.history.filter(r => r.date === today).length;
+      const b = h(`<button class="player-card">${badge(p.avatar)}<span class="nm">${esc(p.name)}</span><span class="muted sub">${n ? `今天玩了 ${n} 回合` : '今天還沒玩'}</span></button>`);
+      b.onclick = () => { store.current = p.id; saveStore(store); home(); };
+      grid.appendChild(b);
+    });
+    const add = h(`<button class="player-card add"><span class="av">＋</span><span class="nm">新增玩家</span></button>`);
+    add.onclick = () => editPlayer(null);
+    grid.appendChild(add);
+    app.replaceChildren(el);
+  }
+
+  // 新增（p 為 null）或修改玩家
+  function editPlayer(p) {
+    session++; onKey = null;
+    let avatar = p ? p.avatar : AVATARS[store.players.length % AVATARS.length];
+    const el = h(`<div class="panel">
+      <h2 class="center">${p ? '修改名字和圖案' : '新增玩家'}</h2>
+      <label class="field"><span>名字或稱呼</span>
+        <input class="name-input" maxlength="10" placeholder="例如：王阿嬤" value="${p ? esc(p.name) : ''}"></label>
+      <p style="margin-top:16px">選一個生肖</p>
+      <div class="avatar-grid"></div>
+      <p class="feedback bad err"></p>
+      <div class="actions"><button class="primary save">${p ? '儲存' : '開始玩'}</button><button class="cancel">取消</button></div>
+    </div>`);
+    const input = el.querySelector('.name-input'), ag = el.querySelector('.avatar-grid');
+    ZODIAC.forEach(([a, label]) => {
+      const b = h(`<button class="avatar-opt" aria-pressed="${a === avatar}" aria-label="生肖 ${label}">${badge(a)}</button>`);
+      b.onclick = () => { avatar = a; ag.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); };
+      ag.appendChild(b);
+    });
+    const save = () => {
+      const name = input.value.trim();
+      if (!name) { el.querySelector('.err').textContent = '請先輸入名字'; input.focus(); return; }
+      if (store.players.some(x => x !== p && x.name === name)) { el.querySelector('.err').textContent = '已經有人叫這個名字了，換一個吧'; return; }
+      if (p) { p.name = name; p.avatar = avatar; }
+      else { p = newPlayer(name, avatar); store.players.push(p); }
+      store.current = p.id; saveStore(store); home();
+    };
+    el.querySelector('.save').onclick = save;
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') save(); });
+    el.querySelector('.cancel').onclick = () => (p ? showHistory() : showPlayers());
+    app.replaceChildren(el);
+    input.focus();
+  }
+
+  // ---------- 1. 翻牌配對 ----------
+  function gameMatch(g, sid) {
+    const lv = getLevel(g.id);
+    const pairs = [3, 4, 6, 8, 10][lv - 1];
+    const cols = pairs <= 3 ? 3 : pairs <= 4 ? 4 : pairs <= 6 ? 4 : pairs <= 8 ? 4 : 5;
+    const pool = shuffle(['🍎','🌸','🐟','🍵','🐱','🌙','🎈','🍌','🚲','🌻','🐢','☂️','🍊','🐶']).slice(0, pairs);
+    const deck = shuffle([...pool, ...pool]);
+    const rows = Math.ceil(pairs * 2 / cols);
+    const ui = shell(g);
+    // 依螢幕高度縮放，讓所有牌都不用捲動就看得到
+    const grid = h(`<div class="cards" style="grid-template-columns:repeat(${cols},1fr); max-width:min(620px, calc((100dvh - 250px) * ${cols} / ${rows}))"></div>`);
+    ui.feedback('點一張牌翻開，再找出一樣的另一張');
+    ui.body.appendChild(grid);
+    say('翻牌配對，找出相同的兩張牌');
+    let open = [], done = 0, tries = 0, lock = false;
+    ui.setScore(`翻了 0 次`);
+    deck.forEach((sym, i) => {
+      const b = h(`<button class="mcard" aria-label="第 ${i + 1} 張牌">？</button>`);
+      b.onclick = async () => {
+        if (lock || b.classList.contains('open') || b.classList.contains('done')) return;
+        sfx.flip();
+        b.textContent = sym; b.classList.add('open');
+        open.push(b);
+        if (open.length < 2) return;
+        tries++; ui.setScore(`翻了 ${tries} 次`);
+        const [a, c] = open; open = [];
+        if (a.textContent === c.textContent) {
+          a.classList.replace('open', 'done'); c.classList.replace('open', 'done');
+          done++; sfx.good(); ui.feedback(pick(encouragements), 'good');
+          if (done === pairs) {
+            await wait(900); if (sid !== session) return;
+            // 最少需要 pairs 次；以嘗試次數換算分數
+            const score = Math.max(0, Math.min(pairs, Math.round(pairs * pairs * 1.6 / tries)));
+            finish(g, score, pairs);
+          }
+        } else {
+          lock = true; sfx.bad(); ui.feedback('記住它們的位置喔', '');
+          await wait(1100); if (sid !== session) return;
+          a.textContent = '？'; c.textContent = '？';
+          a.classList.remove('open'); c.classList.remove('open');
+          lock = false;
+        }
+      };
+      grid.appendChild(b);
+    });
+  }
+
+  // ---------- 2. 算數（算式題 + 買菜題） ----------
+  function gameMath(g, sid) {
+    const lv = getLevel(g.id);
+    const total = 10;
+    // 市場常見的東西：名稱、量詞、單價範圍
+    const items = [
+      { n: '青菜', u: '把', p: [10, 35] }, { n: '豆腐', u: '盒', p: [15, 30] },
+      { n: '雞蛋', u: '顆', p: [5, 9] },   { n: '香蕉', u: '根', p: [5, 12] },
+      { n: '蘋果', u: '顆', p: [15, 40] }, { n: '醬油', u: '瓶', p: [45, 90] },
+      { n: '麵條', u: '包', p: [20, 45] }, { n: '吐司', u: '條', p: [35, 60] },
+      { n: '鮮奶', u: '瓶', p: [40, 95] }, { n: '白米', u: '包', p: [120, 280] },
+      { n: '橘子', u: '顆', p: [8, 20] },  { n: '地瓜', u: '條', p: [10, 25] },
+    ];
+    const bills = [10, 50, 100, 500, 1000];
+    const payWith = total => bills.find(b => b >= total) ?? Math.ceil(total / 1000) * 1000;
+    let i = 0, score = 0;
+    const ui = shell(g);
+    // 各級可出現的題型：
+    // 0 兩樣加總、1 付錢找零、2 買好幾個、3 買好幾個再找零、4 三樣加總再找零
+    // 5 買一送一、6 大家分攤、7 打折、8 兩攤比價、9 湊零錢找整數
+    const typesByLevel = [[0, 1, 5], [0, 1, 2, 5, 6], [1, 2, 3, 5, 6, 7], [2, 3, 4, 6, 7, 8, 9], [3, 4, 7, 8, 9]];
+    const round10 = p => Math.max(10, Math.round(p / 10) * 10);
+    function makeQ(type) {
+      const priceCap = [20, 40, 100, 300, 300][lv - 1];
+      const item = () => {
+        const it = pick(items.filter(x => x.p[0] <= priceCap));
+        return { ...it, price: rand(it.p[0], Math.min(it.p[1], priceCap)) };
+      };
+      const two = () => { const a = item(); let b; do { b = item(); } while (b.n === a.n); return [a, b]; };
+      let text, ans;
+      switch (type) {
+        case 0: {
+          const [a, b] = two();
+          text = `阿嬤買了一${a.u}${a.n} ${a.price} 元，又買了一${b.u}${b.n} ${b.price} 元，一共要付多少錢？`;
+          ans = a.price + b.price; break;
+        }
+        case 1: {
+          const a = item(), pay = payWith(a.price + 1);
+          text = `一${a.u}${a.n}賣 ${a.price} 元，阿公拿出 ${pay} 元，老闆要找回多少錢？`;
+          ans = pay - a.price; break;
+        }
+        case 2: {
+          const a = item(), qty = rand(2, lv >= 4 ? 6 : 4);
+          text = `${a.n}一${a.u} ${a.price} 元，買了 ${qty} ${a.u}，一共要付多少錢？`;
+          ans = a.price * qty; break;
+        }
+        case 3: {
+          const a = item(), qty = rand(2, lv >= 4 ? 5 : 3), total = a.price * qty, pay = payWith(total + 1);
+          text = `${a.n}一${a.u} ${a.price} 元，買了 ${qty} ${a.u}，付了 ${pay} 元，要找回多少錢？`;
+          ans = pay - total; break;
+        }
+        case 4: {
+          const [a, b] = two(); let c; do { c = item(); } while (c.n === a.n || c.n === b.n);
+          const total = a.price + b.price + c.price, pay = payWith(total + 1);
+          text = `買了一${a.u}${a.n} ${a.price} 元、一${b.u}${b.n} ${b.price} 元、一${c.u}${c.n} ${c.price} 元，付了 ${pay} 元，要找回多少錢？`;
+          ans = pay - total; break;
+        }
+        case 5: {
+          const a = item(), want = pick(lv === 1 ? [2] : [2, 4, 6]);
+          text = `${a.n}一${a.u} ${a.price} 元，今天「買一送一」。阿嬤想帶回 ${want} ${a.u}，要付多少錢？`;
+          ans = a.price * want / 2; break;
+        }
+        case 6: {
+          const people = lv <= 2 ? 2 : rand(2, 4), each = rand(lv <= 2 ? 10 : 30, lv <= 2 ? 40 : 150);
+          const what = pick(['一箱橘子', '一大袋地瓜', '一盒水果禮盒', '一桌午餐']);
+          text = `${people} 位老朋友一起買了${what}，總共 ${each * people} 元，大家平均分攤，每人要出多少錢？`;
+          ans = each; break;
+        }
+        case 7: {
+          const a = item(), price = round10(a.price * (lv >= 4 ? 2 : 1)), off = pick([9, 8, 5]);
+          const offName = { 9: '九折', 8: '八折', 5: '五折（半價）' }[off];
+          text = `一${a.u}${a.n}原價 ${price} 元，今天打${offName}，要付多少錢？`;
+          ans = price * off / 10; break;
+        }
+        case 8: {
+          const a = item(), qty = rand(3, 5), unit = a.price;
+          const save = rand(1, Math.max(1, Math.min(6, Math.floor(unit * qty / 20)))) * 5, bundle = unit * qty - save;
+          text = `${a.n}在甲攤一${a.u} ${unit} 元；乙攤 ${qty} ${a.u}一起賣 ${bundle} 元。要買 ${qty} ${a.u}，在乙攤買可以省多少錢？`;
+          ans = save; break;
+        }
+        default: {
+          // 例：35 元的東西給 105 元，找回整數 70 元
+          const a = item();
+          if (a.price % 10 === 0) a.price += 5;
+          const coins = a.price % 10, bill = payWith(a.price + 1);
+          text = `${a.n}一${a.u} ${a.price} 元。阿公給老闆一張 ${bill} 元，再加 ${coins} 元銅板，老闆要找回多少錢？`;
+          ans = bill + coins - a.price;
+        }
+      }
+      return { story: true, text, ans, opts: options(ans), unit: ' 元' };
+    }
+
+    // 一步算式題（例：2 × 3 ＝ ？），每級都有加減乘除，數字隨級數變大
+    function makeCalc(op) {
+      const addMax = [10, 20, 50, 100, 200][lv - 1];          // 加減的範圍
+      const [m1, m2] = [[2, 5], [2, 9], [2, 9], [2, 12], [11, 25]][lv - 1]; // 乘除的第一個數
+      const m2max = 9;                                        // 乘除的第二個數（九九乘法範圍）
+      let text, ans;
+      if (op === '+') { const a = rand(1, addMax - 1), b = rand(1, addMax - a); text = `${a} ＋ ${b}`; ans = a + b; }
+      else if (op === '-') { const a = rand(3, addMax), b = rand(1, a - 1); text = `${a} － ${b}`; ans = a - b; }
+      else if (op === '×') { const a = rand(m1, m2), b = rand(2, m2max); text = `${a} × ${b}`; ans = a * b; }
+      else { const b = rand(2, m2max), q = rand(m1, m2); text = `${b * q} ÷ ${b}`; ans = q; }
+      return { story: false, text, ans, opts: options(ans), unit: '' };
+    }
+
+    // 干擾選項：差一點或差十，像是常見的算錯
+    function options(ans) {
+      const opts = new Set([ans]);
+      for (const d of shuffle([1, 2, 5, 10, -1, -2, -5, -10])) { if (opts.size >= 4) break; if (ans + d > 0) opts.add(ans + d); }
+      return shuffle([...opts]);
+    }
+    const speakable = t => t.replace(/＋/g, '加').replace(/－/g, '減').replace(/×/g, '乘以').replace(/÷/g, '除以').replace(/[()（）]/g, '');
+
+    // 避免重複：這一回合出過的、和這位玩家最近 80 題都不再出
+    // （2 × 3 和 3 × 2、2 ＋ 3 和 3 ＋ 2 視為同一題）
+    const player = me();
+    const recent = new Set(player.recentQ || []);
+    const keyOf = q => q.story ? q.text : q.text.replace(/^(\d+) ([＋×]) (\d+)$/, (_, a, o, b) => [a, b].sort().join(` ${o} `));
+    const fresh = make => {
+      let q;
+      for (let t = 0; t < 40; t++) { q = make(); if (!recent.has(keyOf(q))) break; }
+      recent.add(keyOf(q));
+      player.recentQ = [...(player.recentQ || []), keyOf(q)].slice(-80);
+      saveStore(store);
+      return q;
+    };
+    // 每回合 5 題算式：加減乘除各至少一題，順序打亂
+    const calcOps = shuffle(['+', '-', '×', '÷', pick(['+', '-', '×', '÷'])]);
+    // 買菜題型也用「抽籤袋」輪流出，不連續出同一種
+    let typeBag = [];
+    const nextType = () => { if (!typeBag.length) typeBag = shuffle(typesByLevel[lv - 1]); return typeBag.pop(); };
+
+    function next() {
+      if (sid !== session) return;
+      if (i >= total) return finish(g, score, total);
+      // 算式題和買菜題輪流出
+      const q = i % 2 === 0 ? fresh(() => makeCalc(calcOps[i / 2])) : (t => fresh(() => makeQ(t)))(nextType());
+      ui.setScore(`第 ${i + 1} / ${total} 題`);
+      ui.feedback('');
+      const el = q.story
+        ? h(`<div><div class="question story">🛒 ${q.text}</div><div class="choices"></div></div>`)
+        : h(`<div><div class="question">${q.text} ＝ ？</div><div class="choices"></div></div>`);
+      say(q.story ? q.text : speakable(q.text) + '，等於多少');
+      const ch = el.querySelector('.choices');
+      let answered = false;
+      q.opts.forEach(o => {
+        const b = h(`<button data-v="${o}">${o}${q.unit}</button>`);
+        b.onclick = async () => {
+          if (answered) return; answered = true;
+          if (o === q.ans) { score++; b.classList.add('right'); sfx.good(); ui.feedback(pick(encouragements), 'good'); }
+          else {
+            b.classList.add('wrong'); sfx.bad(); ui.feedback(`${pick(comfort)}，答案是 ${q.ans}${q.unit}`, 'bad');
+            [...ch.children].find(x => +x.dataset.v === q.ans).classList.add('right');
+          }
+          i++; await wait(o === q.ans ? 1200 : 2600); next();
+        };
+        ch.appendChild(b);
+      });
+      el.appendChild(h('<p class="keyhint">也可以按鍵盤 1、2、3、4 選答案</p>'));
+      onKey = choiceKeys(ch);
+      ui.body.replaceChildren(el);
+    }
+    next();
+  }
+
+  // ---------- 3. 看顏色說顏色 ----------
+  function gameColor(g, sid) {
+    const lv = getLevel(g.id);
+    const total = 10;
+    const all = [
+      { name: '紅', v: 'var(--c-red)' }, { name: '藍', v: 'var(--c-blue)' },
+      { name: '綠', v: 'var(--c-green)' }, { name: '黃', v: 'var(--c-yellow)' },
+    ];
+    const colors = all;
+    const conflictRate = [0.3, 0.5, 0.6, 0.75, 0.9][lv - 1];
+    let i = 0, score = 0;
+    const ui = shell(g);
+    say('請選字的顏色，不要看字寫什麼');
+    function next() {
+      if (sid !== session) return;
+      if (i >= total) return finish(g, score, total);
+      const ink = pick(colors);
+      const word = Math.random() < conflictRate ? pick(colors.filter(c => c !== ink)) : ink;
+      ui.setScore(`第 ${i + 1} / ${total} 題`);
+      ui.feedback('');
+      const el = h(`<div>
+        <p class="center muted">這個字是用什麼<b>顏色</b>寫的？</p>
+        <div class="stroop-word" style="color:${ink.v}">${word.name}色</div>
+        <div class="choices"></div></div>`);
+      const ch = el.querySelector('.choices');
+      let answered = false;
+      colors.forEach(c => {
+        const b = h(`<button style="border-color:${c.v}; border-width:4px">${c.name}色</button>`);
+        b.onclick = async () => {
+          if (answered) return; answered = true;
+          if (c === ink) { score++; b.classList.add('right'); sfx.good(); ui.feedback(pick(encouragements), 'good'); }
+          else { b.classList.add('wrong'); sfx.bad(); ui.feedback(`字的顏色是「${ink.name}色」喔`, 'bad'); }
+          i++; await wait(c === ink ? 900 : 1700); next();
+        };
+        ch.appendChild(b);
+      });
+      onKey = choiceKeys(ch);
+      ui.body.replaceChildren(el);
+    }
+    next();
+  }
+
+  // ---------- 4. 數字記一記 ----------
+  function gameDigits(g, sid) {
+    const lv = getLevel(g.id);
+    let len = [3, 4, 5, 6, 7][lv - 1];
+    const total = 10;
+    let i = 0, score = 0;
+    const ui = shell(g);
+    async function round() {
+      if (sid !== session) return;
+      if (i >= total) return finish(g, score, total);
+      ui.setScore(`第 ${i + 1} / ${total} 題・${len} 個數字`);
+      ui.feedback('');
+      const seq = Array.from({ length: len }, () => rand(0, 9));
+      onKey = null;
+      const show = h(`<div><p class="center muted">請記住出現的數字，看完會出現按鍵讓您輸入…</p><div class="seq-show"></div></div>`);
+      ui.body.replaceChildren(show);
+      const s = show.querySelector('.seq-show');
+      await wait(700);
+      for (const d of seq) {
+        if (sid !== session) return;
+        s.textContent = d; say(String(d));
+        await wait(1000);
+        s.textContent = ''; await wait(250);
+      }
+      if (sid !== session) return;
+      let entry = [];
+      const el = h(`<div class="digits-play">
+        <div class="side">
+          <p class="center muted" style="margin:0">請照順序輸入剛才的 ${len} 個數字</p>
+          <div class="entry">&nbsp;</div>
+          <button class="primary ok">確定</button>
+          <p class="keyhint" style="margin:0">也可以用鍵盤打數字，按 Enter 確定</p>
+        </div>
+        <div class="keypad"></div></div>`);
+      const ent = el.querySelector('.entry'), pad = el.querySelector('.keypad'), ok = el.querySelector('.ok');
+      const render = () => {
+        ent.textContent = entry.join('') || ' ';
+        ok.disabled = entry.length !== len;
+        ok.textContent = entry.length === len ? '確定' : `還差 ${len - entry.length} 個數字`;
+      };
+      const press = k => {
+        if (ok.dataset.done) return;
+        if (k === '⌫') entry.pop();
+        else if (k === '清除') entry = [];
+        else if (entry.length < len) { entry.push(k); sfx.flip(); }
+        render();
+      };
+      [1,2,3,4,5,6,7,8,9,'⌫',0,'清除'].forEach(k => {
+        const b = h(`<button>${k}</button>`);
+        if (k === '清除') b.style.fontSize = '1.1rem';
+        b.onclick = () => press(k);
+        pad.appendChild(b);
+      });
+      onKey = key => {
+        if (/^[0-9]$/.test(key)) press(+key);
+        else if (key === 'Backspace') press('⌫');
+        else if (key === 'Escape') press('清除');
+        else if (key === 'Enter') { if (!ok.disabled) ok.click(); }
+        else return false;
+        return true;
+      };
+      ok.onclick = async () => {
+        ok.disabled = true; ok.dataset.done = '1'; onKey = null;
+        const right = entry.join('') === seq.join('');
+        if (right) { score++; sfx.good(); ui.feedback(pick(encouragements), 'good'); }
+        else {
+          sfx.bad(); ui.feedback(pick(comfort), 'bad');
+          ent.classList.add('wrong');
+          ok.replaceWith(h(`<div class="answer-big"><div class="label">正確答案</div><div class="num">${seq.join('')}</div></div>`));
+        }
+        i++; await wait(right ? 1100 : 3200); round();
+      };
+      render();
+      ui.body.replaceChildren(el);
+    }
+    say('數字記一記，請記住數字的順序');
+    round();
+  }
+
+  // ---------- 5. 亮燈在哪裡 ----------
+  function gameSpots(g, sid) {
+    const lv = getLevel(g.id);
+    const size = lv <= 2 ? 3 : 4;
+    const count = [2, 3, 4, 5, 6][lv - 1];
+    const total = 10;
+    let i = 0, score = 0;
+    const ui = shell(g);
+    say('亮燈在哪裡，請記住亮過的格子');
+    async function round() {
+      if (sid !== session) return;
+      if (i >= total) return finish(g, score, total);
+      ui.setScore(`第 ${i + 1} / ${total} 題・${count} 盞燈`);
+      ui.feedback('');
+      const target = new Set(shuffle([...Array(size * size).keys()]).slice(0, count));
+      const el = h(`<div><p class="center muted msg">請看清楚哪些格子會亮…</p>
+        <div class="spot-grid" style="grid-template-columns:repeat(${size},1fr)"></div>
+        <div class="actions"><button class="primary ok hidden">確定</button></div></div>`);
+      const grid = el.querySelector('.spot-grid'), msg = el.querySelector('.msg'), ok = el.querySelector('.ok');
+      const cells = [...Array(size * size)].map((_, k) => { const b = h(`<button class="spot" aria-label="第 ${k + 1} 格" disabled></button>`); grid.appendChild(b); return b; });
+      ui.body.replaceChildren(el);
+      await wait(600); if (sid !== session) return;
+      target.forEach(k => cells[k].classList.add('lit'));
+      await wait(1200 + count * 400); if (sid !== session) return;
+      cells.forEach(c => c.classList.remove('lit'));
+      msg.textContent = `請點出剛才亮過的 ${count} 格`;
+      const chosen = new Set();
+      cells.forEach((c, k) => {
+        c.disabled = false;
+        c.onclick = () => {
+          if (chosen.has(k)) { chosen.delete(k); c.classList.remove('lit'); }
+          else if (chosen.size < count) { chosen.add(k); c.classList.add('lit'); sfx.flip(); }
+          ok.disabled = chosen.size !== count;
+        };
+      });
+      ok.classList.remove('hidden'); ok.disabled = true;
+      onKey = key => { if (key === 'Enter' && !ok.disabled) { ok.click(); return true; } return false; };
+      ok.onclick = async () => {
+        ok.disabled = true; onKey = null;
+        cells.forEach(c => c.disabled = true);
+        let hit = 0;
+        cells.forEach((c, k) => {
+          c.classList.remove('lit');
+          if (target.has(k) && chosen.has(k)) { c.classList.add('right'); hit++; }
+          else if (target.has(k)) c.classList.add('right');
+          else if (chosen.has(k)) c.classList.add('wrong');
+        });
+        if (hit === count) { score++; sfx.good(); ui.feedback(pick(encouragements), 'good'); }
+        else { sfx.bad(); ui.feedback(`對了 ${hit} 格，綠色是正確位置`, 'bad'); }
+        i++; await wait(hit === count ? 1200 : 2400); round();
+      };
+    }
+    round();
+  }
+
+  // 只有一位玩家就直接進首頁，多位玩家先選人
+  if (store.players.length === 1) { store.current = store.players[0].id; home(); } else showPlayers();
+})();
+</script>
+</body>
+</html>
