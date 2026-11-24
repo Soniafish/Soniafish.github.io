@@ -171,6 +171,9 @@
   .result-big { font-size: 3rem; font-weight: 800; color: var(--accent); }
   .history { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .9rem; }
   .history td, .history th { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: left; }
+  /* 依日期分組：單數天白底、雙數天淺色底 */
+  .history tbody tr.day-odd td { background: var(--card); }
+  .history tbody tr.day-even td { background: var(--soft); }
   .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
   footer { margin-top: 32px; font-size: .85rem; color: var(--muted); text-align: center; }
   @media (max-width: 520px) {
@@ -417,7 +420,12 @@
   function showHistory() {
     session++; onKey = null;
     const p = me();
-    const rows = p.history.slice(0, 30).map(r => `<tr><td>${r.date} ${r.time}</td><td>${r.game}</td><td>第 ${r.level} 級</td><td><b>${r.score}</b></td></tr>`).join('');
+    // 同一天的紀錄算同一組，換日期才換底色
+    let day = 0, lastDate = null;
+    const rows = p.history.slice(0, 30).map(r => {
+      if (r.date !== lastDate) { day++; lastDate = r.date; }
+      return `<tr class="${day % 2 ? 'day-odd' : 'day-even'}"><td>${r.date} ${r.time}</td><td>${r.game}</td><td>第 ${r.level} 級</td><td><b>${r.score}</b></td></tr>`;
+    }).join('');
     const el = h(`<div class="panel">
       <div class="topbar"><button class="back">← 回首頁</button><div class="stat">📒 ${badge(p.avatar)} ${esc(p.name)} 的紀錄</div><div></div></div>
       ${rows ? `<table class="history"><thead><tr><th>時間</th><th>遊戲</th><th>難度</th><th>分數</th></tr></thead><tbody>${rows}</tbody></table>` : '<p class="muted center">還沒有紀錄，去玩一個遊戲吧！</p>'}
