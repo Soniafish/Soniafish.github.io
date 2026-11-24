@@ -19,7 +19,7 @@
     --c-red: #d32f2f;
     --c-blue: #1e5bb8;
     --c-green: #2e7d32;
-    --c-yellow: #c99700;
+    --c-yellow: #c99700; --c-purple: #7b3fb0; --c-orange: #e0661a;
     --pa0: #ffd9e3; --pa1: #ffe8c7; --pa2: #fff4b8; --pa3: #d8f3dc; --pa4: #d4ecff; --pa5: #e6dcff; --pa6: #ffe0d1; --pa7: #d6f5ef;
   }
   @media (prefers-color-scheme: dark) {
@@ -27,7 +27,7 @@
       --bg: #1d1a17; --card: #2a2622; --ink: #f5efe6; --muted: #bdb3a6;
       --line: #443d35; --accent: #e9824f; --accent-ink: #1d1a17;
       --good: #6fcf97; --bad: #ff8a80; --soft: #35302a;
-      --c-red: #ff6b6b; --c-blue: #6ea8ff; --c-green: #6fcf7a; --c-yellow: #ffd54f;
+      --c-red: #ff6b6b; --c-blue: #6ea8ff; --c-green: #6fcf7a; --c-yellow: #ffd54f; --c-purple: #c18cff; --c-orange: #ffa25c;
       --pa0: #5a3440; --pa1: #5a4630; --pa2: #55502a; --pa3: #2f4a36; --pa4: #2c4257; --pa5: #3f3557; --pa6: #573a2e; --pa7: #2b4a45;
     }
   }
@@ -35,7 +35,7 @@
     --bg: #1d1a17; --card: #2a2622; --ink: #f5efe6; --muted: #bdb3a6;
     --line: #443d35; --accent: #e9824f; --accent-ink: #1d1a17;
     --good: #6fcf97; --bad: #ff8a80; --soft: #35302a;
-    --c-red: #ff6b6b; --c-blue: #6ea8ff; --c-green: #6fcf7a; --c-yellow: #ffd54f;
+    --c-red: #ff6b6b; --c-blue: #6ea8ff; --c-green: #6fcf7a; --c-yellow: #ffd54f; --c-purple: #c18cff; --c-orange: #ffa25c;
       --pa0: #5a3440; --pa1: #5a4630; --pa2: #55502a; --pa3: #2f4a36; --pa4: #2c4257; --pa5: #3f3557; --pa6: #573a2e; --pa7: #2b4a45;
   }
   * { box-sizing: border-box; }
@@ -318,8 +318,9 @@
   const comfort = ['沒關係，再試試看', '差一點點！', '慢慢來就好'];
   const pick = a => a[rand(0, a.length - 1)];
 
-  function getLevel(id) { return me().level[id] || 1; }
-  function setLevel(id, lv) { me().level[id] = Math.max(1, Math.min(5, lv)); saveStore(store); }
+  const MAX_LEVEL = 8;
+  function getLevel(id) { return Math.min(me().level[id] || 1, MAX_LEVEL); }
+  function setLevel(id, lv) { me().level[id] = Math.max(1, Math.min(MAX_LEVEL, lv)); saveStore(store); }
 
   // ---------- 遊戲定義 ----------
   const GAMES = [
@@ -405,7 +406,7 @@
     const ratio = total ? score / total : 0;
     let msg;
     if (levelUp === undefined) levelUp = ratio >= 0.8 ? 1 : ratio < 0.4 ? -1 : 0;
-    if (levelUp > 0 && lv < 5) msg = '表現很好，下次升到第 ' + (lv + 1) + ' 級！';
+    if (levelUp > 0 && lv < MAX_LEVEL) msg = '表現很好，下次升到第 ' + (lv + 1) + ' 級！';
     else if (levelUp < 0 && lv > 1) msg = '下次換輕鬆一點的第 ' + (lv - 1) + ' 級，慢慢來。';
     else msg = '保持這個節奏就很棒。';
     setLevel(g.id, lv + levelUp);
@@ -606,14 +607,14 @@
   // ---------- 1. 翻牌配對 ----------
   function gameMatch(g, sid) {
     const lv = getLevel(g.id);
-    const pairs = [3, 4, 6, 8, 10][lv - 1];
-    const cols = pairs <= 3 ? 3 : pairs <= 4 ? 4 : pairs <= 6 ? 4 : pairs <= 8 ? 4 : 5;
-    const pool = shuffle(['🍎','🌸','🐟','🍵','🐱','🌙','🎈','🍌','🚲','🌻','🐢','☂️','🍊','🐶']).slice(0, pairs);
+    const pairs = [3, 4, 6, 8, 10, 12, 14, 16][lv - 1];
+    const cols = pairs <= 3 ? 3 : pairs <= 8 ? 4 : pairs <= 10 ? 5 : pairs / 2;
+    const pool = shuffle(['🍎','🌸','🐟','🍵','🐱','🌙','🎈','🍌','🚲','🌻','🐢','☂️','🍊','🐶','🍇','🌽','🐝','🍄']).slice(0, pairs);
     const deck = shuffle([...pool, ...pool]);
     const rows = Math.ceil(pairs * 2 / cols);
     const ui = shell(g);
     // 依螢幕高度縮放，讓所有牌都不用捲動就看得到
-    const grid = h(`<div class="cards" style="grid-template-columns:repeat(${cols},1fr); max-width:min(620px, calc((100dvh - 250px) * ${cols} / ${rows}))"></div>`);
+    const grid = h(`<div class="cards" style="grid-template-columns:repeat(${cols},1fr); max-width:min(${cols > 5 ? 760 : 620}px, calc((100dvh - 280px) * ${cols} / ${rows}))"></div>`);
     ui.feedback('點一張牌翻開，再找出一樣的另一張');
     ui.body.appendChild(grid);
     say('翻牌配對，找出相同的兩張牌');
@@ -670,10 +671,10 @@
     // 各級可出現的題型：
     // 0 兩樣加總、1 付錢找零、2 買好幾個、3 買好幾個再找零、4 三樣加總再找零
     // 5 買一送一、6 大家分攤、7 打折、8 兩攤比價、9 湊零錢找整數
-    const typesByLevel = [[0, 1, 5], [0, 1, 2, 5, 6], [1, 2, 3, 5, 6, 7], [2, 3, 4, 6, 7, 8, 9], [3, 4, 7, 8, 9]];
+    const typesByLevel = [[0, 1, 5], [0, 1, 2, 5, 6], [1, 2, 3, 5, 6, 7], [2, 3, 4, 6, 7, 8, 9], [3, 4, 7, 8, 9], [2, 3, 4, 6, 7, 8, 9], [3, 4, 6, 7, 8, 9], [3, 4, 7, 8, 9]];
     const round10 = p => Math.max(10, Math.round(p / 10) * 10);
     function makeQ(type) {
-      const priceCap = [20, 40, 100, 300, 300][lv - 1];
+      const priceCap = [20, 40, 100, 300, 300, 300, 300, 300][lv - 1];
       const item = () => {
         const it = pick(items.filter(x => x.p[0] <= priceCap));
         return { ...it, price: rand(it.p[0], Math.min(it.p[1], priceCap)) };
@@ -744,8 +745,8 @@
 
     // 一步算式題（例：2 × 3 ＝ ？），每級都有加減乘除，數字隨級數變大
     function makeCalc(op) {
-      const addMax = [10, 20, 50, 100, 200][lv - 1];          // 加減的範圍
-      const [m1, m2] = [[2, 5], [2, 9], [2, 9], [2, 12], [11, 25]][lv - 1]; // 乘除的第一個數
+      const addMax = [10, 20, 50, 100, 200, 500, 1000, 1000][lv - 1];          // 加減的範圍
+      const [m1, m2] = [[2, 5], [2, 9], [2, 9], [2, 12], [11, 25], [12, 50], [21, 99], [101, 250]][lv - 1]; // 乘除的第一個數
       const m2max = 9;                                        // 乘除的第二個數（九九乘法範圍）
       let text, ans;
       if (op === '+') { const a = rand(1, addMax - 1), b = rand(1, addMax - a); text = `${a} ＋ ${b}`; ans = a + b; }
@@ -823,9 +824,11 @@
     const all = [
       { name: '紅', v: 'var(--c-red)' }, { name: '藍', v: 'var(--c-blue)' },
       { name: '綠', v: 'var(--c-green)' }, { name: '黃', v: 'var(--c-yellow)' },
+      { name: '紫', v: 'var(--c-purple)' }, { name: '橘', v: 'var(--c-orange)' },
     ];
-    const colors = all;
-    const conflictRate = [0.3, 0.5, 0.6, 0.75, 0.9][lv - 1];
+    // 第 6 級加入紫色，第 7 級起再加橘色
+    const colors = all.slice(0, lv >= 7 ? 6 : lv >= 6 ? 5 : 4);
+    const conflictRate = [0.3, 0.5, 0.6, 0.75, 0.9, 0.9, 0.95, 1][lv - 1];
     let i = 0, score = 0;
     const ui = shell(g);
     say('請選字的顏色，不要看字寫什麼');
@@ -841,6 +844,8 @@
         <div class="stroop-word" style="color:${ink.v}">${word.name}色</div>
         <div class="choices"></div></div>`);
       const ch = el.querySelector('.choices');
+      // 5～6 種顏色時排成三欄，畫面放得下
+      if (colors.length > 4) { ch.style.gridTemplateColumns = 'repeat(3, 1fr)'; ch.style.maxWidth = '640px'; }
       let answered = false;
       colors.forEach(c => {
         // 白底顏色外框，按下去才填滿該顏色；黃色底配深色字才看得清楚
@@ -866,7 +871,7 @@
   // ---------- 4. 數字記一記 ----------
   function gameDigits(g, sid) {
     const lv = getLevel(g.id);
-    let len = [3, 4, 5, 6, 7][lv - 1];
+    let len = [3, 4, 5, 6, 7, 8, 9, 10][lv - 1];
     const total = 10;
     let i = 0, score = 0;
     const ui = shell(g);
@@ -892,7 +897,7 @@
       const el = h(`<div class="digits-play">
         <div class="side">
           <p class="center muted" style="margin:0">請照順序輸入剛才的 ${len} 個數字</p>
-          <div class="entry">&nbsp;</div>
+          <div class="entry" style="${len > 7 ? `font-size:${len > 9 ? 2.1 : 2.5}rem` : ''}">&nbsp;</div>
           <button class="primary ok">確定</button>
           <p class="keyhint" style="margin:0">也可以用鍵盤打數字，按 Enter 確定</p>
         </div>
@@ -931,7 +936,7 @@
         else {
           sfx.bad(); ui.feedback(pick(comfort), 'bad');
           ent.classList.add('wrong');
-          ok.replaceWith(h(`<div class="answer-big"><div class="label">正確答案</div><div class="num">${seq.join('')}</div></div>`));
+          ok.replaceWith(h(`<div class="answer-big"><div class="label">正確答案</div><div class="num" style="${len > 7 ? `font-size:${len > 9 ? 2.1 : 2.5}rem` : ''}">${seq.join('')}</div></div>`));
         }
         el.querySelector('.side .keyhint')?.remove();
         pad.querySelectorAll('button').forEach(b => b.disabled = true);
@@ -947,8 +952,8 @@
   // ---------- 5. 亮燈在哪裡 ----------
   function gameSpots(g, sid) {
     const lv = getLevel(g.id);
-    const size = lv <= 2 ? 3 : 4;
-    const count = [2, 3, 4, 5, 6][lv - 1];
+    const size = lv <= 2 ? 3 : lv <= 5 ? 4 : 5;
+    const count = [2, 3, 4, 5, 6, 7, 8, 9][lv - 1];
     const total = 10;
     let i = 0, score = 0;
     const ui = shell(g);
@@ -960,7 +965,7 @@
       ui.feedback('');
       const target = new Set(shuffle([...Array(size * size).keys()]).slice(0, count));
       const el = h(`<div><p class="center muted msg">請看清楚哪些格子會亮…</p>
-        <div class="spot-grid" style="grid-template-columns:repeat(${size},1fr)"></div>
+        <div class="spot-grid" style="grid-template-columns:repeat(${size},1fr)${size > 4 ? '; max-width:min(420px, calc(100dvh - 440px))' : ''}"></div>
         <div class="actions"><button class="primary ok hidden">確定</button></div></div>`);
       const grid = el.querySelector('.spot-grid'), msg = el.querySelector('.msg'), ok = el.querySelector('.ok');
       const cells = [...Array(size * size)].map((_, k) => { const b = h(`<button class="spot" aria-label="第 ${k + 1} 格" disabled></button>`); grid.appendChild(b); return b; });
