@@ -133,6 +133,7 @@
   /* 位置記憶 */
   .spot-grid { display: grid; gap: 10px; max-width: min(420px, calc(100dvh - 370px)); min-width: 220px; margin: 0 auto; }
   .spot { aspect-ratio: 1; padding: 0; background: var(--soft); border-width: 3px; }
+  .spot:disabled { opacity: 1; cursor: default; }
   .spot.lit { background: var(--accent); border-color: var(--accent); }
   .spot.right { background: var(--good); border-color: var(--good); }
   .spot.wrong { background: var(--bad); border-color: var(--bad); }
@@ -168,6 +169,9 @@
   .avatar-opt[aria-pressed="true"] .badge { outline: 4px solid var(--accent); outline-offset: 3px; }
   .avatar-opt[aria-pressed="true"] .badge { animation: wiggle .5s ease-in-out; }
   .panel > p:has(+ .avatar-grid), .avatar-grid { margin-left: auto; margin-right: auto; max-width: 640px; }
+  .next-btn { font-size: 1.3rem; min-height: 64px; padding: 12px 40px; }
+  .digits-play .next-wrap { margin-top: 0; }
+  .digits-play .next-btn { width: 100%; }
   .result-big { font-size: 3rem; font-weight: 800; color: var(--accent); }
   .history { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .9rem; }
   .history td, .history th { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: left; }
@@ -382,6 +386,19 @@
   }
 
   function startGame(g) { session++; onKey = null; g.run(g, session); }
+
+  // 答完一題後停在答案畫面，等使用者按「下一題」（或 Enter／空白鍵）才繼續
+  function askNext(container, isLast) {
+    return new Promise(resolve => {
+      const wrap = h(`<div class="actions next-wrap"><button class="primary next-btn">${isLast ? '看結果 🎉' : '下一題 →'}</button></div>`);
+      const btn = wrap.querySelector('button');
+      btn.onclick = () => { btn.disabled = true; onKey = null; resolve(); };
+      onKey = key => { if (key === 'Enter' || key === ' ' || key === 'ArrowRight') { btn.click(); return true; } return false; };
+      container.appendChild(wrap);
+      btn.focus({ preventScroll: true });
+      wrap.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    });
+  }
 
   function finish(g, score, total, levelUp) {
     const lv = getLevel(g.id);
@@ -787,7 +804,8 @@
             b.classList.add('wrong'); sfx.bad(); ui.feedback(`${pick(comfort)}，答案是 ${q.ans}${q.unit}`, 'bad');
             [...ch.children].find(x => +x.dataset.v === q.ans).classList.add('right');
           }
-          i++; await wait(o === q.ans ? 1200 : 2600); next();
+          i++; el.querySelector('.keyhint')?.remove();
+          await askNext(el, i >= total); next();
         };
         ch.appendChild(b);
       });
@@ -835,7 +853,7 @@
             b.classList.add('wrong'); sfx.bad(); ui.feedback(`字的顏色是「${ink.name}色」喔`, 'bad');
             ch.children[colors.indexOf(ink)].classList.add('right');
           }
-          i++; await wait(c === ink ? 900 : 1700); next();
+          i++; await askNext(el, i >= total); next();
         };
         ch.appendChild(b);
       });
@@ -909,13 +927,15 @@
       ok.onclick = async () => {
         ok.disabled = true; ok.dataset.done = '1'; onKey = null;
         const right = entry.join('') === seq.join('');
-        if (right) { score++; sfx.good(); ui.feedback(pick(encouragements), 'good'); }
+        if (right) { score++; sfx.good(); ui.feedback(pick(encouragements), 'good'); ok.remove(); }
         else {
           sfx.bad(); ui.feedback(pick(comfort), 'bad');
           ent.classList.add('wrong');
           ok.replaceWith(h(`<div class="answer-big"><div class="label">正確答案</div><div class="num">${seq.join('')}</div></div>`));
         }
-        i++; await wait(right ? 1100 : 3200); round();
+        el.querySelector('.side .keyhint')?.remove();
+        pad.querySelectorAll('button').forEach(b => b.disabled = true);
+        i++; await askNext(el.querySelector('.side'), i >= total); round();
       };
       render();
       ui.body.replaceChildren(el);
@@ -973,7 +993,8 @@
         });
         if (hit === count) { score++; sfx.good(); ui.feedback(pick(encouragements), 'good'); }
         else { sfx.bad(); ui.feedback(`對了 ${hit} 格，綠色是正確位置`, 'bad'); }
-        i++; await wait(hit === count ? 1200 : 2400); round();
+        ok.parentElement.remove();
+        i++; await askNext(el, i >= total); round();
       };
     }
     round();
